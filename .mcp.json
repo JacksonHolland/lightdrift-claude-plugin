@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "lightdrift": {
+      "type": "http",
+      "url": "https://lightdrift.ai/mcp"
+    }
+  }
+}

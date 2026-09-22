@@ -1,0 +1,8 @@
+{
+  "name": "lightdrift",
+  "version": "0.1.0",
+  "description": "Find real images for websites, slides, and educational content with semantic search, hosted files, provenance, and license information.",
+  "author": {"name": "Lightdrift", "url": "https://lightdrift.ai"},
+  "homepage": "https://lightdrift.ai",
+  "keywords": ["images", "semantic-search", "creative-commons", "design", "presentations", "education"]
+}
