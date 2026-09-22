@@ -24,8 +24,8 @@ In Claude, open Customize → Connectors → Add custom connector. Use `https://
 
 | Tool | Function | Cost |
 |---|---|---|
-| search_images | Semantic image search with filters | $0.02 per successful call |
-| find_similar_images | Find images similar to an indexed asset | $0.02 per successful call |
+| search_images | Semantic image search with filters | Paid; see live tool description |
+| find_similar_images | Find images similar to an indexed asset | Paid; see live tool description |
 | get_image | Retrieve file URLs and image metadata | Free |
 
 A Lightdrift account and available credit are required for paid searches. This plugin does not include credits or an Anthropic subscription. It uses browser OAuth and contains no API keys, scripts, hooks, or executable dependencies.
@@ -46,3 +46,7 @@ The server receives the tool arguments Claude sends, such as search queries, fil
 ## Publication status
 
 This package is being prepared for submission. It is not yet listed or verified by Anthropic.
+
+## Hosted downloads
+
+Hosted Claude environments must permit outbound access to `api.lightdrift.ai` and the storage URL returned by the download redirect. Search and metadata tools can work even when the session network policy blocks image downloads. Report that restriction accurately; do not bypass it.

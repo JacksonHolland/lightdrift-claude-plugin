@@ -9,7 +9,7 @@ Use the Lightdrift MCP tools exposed by this plugin: `search_images`, `find_simi
 
 ## Connect and search
 
-If authentication is required, have the user authenticate the Lightdrift server through their client's MCP connection controls. In Claude Code use `/mcp`. Do not request credentials in chat. A Lightdrift account and available credit are required. Successful searches and similar-image calls cost $0.02 each; image metadata retrieval is free. Explain the cost before the first search unless the user already knows. Keep searches proportional to the request; don't run bulk exploration or replenish credit without authorization.
+If authentication is required, have the user authenticate the Lightdrift server through their client's MCP connection controls. In Claude Code use `/mcp`. Do not request credentials in chat. A Lightdrift account and available credit are required. Successful searches and similar-image calls consume account credit; image metadata retrieval is free. Read the current price from the live MCP tool descriptions before estimating cost. If client instructions and server pricing disagree, disclose the discrepancy and honor the user’s budget rather than silently assuming a price. Explain the cost before the first search unless the user already knows. Keep searches proportional to the request; don't run bulk exploration or replenish credit without authorization.
 
 Describe the subject, setting, composition, light, and useful layout constraints in the query. For example: "coastal lighthouse at dusk, wide composition, open sky on the left for a headline." For factual subjects, include the exact subject name and assess the returned source and description rather than assuming visual similarity proves identity.
 
