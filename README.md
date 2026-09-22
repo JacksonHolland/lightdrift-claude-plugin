@@ -49,4 +49,8 @@ This package is being prepared for submission. It is not yet listed or verified 
 
 ## Hosted downloads
 
-Hosted Claude environments must permit outbound access to `api.lightdrift.ai` and the storage URL returned by the download redirect. Search and metadata tools can work even when the session network policy blocks image downloads. Report that restriction accurately; do not bypass it.
+Hosted Claude environments must permit outbound access to `api.lightdrift.ai` and `26b17c22f73aeeffe81bee6419afe7ad.r2.cloudflarestorage.com`, the current storage host used by the download redirect. Search and metadata tools can work even when the session network policy blocks image downloads. Report that restriction accurately; do not bypass it.
+
+## Multiple installations
+
+A standalone custom connector and this plugin can expose the same three tools. This is expected when both installation methods are used. The skill prefers the plugin connection and avoids duplicate calls; retain the standalone connector if you also use hosted Claude.
