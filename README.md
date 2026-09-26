@@ -46,6 +46,8 @@ Watch the request-to-execution steps in the [reproducible terminal walkthrough](
 
 For content automation in n8n, import the [manual image-search workflow](examples/n8n-image-search). It uses your own Header Auth credential, an explicit one-request live opt-in, and returns candidates for source/license review. Offline fixture and package checks are included; no live search was used for validation.
 
+For saved candidate responses, run the [offline layout-fit auditor](examples/layout-fit) to inspect crop loss and resolution requirements for a target slot. It includes synthetic fixtures and tests and makes no network requests.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

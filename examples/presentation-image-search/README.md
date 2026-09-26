@@ -54,6 +54,8 @@ The script stops at the first HTTP, transport or response-shape error and exits 
 
 ## Review before putting an image on a slide
 
+Use the [offline layout-fit auditor](../layout-fit) to calculate crop loss and enlargement for your target slot and device pixel ratio. Extract a record’s `response` object from this example’s JSONL output first. The report preserves the response and rights metadata; visual and source-rights review are still required.
+
 Open each candidate's source page from `rights.provenance_url` and review the source declaration and license conditions. Check `license`, `license_verbatim`, `commercial`, `derivatives`, `share_alike`, `attribution_required`, `attribution` and `basis`. Unknown/null permissions are not affirmative permission. Preserve required credit and source information alongside the chosen asset and in the exported presentation where required. Consider rights beyond copyright, including people, logos and artworks.
 
 Review subject accuracy, composition and suitability with the presentation author. Returning candidates is not selecting or approving them. The example does not fetch any source media or bundle third-party images. When you later fetch a `file` or `thumb` URL, the docs describe a 302 redirect to a signed download link valid for one hour; follow those download redirects without sending your API key to the destination.

@@ -43,6 +43,8 @@ Requests ask for five landscape candidates using the documented commercial-permi
 
 ## Review before placing an image
 
+Use the [offline layout-fit auditor](../layout-fit) to calculate crop loss and enlargement for your target slot and device pixel ratio. Extract a record’s `response` object from this example’s JSONL output first. The report preserves the response and rights metadata; visual and source-rights review are still required.
+
 - Open the source page and verify the actual landmark, activity and location. A query, title or ranking score does not prove geographic identity. Do not imply a stock image depicts a booked hotel or supplier property without verification.
 - Inspect dimensions and crop suitability, empty results and any degraded/relaxed metadata. Leave the image unset if no candidate passes review.
 - Read the full `rights` object and source declaration, including `license`, `license_verbatim`, `commercial`, `derivatives`, `share_alike`, `attribution_required`, `attribution`, `provenance_url` and `basis`. Unknown or null information is unresolved. Check applicable conditions and other rights involving people, logos or artworks.

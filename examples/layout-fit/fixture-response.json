@@ -1,0 +1,38 @@
+{
+  "fixture_notice": "Synthetic geometry test, not live search results; example.invalid URLs are placeholders.",
+  "query_id": "synthetic-layout-demo",
+  "ranking": "text",
+  "results": [
+    {
+      "asset_id": "fixture:wide",
+      "title": "Synthetic wide dimensions",
+      "width": 1920,
+      "height": 1080,
+      "source": "synthetic",
+      "rights": {
+        "commercial": null,
+        "attribution_required": null,
+        "provenance_url": "https://example.invalid/wide"
+      }
+    },
+    {
+      "asset_id": "fixture:square",
+      "title": "Synthetic square dimensions",
+      "width": 1000,
+      "height": 1000,
+      "source": "synthetic",
+      "rights": {
+        "commercial": null,
+        "attribution_required": null
+      }
+    },
+    {
+      "asset_id": "fixture:unknown",
+      "title": "Synthetic unknown dimensions",
+      "width": null,
+      "height": null,
+      "source": "synthetic",
+      "rights": {}
+    }
+  ]
+}
