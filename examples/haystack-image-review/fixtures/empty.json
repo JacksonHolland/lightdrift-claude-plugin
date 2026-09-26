@@ -1,0 +1,8 @@
+{
+  "query_id": "synthetic-query-1",
+  "results": [],
+  "backend": "fixture",
+  "mode": "text",
+  "ranking": "fixture",
+  "latency_ms": 0
+}

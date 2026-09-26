@@ -1,0 +1,33 @@
+{
+  "query_id": "synthetic-query-1",
+  "results": [
+    {
+      "asset_id": "synthetic-asset-1",
+      "source": "fixture",
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_verbatim": "Synthetic test declaration; not a real asset license",
+        "commercial": true,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution_required": true,
+        "attribution": "Synthetic fixture creator",
+        "basis": "synthetic",
+        "provenance_url": "https://example.invalid/fixture",
+        "future_field": {
+          "preserve": true
+        }
+      },
+      "title": "Synthetic coast",
+      "file": "https://example.invalid/file.jpg",
+      "thumb": null,
+      "score": null,
+      "width": 1200,
+      "height": 800
+    }
+  ],
+  "backend": "fixture",
+  "mode": "text",
+  "ranking": "fixture",
+  "latency_ms": 0
+}

@@ -52,6 +52,8 @@ For Sanity editorial workflows, start with the [image review queue](examples/san
 
 Compare two saved shortlists with the [offline search-response diff](examples/search-response-diff). It reports entrants, exits, rank movement and metadata changes using synthetic fixtures; it makes no network calls and does not measure relevance.
 
+Run a real Haystack pipeline offline with the [Haystack image-review component](examples/haystack-image-review), including bounded review queues, complete rights preservation and synthetic fixtures.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

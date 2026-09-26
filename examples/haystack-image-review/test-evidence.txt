@@ -1,0 +1,19 @@
+test_bound_output_without_losing_envelope (test_component.ReviewTests.test_bound_output_without_losing_envelope) ... ok
+test_degraded_preserved (test_component.ReviewTests.test_degraded_preserved) ... ok
+test_empty (test_component.ReviewTests.test_empty) ... ok
+test_errors_no_retry_no_secret (test_component.ReviewTests.test_errors_no_retry_no_secret) ... ok
+test_http_transport_mock_only (test_component.ReviewTests.test_http_transport_mock_only) ... ok
+test_invalid_inputs (test_component.ReviewTests.test_invalid_inputs) ... ok
+test_live_payload_mock_only (test_component.ReviewTests.test_live_payload_mock_only) ... ok
+test_malformed_responses (test_component.ReviewTests.test_malformed_responses) ... ok
+test_missing_key (test_component.ReviewTests.test_missing_key) ... ok
+test_missing_provenance (test_component.ReviewTests.test_missing_provenance) ... ok
+test_missing_rights_not_approved (test_component.ReviewTests.test_missing_rights_not_approved) ... ok
+test_offline_default_and_no_ambiguous_mode (test_component.ReviewTests.test_offline_default_and_no_ambiguous_mode) ... ok
+test_real_pipeline_and_no_network (test_component.ReviewTests.test_real_pipeline_and_no_network) ... ok
+test_redirect_denied (test_component.ReviewTests.test_redirect_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.063s
+
+OK
