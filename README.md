@@ -28,7 +28,19 @@ In Claude, open Customize → Connectors → Add custom connector. Use `https://
 | find_similar_images | Find images similar to an indexed asset | Paid; see live tool description |
 | get_image | Retrieve file URLs and image metadata | Free |
 
-A Lightdrift account and available credit are required for paid searches. This plugin does not include credits or an Anthropic subscription. It uses browser OAuth and contains no API keys, scripts, hooks, or executable dependencies.
+A Lightdrift account and available credit are required for paid searches. This plugin does not include credits or an Anthropic subscription. The plugin runtime uses browser OAuth and contains no API keys, scripts, hooks, or executable dependencies. The optional API examples below are separate scripts; they are not run by the plugin.
+
+## Runnable workflow examples
+
+Building repeatable presentation or travel image retrieval? Start with the [presentation workflow guide](https://docs.lightdrift.ai/guides/presentation-image-search), then try the [three-slide presentation example](examples/presentation-image-search) or [three-stop itinerary example](examples/itinerary-image-search).
+
+These optional Python 3.10+ standard-library API scripts are separate from MCP plugin installation. From the itinerary example directory, inspect three request bodies without a key or network calls:
+
+```sh
+python3 search_itinerary.py --dry-run
+```
+
+Follow each example README for setup and exact commands. Live API execution requires `LIGHTDRIFT_API_KEY` in your backend environment or secret manager; the scripts do not use your MCP OAuth session. Live searches consume account entitlement. Validation used dry-run and offline checks, not live product searches. Review candidate accuracy and source/license conditions, and preserve required credits before using an image.
 
 ## Image rights
 
