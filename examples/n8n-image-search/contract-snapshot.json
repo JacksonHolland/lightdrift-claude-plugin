@@ -1,0 +1,405 @@
+{
+  "retrieved": "2026-09-26",
+  "url": "https://api.lightdrift.ai/openapi.json",
+  "info": {
+    "title": "Lightdrift",
+    "version": "1.0"
+  },
+  "path": {
+    "post": {
+      "summary": "Search",
+      "operationId": "search_v1_search_post",
+      "parameters": [
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "default": "",
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "authorization",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "default": "",
+            "title": "Authorization"
+          }
+        },
+        {
+          "name": "x-api-key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "default": "",
+            "title": "X-Api-Key"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SearchReq"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Successful Response",
+          "content": {
+            "application/json": {
+              "schema": {}
+            }
+          }
+        },
+        "422": {
+          "description": "Validation Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HTTPValidationError"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "SearchReq": {
+    "properties": {
+      "query": {
+        "type": "string",
+        "maxLength": 1000,
+        "title": "Query",
+        "default": ""
+      },
+      "image_base64": {
+        "anyOf": [
+          {
+            "type": "string",
+            "maxLength": 6990572
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Image Base64"
+      },
+      "image_url": {
+        "anyOf": [
+          {
+            "type": "string",
+            "maxLength": 4096
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Image Url"
+      },
+      "k": {
+        "type": "integer",
+        "maximum": 100.0,
+        "minimum": 1.0,
+        "title": "K",
+        "default": 10
+      },
+      "ann_k": {
+        "type": "integer",
+        "maximum": 1000.0,
+        "minimum": 1.0,
+        "title": "Ann K",
+        "default": 100
+      },
+      "bm25_k": {
+        "type": "integer",
+        "maximum": 1000.0,
+        "minimum": 0.0,
+        "title": "Bm25 K",
+        "default": 50
+      },
+      "ann_ef": {
+        "type": "integer",
+        "maximum": 4096.0,
+        "minimum": 64.0,
+        "title": "Ann Ef",
+        "default": 2048
+      },
+      "mode": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "none",
+          "text"
+        ],
+        "title": "Mode",
+        "default": "auto"
+      },
+      "rerank": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Rerank"
+      },
+      "rerank_k": {
+        "anyOf": [
+          {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 1.0
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Rerank K",
+        "default": 60
+      },
+      "rerank_text": {
+        "type": "boolean",
+        "title": "Rerank Text",
+        "default": true
+      },
+      "explain": {
+        "type": "boolean",
+        "title": "Explain",
+        "default": false
+      },
+      "filters": {
+        "$ref": "#/components/schemas/Filters"
+      },
+      "include_graphics": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Include Graphics"
+      },
+      "client_session": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Client Session"
+      },
+      "experiment": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Experiment"
+      }
+    },
+    "type": "object",
+    "title": "SearchReq"
+  },
+  "Filters": {
+    "properties": {
+      "commercial": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Commercial"
+      },
+      "attribution_required": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Attribution Required"
+      },
+      "derivatives": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Derivatives"
+      },
+      "license_id": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "License Id"
+      },
+      "source": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Source"
+      },
+      "min_width": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Min Width"
+      },
+      "min_height": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Min Height"
+      },
+      "orientation": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Orientation"
+      },
+      "colors": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Colors"
+      },
+      "monochrome": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Monochrome"
+      },
+      "year_min": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Year Min"
+      },
+      "year_max": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Year Max"
+      },
+      "ai_generated": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Ai Generated"
+      },
+      "nsfw_max": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Nsfw Max",
+        "default": 0.2
+      },
+      "format": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Format"
+      }
+    },
+    "type": "object",
+    "title": "Filters"
+  }
+}

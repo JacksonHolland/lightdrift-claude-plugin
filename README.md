@@ -44,6 +44,8 @@ Follow each example README for setup and exact commands. Live API execution requ
 
 Watch the request-to-execution steps in the [reproducible terminal walkthrough](examples/terminal-walkthrough), including actual dry-run captures and the explicit switch to your own authenticated searches.
 
+For content automation in n8n, import the [manual image-search workflow](examples/n8n-image-search). It uses your own Header Auth credential, an explicit one-request live opt-in, and returns candidates for source/license review. Offline fixture and package checks are included; no live search was used for validation.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

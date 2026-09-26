@@ -1,0 +1,51 @@
+[
+  {
+    "file": "openapi.json",
+    "url": "https://api.lightdrift.ai/openapi.json",
+    "status": 200,
+    "sha256": "4a8f14f098dece6eb70f29adac55365870d8ddbb83a4d1eeff6a88e226c163f6",
+    "at": "2026-09-26T20:12:01.076072+00:00"
+  },
+  {
+    "file": "pricing.json",
+    "url": "https://api.lightdrift.ai/v1/pricing",
+    "status": 200,
+    "sha256": "1b2c602da5f7c5a5d4a01b0839b5322b77be069a84e6a85f975ff2de8e9076a6",
+    "at": "2026-09-26T20:12:01.089680+00:00"
+  },
+  {
+    "file": "api.md",
+    "url": "https://docs.lightdrift.ai/api-reference/introduction.md",
+    "status": 200,
+    "sha256": "b22673bdaf74640947fd328578bbf57b86cc39e1d9681a725ad69cf24a79bf72",
+    "at": "2026-09-26T20:12:01.416374+00:00"
+  },
+  {
+    "file": "rights.md",
+    "url": "https://docs.lightdrift.ai/guides/rights.md",
+    "status": 200,
+    "sha256": "7195b1301ae21b4a7972be1b9caa2826de1590b2dddb3a7b32b5b9d8ca33db45",
+    "at": "2026-09-26T20:12:01.455588+00:00"
+  },
+  {
+    "file": "example.py",
+    "url": "https://raw.githubusercontent.com/JacksonHolland/lightdrift-claude-plugin/main/examples/presentation-image-search/search_slides.py",
+    "status": 200,
+    "sha256": "8ef900526dc54965bb73533187c887da0c0372899b7e3e2a46221ac476b7e0d5",
+    "at": "2026-09-26T20:12:01.102199+00:00"
+  },
+  {
+    "file": "repo-tree.json",
+    "url": "https://api.github.com/repos/JacksonHolland/lightdrift-claude-plugin/git/trees/main?recursive=1",
+    "status": 200,
+    "sha256": "9be07850ae06651dee6ebbe6ba80382066650de5da81555e39800f51e0e95ffb",
+    "at": "2026-09-26T20:12:01.137423+00:00"
+  },
+  {
+    "file": "n8n-release.json",
+    "url": "https://registry.npmjs.org/n8n/latest",
+    "status": 200,
+    "sha256": "8b03116c8e0f3b4a80f63fe7ca4b1f99cbf1b793ab248bf310c9284a1e26a252",
+    "at": "2026-09-26T20:12:01.062671+00:00"
+  }
+]

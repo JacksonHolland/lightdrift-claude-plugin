@@ -1,0 +1,61 @@
+// Offline fixture checks: no HTTP calls, credentials, or n8n server needed.
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import vm from 'node:vm';
+const read = (name) => JSON.parse(readFileSync(new URL(name, import.meta.url)));
+const w = read('workflow.json');
+const byName = Object.fromEntries(w.nodes.map(n => [n.name, n]));
+function code(name, data) {
+  const result = vm.runInNewContext(`(function(){${byName[name].parameters.jsCode}\n})()`, {
+    $input: { all: () => data.map(json => ({json})) },
+  }, {timeout: 1000});
+  return JSON.parse(JSON.stringify(result));
+}
+const guard = (data) => code('Validate one live request', data);
+const review = (data) => code('Review image candidates', data);
+assert.equal(w.active, false);
+assert.deepEqual(w.pinData, {});
+assert.equal(w.nodes.length, 5);
+assert.deepEqual(w.nodes.map(n=>n.type), ['manualTrigger','set','code','httpRequest','code'].map(x=>'n8n-nodes-base.'+x));
+for (let i=0; i<4; i++) assert.deepEqual(w.connections[w.nodes[i].name].main, [[{node:w.nodes[i+1].name,type:'main',index:0}]]);
+const defaults = Object.fromEntries(byName['Your search settings'].parameters.assignments.assignments.map(a=>[a.name,a.value]));
+assert.deepEqual(defaults,{query:'',allowLiveRequest:false});
+assert.throws(()=>guard([defaults]), /Live search is off/);
+for (const value of [false,'true',1,null,undefined]) assert.throws(()=>guard([{query:'sunrise',allowLiveRequest:value}]), /Live search is off/);
+for (const query of ['', '   ', 'x'.repeat(1001), null, 4]) assert.throws(()=>guard([{query,allowLiveRequest:true}]), /query must/);
+assert.throws(()=>guard([]), /exactly one/);
+assert.throws(()=>guard([{query:'a',allowLiveRequest:true},{query:'b',allowLiveRequest:true}]), /exactly one/);
+const request = guard([{query:'  A quiet coastline for a travel newsletter  ',allowLiveRequest:true}]);
+assert.deepEqual(request,[{json:{query:'A quiet coastline for a travel newsletter',k:5,filters:{commercial:true,orientation:'landscape'},experiment:'lig128_n8n_search_v1'}}]);
+assert.equal(guard([{query:'😀'.repeat(1000),allowLiveRequest:true}]).length,1);
+const contract=read('contract-snapshot.json');
+for (const key of Object.keys(request[0].json)) assert.ok(Object.hasOwn(contract.SearchReq.properties,key));
+assert.equal(contract.SearchReq.properties.query.maxLength,1000);
+assert.ok(request[0].json.k >= contract.SearchReq.properties.k.minimum && request[0].json.k <= contract.SearchReq.properties.k.maximum);
+assert.ok(contract.Filters.properties.orientation.anyOf.some(x=>x.type === 'string'));
+const http=byName['Search Lightdrift'];
+assert.equal(http.parameters.method,'POST');
+assert.equal(http.parameters.url,'https://api.lightdrift.ai/v1/search');
+assert.equal(http.parameters.authentication,'genericCredentialType');
+assert.equal(http.parameters.genericAuthType,'httpHeaderAuth');
+assert.equal(http.parameters.jsonBody,'={{ $json }}');
+assert.equal(http.parameters.options.redirect.redirect.followRedirects,false);
+assert.equal(http.parameters.options.response.response.neverError,false);
+assert.equal(http.parameters.options.timeout,60000);
+assert.equal(http.retryOnFail,false);
+assert.equal(http.executeOnce,true);
+assert.equal(http.onError,'stopWorkflow');
+assert.equal(http.credentials.httpHeaderAuth.id,'REPLACE_WITH_YOUR_N8N_CREDENTIAL_ID');
+assert.equal(http.parameters.options.pagination,undefined);
+const fixture=read('fixture-response.json');
+const out=review([fixture])[0].json;
+assert.deepEqual(out.response,fixture);
+assert.equal(out.result_count,1);
+assert.deepEqual(out.candidates[0].rights,fixture.results[0].rights);
+assert.equal(out.candidates[0].score,null);
+assert.equal(out.candidates[0].source_page,fixture.results[0].rights.provenance_url);
+assert.equal(review([{query_id:'empty-fixture',results:[]}])[0].json.result_count,0);
+assert.equal(review([{query_id:'missing-rights-fixture',results:[{asset_id:'fixture:2'}]}])[0].json.candidates[0].rights,null);
+for (const bad of [{}, {query_id:2,results:[]}, {query_id:'x',results:{}}]) assert.throws(()=>review([bad]), /response envelope/);
+console.log('PASS: topology/default-off gate, one-item request bound, query validation, request contract, credential placeholder, no retry/redirect/pagination, fixture rights/degraded preservation, empty/missing fields, malformed envelope.');
+console.log('OFFLINE ONLY: no n8n server import, authenticated search, media fetch, or rights clearance is claimed.');

@@ -1,0 +1,31 @@
+{
+  "query_id": "fixture-not-a-live-query",
+  "results": [
+    {
+      "asset_id": "fixture:1",
+      "score": null,
+      "title": "Synthetic fixture only \u2014 no image provided",
+      "source": "fixture",
+      "width": 1200,
+      "height": 800,
+      "file": "https://example.invalid/fixture-image",
+      "thumb": "https://example.invalid/fixture-thumb",
+      "rights": {
+        "license": null,
+        "license_verbatim": null,
+        "commercial": null,
+        "derivatives": null,
+        "share_alike": null,
+        "attribution_required": null,
+        "attribution": null,
+        "provenance_url": "https://example.invalid/fixture-source",
+        "basis": "synthetic test; not a rights declaration"
+      }
+    }
+  ],
+  "backend": "fixture",
+  "mode": "auto",
+  "ranking": "text",
+  "latency_ms": 0,
+  "degraded": "Synthetic fixture exercises preservation of this message"
+}
