@@ -66,6 +66,66 @@ Treat `result_count === 0` as the application's empty-state branch. Keep the bri
 
 The test exercises the review Code node only. It does not execute the HTTP node, measure production empty-result rates, prove authentication, or import a workflow into an n8n server. Zero candidates alone says nothing about whether a request consumed credit. The malformed-envelope check is limited to the fixture shown; it is not a complete response-schema validator.
 
+### Inspect absent and partial rights metadata before editorial use
+
+An incomplete candidate must remain visibly incomplete in an editorial review screen. This defensive fixture deliberately omits `rights`; the mapping node retains the asset ID and represents missing `rights` and `source_page` as `null`. It also preserves the original response and the human-review reminder.
+
+A second fixture supplies a partial rights object. The node preserves its `commercial: null` and `attribution_required: false` exactly, without filling in a license or source URL. That distinction lets a reviewer see what was declared and what remains unknown.
+
+![Missing rights and source-page metadata remain null. Partial rights are preserved unchanged, then shown to a human reviewer; the node does not enforce publication blocking.](./missing-rights/card.svg)
+
+Diagram description: Missing rights and source-page metadata remain null. Partial rights are preserved unchanged, then shown to a human reviewer; the node does not enforce publication blocking. This is an explanatory diagram, not a search screenshot.
+
+The accompanying `missing-rights/` directory is included in this example. From the example directory, run:
+
+```sh
+node missing-rights/demo.mjs
+```
+
+The bundle includes the review node from the [pinned working example](https://github.com/JacksonHolland/lightdrift-claude-plugin/tree/150921b4244e1ebe459e7ce79e54f1dd77a4b8db/examples/n8n-image-search). The command needs Node.js but no credentials, account, n8n server, or network. Its inputs are synthetic; IDs are fictional.
+
+Observed output:
+
+```text
+[
+  {
+    "json": {
+      "query_id": "offline-missing-rights",
+      "result_count": 1,
+      "review_status": "Human source and license review required before use",
+      "candidates": [
+        {
+          "asset_id": "offline-placeholder",
+          "title": null,
+          "score": null,
+          "source": null,
+          "width": null,
+          "height": null,
+          "file": null,
+          "thumb": null,
+          "source_page": null,
+          "rights": null
+        }
+      ],
+      "response": {
+        "query_id": "offline-missing-rights",
+        "results": [
+          {
+            "asset_id": "offline-placeholder"
+          }
+        ]
+      }
+    }
+  }
+]
+PARTIAL {"rights":{"commercial":null,"attribution_required":false},"source_page":null}
+PASS: absent rights/source page stay null; partial rights and false flags survive unchanged.
+```
+
+In the host application, label missing rights or source evidence as “Needs source review” and keep the item out of automatic selection until your review process resolves it. This is an integration recommendation: the existing node returns data and a reminder; it does not enforce a downstream publishing gate.
+
+A `null` permission is unknown. A preserved `false` flag is not a general permission grant, and a present rights object is not necessarily complete. Consult the [rights guidance](https://docs.lightdrift.ai/guides/rights) and original source declaration for the intended use. This test concerns missing metadata handling; it does not establish that actual API responses omit rights, clear copyright or other rights, or implement attribution export. No source page or media was downloaded by this offline test.
+
 ## Optional live check: one manual request
 
 Only after reviewing your account, pricing, query, and selected credential:
