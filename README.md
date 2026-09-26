@@ -42,6 +42,8 @@ python3 search_itinerary.py --dry-run
 
 Follow each example README for setup and exact commands. Live API execution requires `LIGHTDRIFT_API_KEY` in your backend environment or secret manager; the scripts do not use your MCP OAuth session. Live searches consume account entitlement. Validation used dry-run and offline checks, not live product searches. Review candidate accuracy and source/license conditions, and preserve required credits before using an image.
 
+Watch the request-to-execution steps in the [reproducible terminal walkthrough](examples/terminal-walkthrough), including actual dry-run captures and the explicit switch to your own authenticated searches.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.
