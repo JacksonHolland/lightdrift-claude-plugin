@@ -1,0 +1,169 @@
+{
+  "name": "Lightdrift — manual image candidates for content",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "3b081af9-d41d-4eda-a5de-fcb5ecd58138",
+      "name": "Manual start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06f268f3-5b5e-4887-866b-590f75656796",
+              "name": "query",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "ce0db9dd-679e-487d-91a9-eb6bc1d41928",
+              "name": "allowLiveRequest",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "75c3f9e9-2edc-43ba-bcc5-43dfd12a7886",
+      "name": "Your search settings",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const items = $input.all();\nif (items.length !== 1) throw new Error('Expected exactly one input item; no search sent.');\nconst input = items[0].json;\nif (input.allowLiveRequest !== true) throw new Error('Live search is off. Review pricing and README, then set allowLiveRequest to boolean true for one manual execution.');\nif (typeof input.query !== 'string') throw new Error('query must be text.');\nconst query = input.query.trim();\nif (!query || Array.from(query).length > 1000) throw new Error('query must contain 1–1000 characters.');\nreturn [{json: {query, k: 5, filters: {commercial: true, orientation: 'landscape'}, experiment: 'lig128_n8n_search_v1'}}];"
+      },
+      "id": "c5ce1f90-8926-433d-af02-e2be8f89963f",
+      "name": "Validate one live request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.lightdrift.ai/v1/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {
+          "timeout": 60000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {
+              "responseFormat": "json",
+              "neverError": false
+            }
+          }
+        }
+      },
+      "id": "e446b86f-7d76-41a2-b074-aa0b0ef8c487",
+      "name": "Search Lightdrift",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        720,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_WITH_YOUR_N8N_CREDENTIAL_ID",
+          "name": "Lightdrift — select your own Header Auth credential"
+        }
+      },
+      "retryOnFail": false,
+      "onError": "stopWorkflow",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const items = $input.all();\nif (items.length !== 1) throw new Error('Unexpected response item count.');\nconst response = items[0].json;\nif (typeof response.query_id !== 'string' || !Array.isArray(response.results)) throw new Error('Unexpected Lightdrift response envelope; inspect execution before rerunning.');\nreturn [{json: {\n  query_id: response.query_id,\n  result_count: response.results.length,\n  review_status: 'Human source and license review required before use',\n  candidates: response.results.map((asset) => ({\n    asset_id: asset.asset_id ?? null,\n    title: asset.title ?? null,\n    score: asset.score ?? null,\n    source: asset.source ?? null,\n    width: asset.width ?? null,\n    height: asset.height ?? null,\n    file: asset.file ?? null,\n    thumb: asset.thumb ?? null,\n    source_page: asset.rights?.provenance_url ?? null,\n    rights: asset.rights ?? null\n  })),\n  response\n}}];"
+      },
+      "id": "c0dd63f3-ea89-4f04-a997-f1b38762a3a6",
+      "name": "Review image candidates",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual start": {
+      "main": [
+        [
+          {
+            "node": "Your search settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Your search settings": {
+      "main": [
+        [
+          {
+            "node": "Validate one live request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate one live request": {
+      "main": [
+        [
+          {
+            "node": "Search Lightdrift",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Lightdrift": {
+      "main": [
+        [
+          {
+            "node": "Review image candidates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "tags": []
+}

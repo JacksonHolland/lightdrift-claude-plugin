@@ -24,6 +24,48 @@ This executes the workflow's validation and result-mapping code against **synthe
 
 See [VALIDATION.md](VALIDATION.md) for the precise tested versions and compatibility limits. n8n may report the missing credential before running any node until you bind your credential; offline verification does not require that binding.
 
+### Observe a valid empty result without inventing an image
+
+A valid search with zero matches still needs a visible outcome in a slide builder or editorial queue. The review node emits one item containing `result_count: 0` and `candidates: []`, so the application can display “No candidates for this brief” without manufacturing an image or losing the query ID.
+
+Compare that with a malformed envelope: `results: {}` raises an error. The test below checks both paths. Do not turn every exception into an empty candidate list; that would hide response problems.
+
+![An empty results array becomes one review item with zero candidates; malformed results are rejected. The host application supplies empty-state copy.](./empty-results/card.svg)
+
+Diagram description: An empty results array becomes one review item with zero candidates; malformed results are rejected. The host application supplies empty-state copy. This is an explanatory diagram, not a search screenshot.
+
+The accompanying `empty-results/` directory is included in this example. From the example directory, run:
+
+```sh
+node empty-results/demo.mjs
+```
+
+The bundle includes the review node from the [pinned working example](https://github.com/JacksonHolland/lightdrift-claude-plugin/tree/150921b4244e1ebe459e7ce79e54f1dd77a4b8db/examples/n8n-image-search). The command needs Node.js but no credentials, account, n8n server, or network. Its inputs are synthetic; IDs are fictional.
+
+Observed output:
+
+```text
+[
+  {
+    "json": {
+      "query_id": "offline-empty",
+      "result_count": 0,
+      "review_status": "Human source and license review required before use",
+      "candidates": [],
+      "response": {
+        "query_id": "offline-empty",
+        "results": []
+      }
+    }
+  }
+]
+PASS: empty response preserves one review item; malformed results rejected.
+```
+
+Treat `result_count === 0` as the application's empty-state branch. Keep the brief and query ID available for the editor to revise the request deliberately. This is suggested host-app behavior, not an automatic retry or UI shipped by the workflow. A nonempty candidate list continues to source and license review; it does not mean an image is approved.
+
+The test exercises the review Code node only. It does not execute the HTTP node, measure production empty-result rates, prove authentication, or import a workflow into an n8n server. Zero candidates alone says nothing about whether a request consumed credit. The malformed-envelope check is limited to the fixture shown; it is not a complete response-schema validator.
+
 ## Optional live check: one manual request
 
 Only after reviewing your account, pricing, query, and selected credential:
