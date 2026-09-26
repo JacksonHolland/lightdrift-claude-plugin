@@ -48,6 +48,8 @@ For content automation in n8n, import the [manual image-search workflow](example
 
 For saved candidate responses, run the [offline layout-fit auditor](examples/layout-fit) to inspect crop loss and resolution requirements for a target slot. It includes synthetic fixtures and tests and makes no network requests.
 
+For Sanity editorial workflows, start with the [image review queue](examples/sanity-image-review): a server-side runner, draft-only mutation and Studio schema, with offline fixtures and explicit live opt-ins.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

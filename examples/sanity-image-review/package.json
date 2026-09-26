@@ -1,0 +1,1 @@
+{"name":"lightdrift-sanity-review-example","private":true,"type":"module","scripts":{"test":"node --test schema.test.mjs"},"devDependencies":{"@sanity/schema":"6.16.0"}}

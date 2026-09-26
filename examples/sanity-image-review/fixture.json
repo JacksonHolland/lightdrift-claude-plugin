@@ -1,0 +1,22 @@
+{
+  "query_id": "fixture-query-not-a-live-search",
+  "fixture": true,
+  "degraded": "Fixture only: no ranking or image was retrieved",
+  "results": [{
+    "asset_id": "fixture:lighthouse-not-real",
+    "title": "Synthetic metadata for queue testing; not an image asset",
+    "source": "fixture",
+    "width": 1600,
+    "height": 900,
+    "file": null,
+    "rights": {
+      "commercial": null,
+      "derivatives": null,
+      "license_verbatim": "Fixture only. No image license granted.",
+      "attribution": "Fixture credit: not a real creator",
+      "provenance_url": "https://example.invalid/fixture-only",
+      "basis": "synthetic-test-data",
+      "additional_source_metadata": {"preservation_test": true}
+    }
+  }]
+}
