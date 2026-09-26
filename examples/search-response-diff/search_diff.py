@@ -1,6 +1,7 @@
 """Offline response inspection. No network, credentials, dependencies, or writes."""
 import argparse
 import hashlib
+import html
 import json
 from pathlib import Path
 import sys
@@ -64,17 +65,43 @@ def compare(before, after):
     }
 
 
+def markdown(report):
+    """Render input-derived values as inert JSON in HTML preformatted blocks."""
+    def block(value):
+        return '<pre>' + html.escape(json.dumps(value, indent=2, ensure_ascii=True,
+                                               allow_nan=False)) + '</pre>'
+    sections = [
+        '# Saved search response review',
+        'Offline comparison only. Rank changes and overlap do not establish relevance gains. '
+        'Review original snapshots and source rights before using an image.',
+        '## Input fingerprints', block(report.get('inputs', {})),
+        '## Membership', block({key: report[key] for key in
+                                ('counts', 'overlap_jaccard', 'entered', 'exited')}),
+        '## Shared assets: rank and field changes',
+    ]
+    sections.extend(block(row) for row in report['shared'])
+    if not report['shared']:
+        sections.append('No shared assets.')
+    sections.extend(['## Envelope changes', block(report['envelope_changes']),
+                     'Missing values and explicit nulls remain distinct through the presence flags. '
+                     'Unchanged metadata remains in the original snapshots. '
+                     'Reports contain input metadata; review before sharing.'])
+    return '\n\n'.join(sections) + '\n'
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('before', type=Path)
     parser.add_argument('after', type=Path)
+    parser.add_argument('--format', choices=('json', 'markdown'), default='json')
     args = parser.parse_args()
     try:
         raw = [p.read_bytes() for p in (args.before, args.after)]
         report = compare(*(strict_json(r) for r in raw))
         report['inputs'] = {name: {'sha256': hashlib.sha256(r).hexdigest()}
                             for name, r in zip(('before', 'after'), raw)}
-        print(json.dumps(report, indent=2, ensure_ascii=True, allow_nan=False))
+        print(markdown(report) if args.format == 'markdown' else
+              json.dumps(report, indent=2, ensure_ascii=True, allow_nan=False))
     except (ValueError, OSError) as exc:
         print('search-diff: ' + str(exc), file=sys.stderr)
         return 2

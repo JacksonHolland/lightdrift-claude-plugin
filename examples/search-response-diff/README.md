@@ -24,6 +24,16 @@ Both input files are **synthetic fixtures**, not captured API results. They cont
 
 The positive rank change of 1 means the shared asset moved one position toward the top. The overlap value describes membership only. Neither observation demonstrates improved relevance. A null score is preserved, not converted to zero or treated as an error.
 
+## Share a readable review
+
+For a pull-request attachment or a local Markdown review, use:
+
+```sh
+python3 search_diff.py fixtures/before.json fixtures/after.json --format markdown > review.md
+```
+
+The Markdown report contains membership, ranks, field changes, envelope changes and input fingerprints. Input-derived values are JSON-encoded and HTML-escaped inside preformatted blocks; they do not become image embeds or source hyperlinks. Use a Markdown viewer supporting HTML preformatted blocks. JSON remains the default for automation. This output is for review, not a quality score or CI gate. The fixture report is synthetic. Review input metadata before sharing.
+
 ## Compare your own snapshots
 
 Save two complete JSON response bodies from your existing workflow as `before.json` and `after.json`. Then run:

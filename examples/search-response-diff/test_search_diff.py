@@ -4,7 +4,7 @@ from pathlib import Path
 import subprocess
 import sys
 import unittest
-from search_diff import compare, strict_json
+from search_diff import compare, strict_json, markdown
 
 class DiffTests(unittest.TestCase):
     def setUp(self):
@@ -53,5 +53,32 @@ class DiffTests(unittest.TestCase):
     def test_cli_failure(self):
         p=subprocess.run([sys.executable,str(Path(__file__).parent/'search_diff.py'),'missing-file','missing-file'],capture_output=True,text=True)
         self.assertEqual(p.returncode,2); self.assertEqual(p.stdout,'')
+
+    def test_markdown_inert_input(self):
+        self.b['results'][0]['rights'] = {'credit': '</pre><script>alert(1)</script>\n```\n![track](https://invalid.test/a)'}
+        result = markdown(compare(self.a, self.b))
+        self.assertNotIn('<script>', result)
+        self.assertIn('&lt;script&gt;', result)
+        self.assertIn('\\n```\\n', result)
+
+    def test_markdown_missing_and_null(self):
+        del self.b['results'][0]['score']
+        result = markdown(compare(self.a, self.b))
+        self.assertIn('&quot;after_present&quot;: false', result)
+        self.assertIn('&quot;after&quot;: null', result)
+
+    def test_markdown_empty(self):
+        result = markdown(compare({'results': []}, {'results': []}))
+        self.assertIn('No shared assets.', result)
+        self.assertIn('&quot;overlap_jaccard&quot;: null', result)
+
+    def test_markdown_cli(self):
+        root = Path(__file__).parent
+        p = subprocess.run([sys.executable, str(root/'search_diff.py'),
+                            str(root/'fixtures/before.json'), str(root/'fixtures/after.json'),
+                            '--format', 'markdown'], capture_output=True, text=True)
+        self.assertEqual(p.returncode, 0, p.stderr)
+        self.assertIn('# Saved search response review', p.stdout)
+        self.assertIn('&quot;sha256&quot;', p.stdout)
 
 if __name__=='__main__': unittest.main()
