@@ -57,3 +57,5 @@ Lightdrift's rights metadata reports source declarations. Crop suitability does 
 Use the [presentation example](https://github.com/JacksonHolland/lightdrift-claude-plugin/tree/main/examples/presentation-image-search) or [itinerary example](https://github.com/JacksonHolland/lightdrift-claude-plugin/tree/main/examples/itinerary-image-search) to obtain candidate responses. Those searches have their own account and usage requirements. Re-running this local report adds no API calls.
 
 [Try Lightdrift with one real layout brief](https://lightdrift.ai/?utm_source=github&utm_medium=example&utm_campaign=layout_fit_v1&utm_content=readme). Save the response, audit your intended dimensions, and record whether an image survives both visual and rights review. A geometrically fitting image is not an activation or paid-account outcome by itself.
+
+For a self-contained typed Python entrypoint that returns this JSON audit inside a workflow, use the [Windmill layout-audit script](../windmill-layout-audit).
