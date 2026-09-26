@@ -50,6 +50,8 @@ For saved candidate responses, run the [offline layout-fit auditor](examples/lay
 
 For Sanity editorial workflows, start with the [image review queue](examples/sanity-image-review): a server-side runner, draft-only mutation and Studio schema, with offline fixtures and explicit live opt-ins.
 
+Compare two saved shortlists with the [offline search-response diff](examples/search-response-diff). It reports entrants, exits, rank movement and metadata changes using synthetic fixtures; it makes no network calls and does not measure relevance.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

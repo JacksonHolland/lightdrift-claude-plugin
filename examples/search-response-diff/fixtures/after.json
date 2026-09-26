@@ -1,0 +1,16 @@
+{
+  "query_id": "synthetic-after",
+  "ranking": "text",
+  "results": [
+    {
+      "asset_id": "fixture:b",
+      "score": null,
+      "source": "synthetic"
+    },
+    {
+      "asset_id": "fixture:c",
+      "score": 0.5,
+      "source": "synthetic"
+    }
+  ]
+}

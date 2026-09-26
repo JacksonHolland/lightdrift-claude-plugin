@@ -1,0 +1,19 @@
+{
+  "query_id": "synthetic-before",
+  "ranking": "text",
+  "results": [
+    {
+      "asset_id": "fixture:a",
+      "score": 0.8,
+      "source": "synthetic",
+      "rights": {
+        "attribution": "Fixture A"
+      }
+    },
+    {
+      "asset_id": "fixture:b",
+      "score": 0.6,
+      "source": "synthetic"
+    }
+  ]
+}
