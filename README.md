@@ -54,6 +54,8 @@ Compare two saved shortlists with the [offline search-response diff](examples/se
 
 Run a real Haystack pipeline offline with the [Haystack image-review component](examples/haystack-image-review), including bounded review queues, complete rights preservation and synthetic fixtures.
 
+Check that selected credits and source metadata survive a CMS export with the [offline attribution round-trip checker](examples/attribution-roundtrip). It compares independent baseline and export files; passing does not establish rights clearance.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

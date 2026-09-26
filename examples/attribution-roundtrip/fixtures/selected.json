@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "asset_id": "fixture-lighthouse",
+      "source": "synthetic",
+      "provenance_url": "https://example.invalid/image",
+      "attribution": "Synthetic creator \u2014 not a real image",
+      "rights": {
+        "license": {
+          "name": "fixture only"
+        },
+        "commercial": false,
+        "review": {
+          "required": true
+        },
+        "tags": [
+          "one",
+          "two"
+        ]
+      }
+    }
+  ]
+}
