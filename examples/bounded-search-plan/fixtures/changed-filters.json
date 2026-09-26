@@ -1,0 +1,26 @@
+{
+  "requests": [
+    {
+      "query": "solar panels",
+      "filters": {
+        "commercial": true
+      }
+    },
+    {
+      "query": "solar panels",
+      "filters": {
+        "commercial": false
+      }
+    },
+    {
+      "query": "solar panels",
+      "filters": {
+        "commercial": true,
+        "min_width": 1920
+      }
+    }
+  ],
+  "budget_usd": "1",
+  "max_requests": 10,
+  "attempts_per_request": 1
+}

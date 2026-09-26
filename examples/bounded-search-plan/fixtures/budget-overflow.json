@@ -1,0 +1,13 @@
+{
+  "requests": [
+    {
+      "query": "solar panels"
+    },
+    {
+      "query": "wind turbines"
+    }
+  ],
+  "budget_usd": "0.019999",
+  "max_requests": 10,
+  "attempts_per_request": 2
+}

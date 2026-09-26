@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    
+  <url>
+    <loc>https://docs.lightdrift.ai/api-reference/asset-meta</loc>
+    <lastmod>2026-09-26T23:03:32.847Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/api-reference/current-search-pricing</loc>
+    <lastmod>2026-09-26T23:03:32.863Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/api-reference/find-similar-indexed-images</loc>
+    <lastmod>2026-09-26T23:03:32.839Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/api-reference/health</loc>
+    <lastmod>2026-09-22T18:03:23.657Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/api-reference/introduction</loc>
+    <lastmod>2026-09-26T20:56:40.976Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/api-reference/search-captioned-images</loc>
+    <lastmod>2026-09-26T23:03:32.830Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/api-reference/warm</loc>
+    <lastmod>2026-09-22T18:03:23.667Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/agent-image-review</loc>
+    <lastmod>2026-09-26T23:03:34.660Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/agents</loc>
+    <lastmod>2026-09-22T04:03:24.805Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/authentication-troubleshooting</loc>
+    <lastmod>2026-09-26T20:56:40.978Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/docs-mcp</loc>
+    <lastmod>2026-09-26T20:56:40.974Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/haystack-image-review</loc>
+    <lastmod>2026-09-26T23:03:34.661Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/images-mcp</loc>
+    <lastmod>2026-09-26T20:56:40.976Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/itinerary-images</loc>
+    <lastmod>2026-09-26T22:45:08.243Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/n8n-stock-image-selection</loc>
+    <lastmod>2026-09-26T21:35:30.672Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/plans-and-limits</loc>
+    <lastmod>2026-09-22T18:03:25.006Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/presentation-image-search</loc>
+    <lastmod>2026-09-26T23:03:34.658Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/reference-image-search</loc>
+    <lastmod>2026-09-26T22:45:08.244Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/rights</loc>
+    <lastmod>2026-09-20T21:12:01.223Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/sanity-image-review-queue</loc>
+    <lastmod>2026-09-26T22:51:58.495Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/search</loc>
+    <lastmod>2026-09-22T18:03:25.005Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/guides/stock-image-api-vs-manual-search</loc>
+    <lastmod>2026-09-26T22:45:08.244Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai</loc>
+    <lastmod>2026-09-22T04:03:24.803Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.lightdrift.ai/quickstart</loc>
+    <lastmod>2026-09-21T20:51:29.487Z</lastmod>
+  </url>
+</urlset>

@@ -1,0 +1,25 @@
+test_container_orientation_is_rejected (test_search_plan.ContainerOrientationRegression.test_container_orientation_is_rejected) ... ok
+test_bad_types (test_search_plan.PlanTests.test_bad_types) ... ok
+test_boundary (test_search_plan.PlanTests.test_boundary) ... ok
+test_budget_fixture (test_search_plan.PlanTests.test_budget_fixture) ... ok
+test_changed_k (test_search_plan.PlanTests.test_changed_k) ... ok
+test_cli_codes (test_search_plan.PlanTests.test_cli_codes) ... ok
+test_decimal (test_search_plan.PlanTests.test_decimal) ... ok
+test_duplicate_keys (test_search_plan.PlanTests.test_duplicate_keys) ... ok
+test_duplicates (test_search_plan.PlanTests.test_duplicates) ... ok
+test_exact_text (test_search_plan.PlanTests.test_exact_text) ... ok
+test_filter_bounds (test_search_plan.PlanTests.test_filter_bounds) ... ok
+test_filters_changed (test_search_plan.PlanTests.test_filters_changed) ... ok
+test_invalid_does_not_partially_execute (test_search_plan.PlanTests.test_invalid_does_not_partially_execute) ... ok
+test_invalid_fixture (test_search_plan.PlanTests.test_invalid_fixture) ... ok
+test_no_mutation (test_search_plan.PlanTests.test_no_mutation) ... ok
+test_null_omission_order (test_search_plan.PlanTests.test_null_omission_order) ... ok
+test_query_bounds (test_search_plan.PlanTests.test_query_bounds) ... ok
+test_retries_cap (test_search_plan.PlanTests.test_retries_cap) ... ok
+test_retry_price (test_search_plan.PlanTests.test_retry_price) ... ok
+test_top_level_bounds (test_search_plan.PlanTests.test_top_level_bounds) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.072s
+
+OK

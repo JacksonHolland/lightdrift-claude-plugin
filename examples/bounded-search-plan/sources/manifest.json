@@ -1,0 +1,42 @@
+[
+  {
+    "url": "https://api.lightdrift.ai/v1/pricing",
+    "status": 200,
+    "file": "pricing.json",
+    "sha256": "1b2c602da5f7c5a5d4a01b0839b5322b77be069a84e6a85f975ff2de8e9076a6",
+    "observed_at": "2026-09-26T23:21:45.184759+00:00"
+  },
+  {
+    "url": "https://api.lightdrift.ai/openapi.json",
+    "status": 200,
+    "file": "openapi.json",
+    "sha256": "4a8f14f098dece6eb70f29adac55365870d8ddbb83a4d1eeff6a88e226c163f6",
+    "observed_at": "2026-09-26T23:21:45.366671+00:00"
+  },
+  {
+    "url": "https://docs.lightdrift.ai/sitemap.xml",
+    "status": 200,
+    "file": "sitemap.xml",
+    "sha256": "a2fca5ea48b1cf97a0cad5c2dc9da086b1118766c583f63001b7b4d5d875e41e",
+    "observed_at": "2026-09-26T23:21:45.768413+00:00"
+  },
+  {
+    "url": "https://api.github.com/repos/JacksonHolland/lightdrift-claude-plugin/git/trees/main?recursive=1",
+    "status": 200,
+    "file": "tree.json",
+    "sha256": "53bb372985676613558ceea6c06b0382796b099bf4b5f54baf6925982c3deb74",
+    "observed_at": "2026-09-26T23:21:45.963839+00:00"
+  },
+  {
+    "url": "https://docs.lightdrift.ai/guides/plans-and-limits",
+    "file": "plans-guide.txt",
+    "sha256": "3b14d11a4c1988b794a32b8ca2df86f527e73a0dcc336baa4561fe224a39a370",
+    "observed_at": "2026-09-26T23:21:59.892803+00:00"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/JacksonHolland/lightdrift-claude-plugin/2cf89788a3141a9c6f695e1bf11096f95bfb7ad6/examples/presentation-image-search/README.md",
+    "file": "presentation-readme.txt",
+    "sha256": "14143b66d37ab8232b15422a24bad47872cbb7576f3b7678aae9694ea489c7bd",
+    "observed_at": "2026-09-26T23:22:00.010397+00:00"
+  }
+]
