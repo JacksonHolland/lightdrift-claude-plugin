@@ -56,6 +56,8 @@ Run a real Haystack pipeline offline with the [Haystack image-review component](
 
 Check that selected credits and source metadata survive a CMS export with the [offline attribution round-trip checker](examples/attribution-roundtrip). It compares independent baseline and export files; passing does not establish rights clearance.
 
+Catch a changed image-delivery URL before publishing with the [offline delivery URL audit](examples/delivery-url-audit). It compares the URL saved at selection time with the exported URL and flags likely signed or temporary addresses; a clean report does not establish URL lifetime or availability.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

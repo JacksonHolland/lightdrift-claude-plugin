@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "asset_id": "synthetic-original",
+      "returned_url": "https://media.example/asset/demo?query_id=synthetic-query&size=large",
+      "exported_url": "https://media.example/asset/demo?query_id=synthetic-query&size=large"
+    },
+    {
+      "asset_id": "synthetic-stripped-query",
+      "returned_url": "https://media.example/asset/demo?query_id=synthetic-query&size=large",
+      "exported_url": "https://media.example/asset/demo"
+    },
+    {
+      "asset_id": "synthetic-final-redirect",
+      "returned_url": "https://media.example/asset/demo?query_id=synthetic-query&size=large",
+      "exported_url": "https://storage.example/object?X-Amz-Signature=NOT_A_REAL_SIGNATURE"
+    },
+    {
+      "asset_id": "synthetic-insecure",
+      "returned_url": "https://media.example/asset/demo?query_id=synthetic-query&size=large",
+      "exported_url": "http://media.example/image.jpg"
+    }
+  ]
+}

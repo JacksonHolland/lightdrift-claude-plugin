@@ -1,0 +1,9 @@
+{
+  "items": [
+    {
+      "asset_id": "synthetic-original",
+      "returned_url": "https://media.example/asset/demo?query_id=synthetic-query&size=large",
+      "exported_url": "https://media.example/asset/demo?query_id=synthetic-query&size=large"
+    }
+  ]
+}

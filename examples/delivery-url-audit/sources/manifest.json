@@ -1,0 +1,50 @@
+[
+  {
+    "url": "https://docs.lightdrift.ai/sitemap.xml",
+    "file": "sitemap.xml",
+    "sha256": "a2fca5ea48b1cf97a0cad5c2dc9da086b1118766c583f63001b7b4d5d875e41e",
+    "observed_at": "2026-09-26T23:30:45.501830+00:00"
+  },
+  {
+    "url": "https://api.github.com/repos/JacksonHolland/lightdrift-claude-plugin/git/trees/main?recursive=1",
+    "file": "tree.json",
+    "sha256": "53bb372985676613558ceea6c06b0382796b099bf4b5f54baf6925982c3deb74",
+    "observed_at": "2026-09-26T23:30:45.693964+00:00"
+  },
+  {
+    "url": "https://api.lightdrift.ai/openapi.json",
+    "file": "openapi.json",
+    "sha256": "4a8f14f098dece6eb70f29adac55365870d8ddbb83a4d1eeff6a88e226c163f6",
+    "observed_at": "2026-09-26T23:30:45.846493+00:00"
+  },
+  {
+    "url": "https://api.lightdrift.ai/v1/pricing",
+    "file": "pricing.json",
+    "sha256": "1b2c602da5f7c5a5d4a01b0839b5322b77be069a84e6a85f975ff2de8e9076a6",
+    "observed_at": "2026-09-26T23:30:45.943869+00:00"
+  },
+  {
+    "file": "search.html",
+    "url": "https://docs.lightdrift.ai/guides/search",
+    "sha256": "00cdd72b0d4c4d2a543790eefd190abbb925a4b93cc7e3d1c8f4eb69bd5587a3",
+    "observed_at": "2026-09-26T23:30:56.429471+00:00"
+  },
+  {
+    "file": "reference.html",
+    "url": "https://docs.lightdrift.ai/guides/reference-image-search",
+    "sha256": "013b24584ef12351ca8e24c81115818ac3a085727bc5b720081257b36f99223d",
+    "observed_at": "2026-09-26T23:30:56.731313+00:00"
+  },
+  {
+    "file": "sanity.md",
+    "url": "https://raw.githubusercontent.com/JacksonHolland/lightdrift-claude-plugin/main/examples/sanity-image-review/README.md",
+    "sha256": "42f1e9c48cabe72f70480dcc60213526764133db556b7d9c8e34d66642f41972",
+    "observed_at": "2026-09-26T23:30:57.148408+00:00"
+  },
+  {
+    "file": "presentation.md",
+    "url": "https://raw.githubusercontent.com/JacksonHolland/lightdrift-claude-plugin/main/examples/presentation-image-search/README.md",
+    "sha256": "14143b66d37ab8232b15422a24bad47872cbb7576f3b7678aae9694ea489c7bd",
+    "observed_at": "2026-09-26T23:30:57.260759+00:00"
+  }
+]
