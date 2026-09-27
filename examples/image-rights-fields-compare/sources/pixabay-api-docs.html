@@ -1,0 +1,735 @@
+<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#">
+<head><meta charset="utf-8">
+    
+        <script src="https://cdn-au.onetrust.com/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="52f0ce5e-0c2d-48a6-8e40-e978c5058a96" ></script>
+        <script>
+            function OptanonWrapper() { }
+        </script>
+    
+    <!-- CF Turnstile -->
+    <script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async
+        defer
+    ></script>
+    <script type='text/javascript' async=1>;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,'script','//cdn.jsdelivr.net/npm/@snowplow/javascript-tracker@3.14.0/dist/sp.js','snowplow'));window.snowplow('newTracker', 'sp', 'api.canva.com/_spi/ae/snowplow/d5a6cd30-7d92-477e-9ea9-2a10fce46e2c', {    appId: 'frontend', withCredentials: false,     cookieSameSite: 'Lax',    cookieSecure: true,    cookieName: '_sp2_',    platform: 'web',    post: true});window.snowplow('setUserIdFromCookie', 'user_id');window.snowplow('addPlugin', 'https://cdn.jsdelivr.net/npm/@snowplow/browser-plugin-timezone@3.14.0/dist/index.umd.min.js', ['snowplowTimezone', 'TimezonePlugin']);</script>
+    
+    <script>
+        window.i18n = Object.assign({}, window.i18n, {
+            photo: 'photo',
+            video: 'video',
+            audio: 'audio',
+            animation: 'gif',
+            UserFollowedNotification: 'followed you ',
+
+            PhotoLikedNotification: 'liked your photo',
+            VideoLikedNotification: 'liked your video',
+            AudioLikedNotification: 'liked your audio',
+            
+            AnimationLikedNotification: 'liked your gif',
+
+            PhotoCommentedNotification: 'commented on your photo',
+            VideoCommentedNotification: 'commented on your video',
+            AudioCommentedNotification: 'commented on your audio',
+            AnimationCommentedNotification: 'commented on your gif',
+
+            NoNotifications: 'No notifications to show',
+            viewMore: 'View more notifications',
+            others: 'others ',
+            other: 'other ',
+        });
+        window.GETTY_AD_CLASS = 'afHyXXU88akK';
+        window.SNOWPLOW_CUSTOM_FIELDS_SCHEMA = 'iglu:com.pixabay/custom_fields/jsonschema/3\u002D0\u002D20';
+        window.ANALYTICS_CONTEXT = {"page":"api_docs","page_locale":"en","logged_in":false,"extra_attributes":"{\"server_request_time\":1790476334954}","bot_score":2,"verified_bot":false};
+    </script>
+    
+    <link rel="canonical" href="https://pixabay.com/api/docs/">
+    
+        
+    
+    
+    <link rel="alternate" hreflang="en" href="https://pixabay.com/api/docs/">
+    <link rel="alternate" hreflang="x-default" href="https://pixabay.com/api/docs/">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#191B26">
+    <meta name="theme-color" content="#191B26">
+    <link rel="search" type="application/opensearchdescription+xml" title="Pixabay" href="https://pixabay.com/static/misc/opensearch.xml">
+    
+    
+    <meta name="google-site-verification" content="HhI1AC5Q4nvvEU1FQvb0QvGrPADs351JXl4IRVGSnnk" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="stylesheet" href="/static/css/min/base.4715e103.min.css?f">
+    <!-- font-weight: normal -->
+    <link rel="preload" href="/static/fonts/open_sans/opensans-400-latin21.woff2" as="font" crossorigin="anonymous" />
+    <!-- font-weight: bold -->
+    <link rel="preload" href="/static/fonts/open_sans/opensans-700-latin35.woff2" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="/static/js/min/base.cca53a3a.min.js?f" as="script" crossorigin="anonymous" />
+    
+    <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+    
+    <title>Pixabay API Documentation</title>
+    <meta name="description" content="Documentation to Pixabay's API for searching and retrieving free images and videos.">
+    <style>
+        #sidebar_menu p { margin: 0 0 14px; }
+        #sidebar_menu a { color: #636363; }
+        #sidebar_menu .selected { color: #bbb; cursor: text; opacity: 1; }
+        h1, h2, h3 { font-size: 19px; font-weight: bold; margin: 40px 0 20px; }
+        h3 { font-size: 16px; }
+        .endpoint { margin: 15px 0; padding: 8px 10px; border-radius: 2px; color: #3a87ad; background: #e1f2fb; font: normal 14px Consolas, 'Liberation Mono', Courier, monospace; }
+        .endpoint b { float: right; font-weight: normal; }
+        .api_properties { margin: 20px 0; }
+        .api_properties th { white-space: nowrap; }
+        .api_properties th, .api_properties td { padding: 10px 5px; border-top: 1px dotted #ddd; border-bottom: 1px dotted #ddd; font-size: 13px; }
+        .api_properties th+td { font-style: italic; color: #777; }
+        .example_url { margin: 10px 0; word-break: break-all; color: #0a88d3; }
+        .inline { display: inline-block; padding: 0 5px; line-height: 20px !important; margin: 0 3px; color: #444; background: #eaeaea; border-radius: 2px; font: normal 14px Consolas, 'Liberation Mono', Courier, monospace; vertical-align: baseline; }
+        pre.prettyprint { max-height: none; }
+        @media screen and (max-width:567px) { .api_properties.params td:nth-child(2), .api_properties.params td:nth-child(2) { display: none; } }
+    </style>
+
+</head>
+<body
+    class=" "
+    data-tgc="yes">
+<div id="wrapper">
+    <div id="header">
+    <div id="header_inner">
+        <div class="pure-menu pure-menu-horizontal pure-menu-open">
+            <ul><li class="pure-dropdown hide-xs hide-sm hide-md pure-menu-list-item"><a>Explore <i class="dropdown_arrow hide-xs"></i></a><ul id="clone_to_mobile_menu" class="pure-menu-children"><li><div class="columns-menu"><div id="mobile_menu_top" class="hide-sm hide-md hide-lg hide-xl"><a class="show-entry-point-modal" data-w="442" rel="nofollow" href="/accounts/login/?source=main_nav&amp;modal&amp;next=/api/docs/" class="ua-login-main-nav">
+                                            Log in
+                                        </a><a class="show-entry-point-modal" data-w="442" style="border-left:1px solid #eee" rel="nofollow" href="/accounts/register/?source=main_nav&amp;next=/api/docs/&amp;modal">Join</a></div><div><b>Media</b><a href="/photos/">Photos</a><a href="/illustrations/">Illustrations</a><a href="/vectors/">Vectors</a><a href="/videos/">Videos</a><a href="/music/">Music</a><a href="/sound-effects/">Sound Effects</a><a href="/3d-models/">3D Models</a><a href="/gifs/">GIFs</a><hr><b>Discover</b><a href="/editors_choice/">Editor's Choice</a><a href="/collections/">Curated Collections</a><a href="/playlists/">Pixabay Radio</a><a href="/images/search/">Popular Images</a><a href="/videos/search/">Popular Videos</a><a href="/music/search/">Popular Music</a><a href="/popular-searches/">Popular Searches</a></div><div><b>Trending</b><a href="/images/search/halloween/">Halloween</a><a href="/images/search/fall/">Fall</a><a href="/images/search/wallpaper/">Wallpaper</a><a href="/images/search/nature/">Nature</a><a href="/images/search/travel/">Travel</a><hr><b>Community</b><a href="/contests/">Contests</a><a href="/users/">Creators</a><a href="/service/ambassador/">Ambassadors</a><a href="/forum/">Forum</a><a href="/blog/">Blog</a></div><div><div class="last-column"><div><b>About</b><a href="/service/about/">About Us</a><a href="/service/faq/">FAQ</a><a href="/service/license-summary/">License Summary</a><a href="/service/terms/">Terms of Service</a><a href="/service/privacy/">Privacy Policy</a><a href="/service/cookies/">Cookies Policy</a><a href="/service/digital-services-act/">Digital Services Act</a><a href="/content-reports/">Report Content</a><a href="/service/about/api/">API</a><a class="dd_box menu language_menu"><i class="icon icon_language"></i> Language</a><div><a onmousedown="setCookie('lang', 'cs', 3650);" href="https://pixabay.com/api/docs/">Čeština</a><a onmousedown="setCookie('lang', 'da', 3650);" href="https://pixabay.com/api/docs/">Dansk</a><a onmousedown="setCookie('lang', 'de', 3650);" href="https://pixabay.com/api/docs/">Deutsch</a><a onmousedown="setCookie('lang', 'en', 3650);" href="https://pixabay.com/api/docs/">English</a><a onmousedown="setCookie('lang', 'es', 3650);" href="https://pixabay.com/api/docs/">Español</a><a onmousedown="setCookie('lang', 'fr', 3650);" href="https://pixabay.com/api/docs/">Français</a><a onmousedown="setCookie('lang', 'id', 3650);" href="https://pixabay.com/api/docs/">Indonesia</a><a onmousedown="setCookie('lang', 'it', 3650);" href="https://pixabay.com/api/docs/">Italiano</a><a onmousedown="setCookie('lang', 'hu', 3650);" href="https://pixabay.com/api/docs/">Magyar</a><a onmousedown="setCookie('lang', 'nl', 3650);" href="https://pixabay.com/api/docs/">Nederlands</a><a onmousedown="setCookie('lang', 'no', 3650);" href="https://pixabay.com/api/docs/">Norsk</a><a onmousedown="setCookie('lang', 'pl', 3650);" href="https://pixabay.com/api/docs/">Polski</a><a onmousedown="setCookie('lang', 'pt', 3650);" href="https://pixabay.com/api/docs/">Português</a><a onmousedown="setCookie('lang', 'ro', 3650);" href="https://pixabay.com/api/docs/">Română</a><a onmousedown="setCookie('lang', 'sk', 3650);" href="https://pixabay.com/api/docs/">Slovenčina</a><a onmousedown="setCookie('lang', 'fi', 3650);" href="https://pixabay.com/api/docs/">Suomi</a><a onmousedown="setCookie('lang', 'sv', 3650);" href="https://pixabay.com/api/docs/">Svenska</a><a onmousedown="setCookie('lang', 'tr', 3650);" href="https://pixabay.com/api/docs/">Türkçe</a><a onmousedown="setCookie('lang', 'vi', 3650);" href="https://pixabay.com/api/docs/">Việt</a><a onmousedown="setCookie('lang', 'th', 3650);" href="https://pixabay.com/api/docs/">ไทย</a><a onmousedown="setCookie('lang', 'bg', 3650);" href="https://pixabay.com/api/docs/">Български</a><a onmousedown="setCookie('lang', 'ru', 3650);" href="https://pixabay.com/api/docs/">Русский</a><a onmousedown="setCookie('lang', 'el', 3650);" href="https://pixabay.com/api/docs/">Ελληνική</a><a onmousedown="setCookie('lang', 'ja', 3650);" href="https://pixabay.com/api/docs/">日本語</a><a onmousedown="setCookie('lang', 'ko', 3650);" href="https://pixabay.com/api/docs/">한국어</a><a onmousedown="setCookie('lang', 'zh', 3650);" href="https://pixabay.com/api/docs/">简体中文</a></div></div><div><hr><div class="menu-social-icons"><div><div><a href="https://www.facebook.com/pixabay" target="_blank"><i class="icon icon_facebook_fff"></i></a></div><div><a href="https://www.instagram.com/pixabay/" target="_blank"><i class="icon icon_instagram_fff"></i></a></div><div><a href="https://twitter.com/pixabay" target="_blank"><i class="icon icon_twitter_fff"></i></a></div></div></div></div></div></div></div></li></ul></li><li class="hide-xs"><a class="ua-login-main-nav show-entry-point-modal " data-w="442" rel="nofollow" href="/accounts/login/?source=main_nav&amp;modal&amp;next=/api/docs/">Log in</a></li><li class="hide-xs"><a class="show-entry-point-modal" data-w="442" style="border-left:1px solid #eee" rel="nofollow" href="/accounts/register/?source=main_nav&amp;next=/api/docs/&amp;modal">Join</a></li><li class="hide-xs hide-sm"><a rel="nofollow" href="/accounts/register/?source=main_nav&amp;modal" class="pure-button button-green show-entry-point-modal ua-upload-button" data-w="442"><i class="icon icon_upload "></i> Upload</a></li><li class="pure-dropdown hide-lg hide-xl pure-menu-list-item"><a><i class="icon icon_mobile_menu"></i></a><ul id="mobile_menu" class="pure-menu-children"></ul></li></ul>
+        </div>
+        <a id="logo" href="/"></a>
+        <i class="toggle_mobile_search icon icon_menu_loupe"></i>
+        <div id="media_type_menu" class="hide-xs hide-sm hide-md hide-lg">
+            <a href="/photos/">Photos</a>
+            <a href="/illustrations/">Illustrations</a>
+            <a href="/vectors/">Vectors</a>
+            <a href="/videos/">Videos</a>
+            <a href="/music/">Music</a>
+            <a href="/sound-effects/">Sound Effects</a>
+            <a href="/3d-models/">3D Models</a>
+            <a href="/gifs/">GIFs</a>
+        </div>
+        <div id="mobile_search_background">
+            <span class="pure-button button-md" style="float:right;margin:11px 14px 0 0;border-radius:2px!important;padding:9px 12px 9px;color:#7a7e98">✖</span>
+        </div>
+        <div class='media_search_container'
+            >
+            
+        <form class="media_search header_search" action="/images/search/" method="get"><div><div class="dd_box menu" data-left="1"><span class="image_type" style="margin-right:2px">Images</span><i class="dropdown_arrow"></i></div><div class="pure-form bubble sw"><div class="select_image_type"><span data-type="image">Images</span><span data-type="photo" style="padding-left:30px">Photos</span><span data-type="vector" style="padding-left:30px">Vector graphics</span><span data-type="illustration" style="padding-left:30px">Illustrations</span><span data-type="video">Videos</span><span data-type="music">Music</span><span data-type="sound-effects">Sound Effects</span><span data-type="3d-models">3D Models</span><span data-type="gif">GIFs</span><span data-type="user">Users</span></div><hr><a href=" /blog/posts/advanced-image-search-on-pixabay-46/" target="_blank"> Search options →</a></div><input type="hidden" name="manual_search" value="1"><input type="submit" value=" " class="loupe"><span><input class="q" type="text" name="q" value="" placeholder="Search" data-autofocus></span><div style="position:absolute;left:-9999px"><input type="text" name="hp" autocomplete="off" tabindex="-1" value=""><input type="hidden" name="order" value=""><input type="hidden" name="cat" value=""><input type="checkbox" name="orientation" value="horizontal"><input type="checkbox" name="orientation" value="vertical"><input type="hidden" name="min_width" value=""><input type="hidden" name="min_height" value=""><input type="checkbox" name="colors" value="transparent"><input type="checkbox" name="colors" value="grayscale"><input type="checkbox" name="colors" value="red"><input type="checkbox" name="colors" value="orange"><input type="checkbox" name="colors" value="yellow"><input type="checkbox" name="colors" value="green"><input type="checkbox" name="colors" value="turquoise"><input type="checkbox" name="colors" value="blue"><input type="checkbox" name="colors" value="lilac"><input type="checkbox" name="colors" value="pink"><input type="checkbox" name="colors" value="white"><input type="checkbox" name="colors" value="gray"><input type="checkbox" name="colors" value="black"><input type="checkbox" name="colors" value="brown"><input type="checkbox" name="animation" value="1"><input type="checkbox" name="slow_motion" value="1"><input type="checkbox" name="time_lapse" value="1"><input type="checkbox" name="resolution_4k" value="1"><input type="checkbox" name="resolution_hd" value="1"></div></div></form>
+        </div>
+    </div></div>
+    <div id="content" class="clearfix">
+    <div class="pure-g hover_links" style="margin:50px auto 0;padding:0 20px;max-width:1040px;line-height:1.5;font-size:15px">
+        <div class="pure-u-1 pure-u-md-1-4 hide-xs hide-sm">
+            <div id="sidebar_menu" style="margin:0 0 50px;padding-right:20px">
+                <h2 style="margin-top:0">Contents</h2>
+                <p><a href="#api_rate_limit">Rate limit</a></p>
+                <p><a href="#api_hotlinking">Hotlinking</a></p>
+                <p><a href="#api_error_handling">Error handling</a></p>
+                <p><a href="#api_search_images">Search images</a></p>
+                <p><a href="#api_search_videos">Search videos</a></p>
+                <p><a href="#api_javascript_example">JavaScript example</a></p>
+                <p><a href="#api_support">Support</a></p>
+            </div>
+        </div>
+        <div class="pure-u-1 pure-u-md-3-4">
+            <h1 style="margin-top:0">Pixabay API</h1>
+            <p>Welcome to the Pixabay API documentation. Our API is a RESTful interface for searching and retrieving royalty-free images and videos released by Pixabay under the <a href="/service/terms/">Content License</a>.</p>
+            <p>
+                <a href="https://pixabay.com/" style="margin:3px 15px 5px 0;font-size:12px;line-height:1.7;color:#555;display:block;float:left;padding:9px 12px 6px;border:1px solid #ccc">
+                    <i style="display:block;width:68px;height:18px;overflow:hidden"><img src="/static/img/logo.svg" style="width:94px"></i> Free Images
+                </a>
+                If you make use of the API, show your users where the images and videos are from, whenever search results are displayed. That's the one thing we kindly request in return for free API usage.
+            </p>
+            <p>
+                The API returns JSON-encoded objects. Hash keys and values are case-sensitive and character encoding is in <span style="white-space:nowrap">UTF-8</span>. Hash keys may be returned in any random order and new keys may be added at any time.
+                We will do our best to notify our users before removing hash keys from results or adding required parameters.
+            </p>
+
+            <h2 id="api_rate_limit">Rate Limit</h2>
+            <p>By default, you can make up to 100 requests per 60 seconds. Requests are associated with the API key,
+                and not with
+                your IP address. The response headers tell you everything you need to know about your current rate limit status:</p>
+            <table class="api_properties">
+                <tr><th>Header name</th><th>Description</th></tr>
+                <tr>
+                    <td>X-RateLimit-Limit</td>
+                    <td>The maximum number of requests that the consumer is permitted to make in 60 seconds.</td>
+                </tr>
+                <tr><td>X-RateLimit-Remaining</td><td>The number of requests remaining in the current rate limit window.</td></tr>
+                <tr><td>X-RateLimit-Reset</td><td>The remaining time in seconds after which the current rate limit window resets.</td></tr>
+            </table>
+            <p>
+                To keep the Pixabay API fast for everyone, requests must be cached for 24 hours. Also, the API is made for real human requests; do not send lots of automated queries. Systematic mass downloads are not allowed.
+                If needed, we can increase this limit at any time - given that you've implemented the API properly.
+            </p>
+
+            <h2 id="api_hotlinking">Hotlinking</h2>
+            <p>
+                Returned image URLs may be used for temporarily displaying search results. However, permanent hotlinking of images (using Pixabay URLs in your app) is not allowed.
+                If you intend to use the images, please download them to your server first. Videos may be embedded directly in your applications. Yet, we recommend storing them on your server.
+            </p>
+
+            <h2 id="api_error_handling">Error Handling</h2>
+            <p>
+                If an error occurs, a response with propper HTTP error status code is returned. The body of this response contains a description of the issue in plain text.
+                For example, once you go over the rate limit you will receive an HTTP error 429 ("Too Many Requests") with the message "API rate limit exceeded".
+            </p>
+
+            <h2 id="api_search_images">Search Images</h2>
+            <div class="endpoint"><b>GET</b>https://pixabay.com/api/</div>
+
+            <h3>Parameters</h3>
+            <table class="api_properties params">
+                <tr>
+                    <th>key <span style="color:#d33228">(required)</span></th>
+                    <td>str</td>
+                    <td>
+                        Please login to see your API key here. <a href="/accounts/login/?next=/api/docs/#api_search_images">Login</a> | <a href="/?next=/api/docs/#login">Sign up</a>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <th>q</th>
+                    <td>str</td>
+                    <td>
+                        A URL encoded search term. If omitted, <i>all images</i> are returned. This value may not exceed 100 characters.
+                        <br>Example: &quot;yellow+flower&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>lang</th>
+                    <td>str</td>
+                    <td>
+                        <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">Language code</a> of the language to be searched in.
+                        <br>Accepted values: cs, da, de, en, es, fr, id, it, hu, nl, no, pl, pt, ro, sk, fi, sv, tr, vi, th, bg, ru, el, ja, ko, zh
+                        <br>Default: &quot;en&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>id</th>
+                    <td>str</td>
+                    <td>Retrieve individual images by ID.</td>
+                </tr>
+                <tr>
+                    <th>image_type</th>
+                    <td>str</td>
+                    <td>
+                        Filter results by image type.
+                        <br>Accepted values: &quot;all&quot;, &quot;photo&quot;, &quot;illustration&quot;, &quot;vector&quot;
+                        <br>Default: &quot;all&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>orientation</th>
+                    <td>str</td>
+                    <td>
+                        Whether an image is wider than it is tall, or taller than it is wide.
+                        <br>Accepted values: &quot;all&quot;, &quot;horizontal&quot;, &quot;vertical&quot;
+                        <br>Default: &quot;all&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>category</th>
+                    <td>str</td>
+                    <td>
+                        Filter results by category.
+                        <br>Accepted values: backgrounds, fashion, nature, science, education, feelings, health, people, religion, places, animals, industry, computer, food, sports, transportation, travel, buildings, business, music
+                    </td>
+                </tr>
+                <tr>
+                    <th>min_width</th>
+                    <td>int</td>
+                    <td>
+                        Minimum image width.
+                        <br>Default: &quot;0&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>min_height</th>
+                    <td>int</td>
+                    <td>
+                        Minimum image height.
+                        <br>Default: &quot;0&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>colors</th>
+                    <td>str</td>
+                    <td>
+                        Filter images by color properties. A comma separated list of values may be used to select multiple properties.
+                        <br>Accepted values: &quot;grayscale&quot;, &quot;transparent&quot;, &quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;, &quot;turquoise&quot;, &quot;blue&quot;, &quot;lilac&quot;, &quot;pink&quot;, &quot;white&quot;, &quot;gray&quot;, &quot;black&quot;, &quot;brown&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>editors_choice</th>
+                    <td>bool</td>
+                    <td>
+                        Select images that have received an <a href="/editors_choice/">Editor's Choice</a> award.
+                        <br>Accepted values: &quot;true&quot;, &quot;false&quot;
+                        <br>Default: &quot;false&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>safesearch</th>
+                    <td>bool</td>
+                    <td>
+                        A flag indicating that only images suitable for all ages should be returned.
+                        <br>Accepted values: &quot;true&quot;, &quot;false&quot;
+                        <br>Default: &quot;false&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>order</th>
+                    <td>str</td>
+                    <td>
+                        How the results should be ordered.
+                        <br>Accepted values: &quot;popular&quot;, &quot;latest&quot;
+                        <br>Default: &quot;popular&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>page</th>
+                    <td>int</td>
+                    <td>
+                        Returned search results are paginated. Use this parameter to select the page number.
+                        <br>Default: 1
+                    </td>
+                </tr>
+                <tr>
+                    <th>per_page</th>
+                    <td>int</td>
+                    <td>
+                        Determine the number of results per page.
+                        <br>Accepted values: 3 - 200
+                        <br>Default: 20
+                    </td>
+                </tr>
+                <tr>
+                    <th>callback</th>
+                    <td>string</td>
+                    <td>
+                        JSONP callback function name
+                    </td>
+                </tr>
+                <tr>
+                    <th>pretty</th>
+                    <td>bool</td>
+                    <td>
+                        Indent JSON output. This option should not be used in production.
+                        <br>Accepted values: &quot;true&quot;, &quot;false&quot;
+                        <br>Default: &quot;false&quot;
+                    </td>
+                </tr>
+            </table>
+
+            <h3 id="image_search_response">Example</h3>
+            <p>
+                Retrieving photos of &quot;yellow flowers&quot;. The search term <b class="inline">q</b> needs to be URL encoded:
+                &quot;{ KEY }&quot; has to replaced with your API key.
+            </p>
+            <div class="example_url">https://pixabay.com/api/?key={ KEY }&amp;q=yellow+flowers&amp;image_type=photo</div>
+            <p>Response for this request:</p>
+            <pre class="prettyprint">{
+"total": 4692,
+"totalHits": 500,
+"hits": [
+    {
+        "id": 195893,
+        "pageURL": "https://pixabay.com/en/blossom-bloom-flower-195893/",
+        "type": "photo",
+        "tags": "blossom, bloom, flower",
+        "previewURL": "https://cdn.pixabay.com/photo/2013/10/15/09/12/flower-195893_150.jpg"
+        "previewWidth": 150,
+        "previewHeight": 84,
+        "webformatURL": "https://pixabay.com/get/35bbf209e13e39d2_640.jpg",
+        "webformatWidth": 640,
+        "webformatHeight": 360,
+        "largeImageURL": "https://pixabay.com/get/ed6a99fd0a76647_1280.jpg",
+        "fullHDURL": "https://pixabay.com/get/ed6a9369fd0a76647_1920.jpg",
+        "imageURL": "https://pixabay.com/get/ed6a9364a9fd0a76647.jpg",
+        "imageWidth": 4000,
+        "imageHeight": 2250,
+        "imageSize": 4731420,
+        "views": 7671,
+        "downloads": 6439,
+        "likes": 5,
+        "comments": 2,
+        "user_id": 48777,
+        "user": "Josch13",
+        "userImageURL": "https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg",
+    },
+    {
+        "id": 73424,
+        ...
+    },
+    ...
+]
+}</pre>
+            <table class="api_properties">
+                <tr><th>Response key</th><th>Description</th></tr>
+                <tr><td>total</td><td>The total number of hits.</td></tr>
+                <tr><td>totalHits</td><td>The number of images accessible through the API. By default, the API is limited to return a maximum of 500 images per query.</td></tr>
+                <tr><td>id</td><td>A unique identifier for this image.</td></tr>
+                <tr><td>pageURL</td><td>Source page on Pixabay, which provides a download link for the original image of the dimension imageWidth x imageHeight and the file size imageSize.</td></tr>
+                <tr><td>previewURL</td><td>Low resolution images with a maximum width or height of 150 px (previewWidth x previewHeight).</td></tr>
+                <tr>
+                    <td>webformatURL</td>
+                    <td>
+                        <p>Medium sized image with a maximum width or height of 640 px (webformatWidth x webformatHeight). URL valid for 24 hours.</p>
+                        <b>Replace '_640' in any webformatURL value to access other image sizes:</b>
+                        <br>Replace with '_180' or '_340' to get a 180 or 340 px tall version of the image, respectively.
+                        Replace with '_960' to get the image in a maximum dimension of 960 x 720 px.
+                    </td>
+                </tr>
+                <tr><td>largeImageURL</td><td>Scaled image with a maximum width/height of 1280px.</td></tr>
+                <tr><td>views</td><td>Total number of views.</td></tr>
+                <tr><td>downloads</td><td>Total number of downloads.</td></tr>
+                <tr><td>likes</td><td>Total number of likes.</td></tr>
+                <tr><td>comments</td><td>Total number of comments.</td></tr>
+                <tr><td>user_id, user</td><td>User ID and name of the contributor. Profile URL: https://pixabay.com/users/{ USERNAME }-{ ID }/</td></tr>
+                <tr><td>userImageURL</td><td>Profile picture URL (250 x 250 px).</td></tr>
+            </table>
+
+            <br>
+            <p><span class="remove_if_full_access_granted" style="font-weight:bold">The following response key/value pairs are only available if your account has been <a href="#" class="modal" data-href="/api/request_full_access/" data-w="560">approved for full API access</a>.</span> These URLs give you access to the original images in full resolution and - if available - in vector format:</p>
+            <table class="api_properties">
+                <tr><th>Response key</th><th>Description</th></tr>
+                <tr><td>fullHDURL</td><td>Full HD scaled image with a maximum width/height of 1920px.</td></tr>
+                <tr><td>imageURL</td><td>URL to the original image (imageWidth x imageHeight).</td></tr>
+                <tr><td>vectorURL</td><td>URL to a vector resource if available, else omitted.</td></tr>
+            </table>
+
+            <br>
+            <h2 id="api_search_videos">Search Videos</h2>
+            <div class="endpoint"><b>GET</b>https://pixabay.com/api/videos/</div>
+
+            <h3>Parameters</h3>
+            <table class="api_properties params">
+                <tr>
+                    <th>key <span style="color:#d33228">(required)</span></th>
+                    <td>str</td>
+                    <td>
+                        Please login to see your API key here. <a href="/accounts/login/?next=/api/docs/#api_search_videos">Login</a> | <a href="/?next=/api/docs/#login">Sign up</a>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <th>q</th>
+                    <td>str</td>
+                    <td>
+                        A URL encoded search term. If omitted, <i>all videos</i> are returned. This value may not exceed 100 characters.
+                        <br>Example: &quot;yellow+flower&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>lang</th>
+                    <td>str</td>
+                    <td>
+                        <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">Language code</a> of the language to be searched in.
+                        <br>Accepted values: cs, da, de, en, es, fr, id, it, hu, nl, no, pl, pt, ro, sk, fi, sv, tr, vi, th, bg, ru, el, ja, ko, zh
+                        <br>Default: &quot;en&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>id</th>
+                    <td>str</td>
+                    <td>Retrieve individual videos by ID.</td>
+                </tr>
+                <tr>
+                    <th>video_type</th>
+                    <td>str</td>
+                    <td>
+                        Filter results by video type.
+                        <br>Accepted values: &quot;all&quot;, &quot;film&quot;, &quot;animation&quot;
+                        <br>Default: &quot;all&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>category</th>
+                    <td>str</td>
+                    <td>
+                        Filter results by category.
+                        <br>Accepted values: backgrounds, fashion, nature, science, education, feelings, health, people, religion, places, animals, industry, computer, food, sports, transportation, travel, buildings, business, music
+                    </td>
+                </tr>
+                <tr>
+                    <th>min_width</th>
+                    <td>int</td>
+                    <td>
+                        Minimum video width.
+                        <br>Default: &quot;0&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>min_height</th>
+                    <td>int</td>
+                    <td>
+                        Minimum video height.
+                        <br>Default: &quot;0&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>editors_choice</th>
+                    <td>bool</td>
+                    <td>
+                        Select videos that have received an <a href="/editors_choice/">Editor's Choice</a> award.
+                        <br>Accepted values: &quot;true&quot;, &quot;false&quot;
+                        <br>Default: &quot;false&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>safesearch</th>
+                    <td>bool</td>
+                    <td>
+                        A flag indicating that only videos suitable for all ages should be returned.
+                        <br>Accepted values: &quot;true&quot;, &quot;false&quot;
+                        <br>Default: &quot;false&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>order</th>
+                    <td>str</td>
+                    <td>
+                        How the results should be ordered.
+                        <br>Accepted values: &quot;popular&quot;, &quot;latest&quot;
+                        <br>Default: &quot;popular&quot;
+                    </td>
+                </tr>
+                <tr>
+                    <th>page</th>
+                    <td>int</td>
+                    <td>
+                        Returned search results are paginated. Use this parameter to select the page number.
+                        <br>Default: 1
+                    </td>
+                </tr>
+                <tr>
+                    <th>per_page</th>
+                    <td>int</td>
+                    <td>
+                        Determine the number of results per page.
+                        <br>Accepted values: 3 - 200
+                        <br>Default: 20
+                    </td>
+                </tr>
+                <tr>
+                    <th>callback</th>
+                    <td>string</td>
+                    <td>
+                        JSONP callback function name
+                    </td>
+                </tr>
+                <tr>
+                    <th>pretty</th>
+                    <td>bool</td>
+                    <td>
+                        Indent JSON output. This option should not be used in production.
+                        <br>Accepted values: &quot;true&quot;, &quot;false&quot;
+                        <br>Default: &quot;false&quot;
+                    </td>
+                </tr>
+            </table>
+
+            <h3 id="video_search_response">Example</h3>
+            <p>
+                Retrieving videos about &quot;yellow flowers&quot;. The search term <b class="inline">q</b> needs to be URL encoded.
+                &quot;{ KEY }&quot; has to replaced with your API key.
+            </p>
+            <div class="example_url">https://pixabay.com/api/videos/?key={ KEY }&amp;q=yellow+flowers</div>
+            <p>Response for this request:</p>
+            <pre class="prettyprint">{
+"total": 42,
+"totalHits": 42,
+"hits": [
+    {
+        "id": 125,
+        "pageURL": "https://pixabay.com/videos/id-125/",
+        "type": "film",
+        "tags": "flowers, yellow, blossom",
+        "duration": 12,
+        "videos": {
+            "large": {
+                "url": "https://cdn.pixabay.com/video/2015/08/08/125-135736646_large.mp4",
+                "width": 1920,
+                "height": 1080,
+                "size": 6615235,
+                "thumbnail": "https://cdn.pixabay.com/video/2015/08/08/125-135736646_large.jpg"
+            },
+            "medium": {
+                "url": "https://cdn.pixabay.com/video/2015/08/08/125-135736646_medium.mp4",
+                "width": 1280,
+                "height": 720,
+                "size": 3562083,
+                "thumbnail": "https://cdn.pixabay.com/video/2015/08/08/125-135736646_medium.jpg"
+            },
+            "small": {
+                "url": "https://cdn.pixabay.com/video/2015/08/08/125-135736646_small.mp4",
+                "width": 640,
+                "height": 360,
+                "size": 1030736,
+                "thumbnail": "https://cdn.pixabay.com/video/2015/08/08/125-135736646_small.jpg"
+            },
+            "tiny": {
+                "url": "https://cdn.pixabay.com/video/2015/08/08/125-135736646_tiny.mp4",
+                "width": 480,
+                "height": 270,
+                "size": 426799,
+                "thumbnail": "https://cdn.pixabay.com/video/2015/08/08/125-135736646_tiny.jpg"
+            }
+        },
+        "views": 4462,
+        "downloads": 1464,
+        "likes": 18,
+        "comments": 0,
+        "user_id": 1281706,
+        "user": "Coverr-Free-Footage",
+        "userImageURL": "https://cdn.pixabay.com/user/2015/10/16/09-28-45-303_250x250.png"
+    },
+    {
+        "id": 473,
+        ...
+    },
+    ...
+]
+}</pre>
+            <table class="api_properties">
+                <tr><th>Response key</th><th>Description</th></tr>
+                <tr><td>total</td><td>The total number of hits.</td></tr>
+                <tr><td>totalHits</td><td>The number of videos accessible through the API. By default, the API is limited to return a maximum of 500 videos per query.</td></tr>
+                <tr><td>id</td><td>A unique identifier for this video.</td></tr>
+                <tr><td>pageURL</td><td>Source page on Pixabay.</td></tr>
+                <tr>
+                    <td>videos</td>
+                    <td>
+                        <p>A set of differently sizes video streams:</p>
+                        <ul>
+                            <li><strong><code>large</code></strong> usually has a dimension of 3840x2160. If a large video version is not available, an empty URL value and a size of zero is returned.</li>
+                            <li><strong><code>medium</code></strong> usually has a dimension of 1920x1080, older videos have a dimension of 1280x720. This size is available for all Pixabay videos.</li>
+                            <li><strong><code>small</code></strong> typically has a dimension of 1280x720, older videos have a dimension of 960x540. This size is available for all videos.</li>
+                            <li><strong><code>tiny</code></strong> typically has a dimension of 960x540, older videos have a dimension of 640x360. This size is available for all videos.</li>
+                        </ul>
+                        <table class="api_properties">
+                            <tr><th>Object key</th><th>Description</th></tr>
+                            <tr><td>url</td><td>The video URL. Append the GET parameter <code>download=1</code> to the value to have the browser download it.</td></tr>
+                            <tr><td>width</td><td>The width of the video and thumbnail.</td></tr>
+                            <tr><td>height</td><td>The height of the video and thumbnail.</td></tr>
+                            <tr><td>size</td><td>The approximate size of the video in bytes.</td></tr>
+                            <tr><td>thumbnail</td><td>The URL of the poster image for this rendition.</td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr><td>views</td><td>Total number of views.</td></tr>
+                <tr><td>downloads</td><td>Total number of downloads.</td></tr>
+                <tr><td>likes</td><td>Total number of likes.</td></tr>
+                <tr><td>comments</td><td>Total number of comments.</td></tr>
+                <tr><td>user_id, user</td><td>User ID and name of the contributor. Profile URL: https://pixabay.com/users/{ USERNAME }-{ ID }/</td></tr>
+                <tr><td>userImageURL</td><td>Profile picture URL (250 x 250 px).</td></tr>
+            </table>
+
+            <h2 id="api_javascript_example">JavaScript Example</h2>
+            <pre id="api_javascript_example_code" class="prettyprint">
+var API_KEY = 'YOUR_API_KEY';
+var URL = "https://pixabay.com/api/?key="+API_KEY+"&amp;q="+encodeURIComponent('red roses');
+$.getJSON(URL, function(data){
+if (parseInt(data.totalHits) > 0)
+    $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
+else
+    console.log('No hits');
+});</pre>
+
+            <h2 id="api_support">Support</h2>
+            <p class="remove_if_full_access_granted"><a id="request_full_access" href="#" class="modal" data-href="/api/request_full_access/" data-w="560">Request full API access</a> for retrieving high resolution images.</p>
+            <a href="/service/contact/">Contact us</a> if you have any questions about the API.
+        </div>
+    </div>
+</div>
+</div>
+<div id="fb-root"></div><a id="toTop">▲</a>
+<script>
+    var DEBUG = 0,
+        E2E = 0,
+        LANG = 'en',
+        LANG_URL_PREFIX = '',
+        LANGS = [["cs", "\u010ce\u0161tina"], ["da", "Dansk"], ["de", "Deutsch"], ["en", "English"], ["es", "Espa\u00f1ol"], ["fr", "Fran\u00e7ais"], ["id", "Indonesia"], ["it", "Italiano"], ["hu", "Magyar"], ["nl", "Nederlands"], ["no", "Norsk"], ["pl", "Polski"], ["pt", "Portugu\u00eas"], ["ro", "Rom\u00e2n\u0103"], ["sk", "Sloven\u010dina"], ["fi", "Suomi"], ["sv", "Svenska"], ["tr", "T\u00fcrk\u00e7e"], ["vi", "Vi\u1ec7t"], ["th", "\u0e44\u0e17\u0e22"], ["bg", "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438"], ["ru", "\u0420\u0443\u0441\u0441\u043a\u0438\u0439"], ["el", "\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ae"], ["ja", "\u65e5\u672c\u8a9e"], ["ko", "\ud55c\uad6d\uc5b4"], ["zh", "\u7b80\u4f53\u4e2d\u6587"]],
+        I18N = {
+            'delete': 'Really delete?',
+            'safesearch': 'SafeSearch',
+            'adult_content': 'Adult Content',
+            'reassess': 'Submit media for reassessment?',
+            'reviewTooltip': 'This is being reviewed \u002D please allow a few days for us to complete the process.',
+            'underReassessment': 'Under Reassessment',
+            'uploadGenericError': 'An error occurred. Please reload the page and try again.',
+            'uploadSizeError': 'This upload is too large.',
+            'imageAttachmentsPrivacyMessage': 'Your uploaded files are not private. Any files you upload may be accessible by others. Do not upload sensitive or confidential information.',
+        },
+        IMGUR_CLIENT_ID = '6c1386a8fb273ad',
+        TURNSTILE_SITE_KEY = '0x4AAAAAACApdjYWE\u002DYIVjZv';
+    window.is_mobile = 0;
+</script>
+
+
+<script src="/static/js/min/base.cca53a3a.min.js?f"></script>
+
+
+
+
+
+
+<script>
+    (function() {
+        if (Math.random() * 100 > 1.0) return;
+
+        var script = document.createElement('script');
+        script.src = 'https://unpkg.com/web-vitals@5.1.0/dist/web-vitals.attribution.iife.js';
+        script.crossOrigin = 'anonymous';
+        script.integrity = 'sha384-3r0iWjGYuYGpyCtOJ/Om5TIDw7I/Ro1FjMWE98znL4Fq5ILrFxkYxekKjAt5FW6+';
+        script.onload = function() {
+            const sentMetrics = [];
+            function sendVital(metric) {
+                if (sentMetrics.includes(metric.name)) return;
+                sentMetrics.push(metric.name);
+
+                const attribution = metric.attribution || {};
+                try {
+                    trackSnowplowEvent('performance_web_vital_measured', {
+                        metric_name: metric.name,
+                        metric_value: metric.value,
+                        interaction_target: attribution.interactionTarget,
+                        input_delay_ms: attribution.inputDelay !== undefined ? Math.round(attribution.inputDelay) : undefined,
+                        processing_duration_ms: attribution.processingDuration !== undefined ? Math.round(attribution.processingDuration) : undefined,
+                        presentation_delay_ms: attribution.presentationDelay !== undefined ? Math.round(attribution.presentationDelay) : undefined,
+                        page_load_state: attribution.loadState
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+
+            // When loading via a classic script the public methods are on `webVitals`.
+            webVitals.onCLS(sendVital);
+            webVitals.onLCP(sendVital);
+            webVitals.onFCP(sendVital);
+            webVitals.onTTFB(sendVital);
+            webVitals.onINP(sendVital);
+        };
+        document.head.appendChild(script);
+    })();
+</script>
+
+
+    <script>
+        
+        
+        
+    </script>
+    <script src="/static/js/syntax_highlighting.js"></script>
+
+</body>
+</html>

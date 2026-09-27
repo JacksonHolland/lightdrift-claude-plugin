@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Lightdrift API OpenAPI document",
+    "url": "https://docs.lightdrift.ai/openapi.json",
+    "snapshot": "sources/lightdrift-openapi.json",
+    "http_status": "200",
+    "sha256": "a2bab79b095b1a3121b2b8c238eba4d63b2a582e4ec07befac090250ad753cd8",
+    "bytes": 44355,
+    "observed_at": "2026-09-27T02:34:00+00:00",
+    "use": "Public API schema used to name the Result.rights fields exactly; no product claim added."
+  },
+  {
+    "name": "Lightdrift rights guide",
+    "url": "https://docs.lightdrift.ai/guides/rights",
+    "snapshot": "sources/lightdrift-rights-guide.html",
+    "http_status": "200",
+    "sha256": "242e0a433b85f16b3e8c84326f654da090ce004430d60f2731fc066abba96db0",
+    "bytes": 262146,
+    "observed_at": "2026-09-27T02:34:00+00:00",
+    "use": "Public documentation quoted for field meanings (attribution, commercial, derivatives, share_alike, provenance_url, basis)."
+  },
+  {
+    "name": "Openverse API schema (Image)",
+    "url": "https://api.openverse.org/v1/schema/",
+    "snapshot": "sources/openverse-openapi-schema.json",
+    "http_status": "200",
+    "sha256": "36c464974df34f2cbc11564e9176eab44c37f00a3758a863b5c672e232d0bb00",
+    "bytes": 196672,
+    "observed_at": "2026-09-27T02:34:00+00:00",
+    "use": "Public OpenAPI schema; Image property descriptions quoted verbatim."
+  },
+  {
+    "name": "Pixabay API documentation",
+    "url": "https://pixabay.com/api/docs/",
+    "snapshot": "sources/pixabay-api-docs.html",
+    "http_status": "200",
+    "sha256": "1b679344cd7b5cdec24edb0327a1ab4c4e1077f0ed049e85282b1cd8c4b4629b",
+    "bytes": 46570,
+    "observed_at": "2026-09-27T02:34:00+00:00",
+    "use": "Public API docs; documented image hit field table quoted. No license field listed."
+  },
+  {
+    "name": "MediaWiki API:Imageinfo",
+    "url": "https://www.mediawiki.org/wiki/API:Imageinfo",
+    "snapshot": "sources/mediawiki-api-imageinfo.html",
+    "http_status": "200",
+    "sha256": "48874ff70cbc34d0dfaca0ad1b2fb354bcf84698602776ce5b2e3885d7223a58",
+    "bytes": 122925,
+    "observed_at": "2026-09-27T02:34:00+00:00",
+    "use": "Public API reference for the extmetadata property."
+  },
+  {
+    "name": "Wikimedia Commons live imageinfo example",
+    "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata%7Curl%7Csize&titles=File%3AExample.jpg",
+    "snapshot": "sources/wikimedia-imageinfo-example.json",
+    "http_status": "200",
+    "sha256": "09863f05158dfbc202ae52db7c0049e95d46739a24ff809dd2664261bb07eea0",
+    "bytes": 3830,
+    "observed_at": "2026-09-27T02:34:00+00:00",
+    "use": "Live public API response captured as the source of the extmetadata key names and sample values."
+  },
+  {
+    "name": "Unsplash API guidelines (out of scope)",
+    "url": "https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines",
+    "snapshot": "sources/unsplash-api-guidelines.html",
+    "http_status": "200",
+    "sha256": "38314d241d6b2c0a7331547349784ef0f5659e48278623bfed9142c2218716d3",
+    "bytes": 92561,
+    "observed_at": "2026-09-27T02:34:00+00:00",
+    "use": "Captured because it is retrievable; Unsplash is excluded from the matrix for the documented reason."
+  }
+]

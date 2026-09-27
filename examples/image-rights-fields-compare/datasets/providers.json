@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-09-27T02:34:00Z",
+  "scope": "Rights/permission fields that a provider's image search or file-info response exposes per result, as published in the provider's own API documentation. This compares response shape, not legal advice and not whether a license is suitable for a use.",
+  "dimensions": [
+    {
+      "id": "license_identifier",
+      "label": "License identifier per result",
+      "why": "Lets a pipeline branch on the license without scraping the landing page."
+    },
+    {
+      "id": "license_url",
+      "label": "License deed / legal-terms URL",
+      "why": "Lets an interface link a user to the exact terms that apply to this result."
+    },
+    {
+      "id": "license_verbatim",
+      "label": "Verbatim license text",
+      "why": "Lets a reviewer see exactly what the source published, unparaphrased."
+    },
+    {
+      "id": "attribution_text",
+      "label": "Ready-to-use attribution string",
+      "why": "Removes the copy-paste error that drops a required credit."
+    },
+    {
+      "id": "attribution_required",
+      "label": "Attribution-required flag",
+      "why": "Tells automation whether a credit is mandatory or optional for this result."
+    },
+    {
+      "id": "commercial_allowed",
+      "label": "Commercial-use flag",
+      "why": "Blocks a commercial publish that the license forbids."
+    },
+    {
+      "id": "derivatives_allowed",
+      "label": "Derivative-works flag",
+      "why": "Says whether cropping, recoloring or remixing is permitted."
+    },
+    {
+      "id": "share_alike",
+      "label": "Share-alike flag",
+      "why": "Warns when a derivative must carry the same license."
+    },
+    {
+      "id": "provenance_url",
+      "label": "Provenance / source landing URL",
+      "why": "Links a result back to the page it was collected from."
+    }
+  ],
+  "providers": [
+    {
+      "id": "lightdrift",
+      "name": "Lightdrift",
+      "endpoint": "GET /v1/search (also /v1/similar)",
+      "transport": "JSON",
+      "primary_sources": [
+        {
+          "url": "https://docs.lightdrift.ai/openapi.json",
+          "capture": "sources/lightdrift-openapi.json"
+        },
+        {
+          "url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html"
+        }
+      ],
+      "fields": {
+        "license_identifier": {
+          "exposed": true,
+          "field": "rights.license",
+          "source_url": "https://docs.lightdrift.ai/openapi.json",
+          "capture": "sources/lightdrift-openapi.json",
+          "quote": "\"license\": {\n   \"type\": \"string\"\n  }"
+        },
+        "license_url": {
+          "exposed": true,
+          "field": "rights.license (when the value is a URL)",
+          "source_url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html",
+          "quote": "cc-by , cc-by-sa , cc-by-nc , pdm , us-gov-pd , … license_verbatim The license text exactly as the source published it."
+        },
+        "license_verbatim": {
+          "exposed": true,
+          "field": "rights.license_verbatim",
+          "source_url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html",
+          "quote": "license_verbatim The license text exactly as the source published it."
+        },
+        "attribution_text": {
+          "exposed": true,
+          "field": "rights.attribution",
+          "source_url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html",
+          "quote": "attribution A ready-to-use attribution string (title, author, source, license). null when not required."
+        },
+        "attribution_required": {
+          "exposed": true,
+          "field": "rights.attribution_required (boolean)",
+          "source_url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html",
+          "quote": "attribution_required Whether attribution is required."
+        },
+        "commercial_allowed": {
+          "exposed": true,
+          "field": "rights.commercial (boolean)",
+          "source_url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html",
+          "quote": "commercial Whether commercial use is permitted."
+        },
+        "derivatives_allowed": {
+          "exposed": true,
+          "field": "rights.derivatives (boolean)",
+          "source_url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html",
+          "quote": "derivatives Whether derivative works are permitted."
+        },
+        "share_alike": {
+          "exposed": true,
+          "field": "rights.share_alike (boolean)",
+          "source_url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html",
+          "quote": "share_alike Whether derivatives must carry the same license."
+        },
+        "provenance_url": {
+          "exposed": true,
+          "field": "rights.provenance_url",
+          "source_url": "https://docs.lightdrift.ai/guides/rights",
+          "capture": "sources/lightdrift-rights-guide.html",
+          "quote": "provenance_url The source page the asset and its declaration were collected from."
+        }
+      },
+      "notes": [
+        "Rights are reported as declared by the source and normalized into one machine-readable shape: \"We collect the license and permission information a source publishes alongside each image and normalize it into one machine-readable shape.\" (rights guide).",
+        "reporting a rights answer is not the same as clearing a use; the guide says hosting does not clear an image."
+      ]
+    },
+    {
+      "id": "openverse",
+      "name": "Openverse",
+      "endpoint": "GET /v1/images/",
+      "transport": "JSON",
+      "primary_sources": [
+        {
+          "url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json"
+        }
+      ],
+      "fields": {
+        "license_identifier": {
+          "exposed": true,
+          "field": "license",
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "license: string :: The name of license for the media."
+        },
+        "license_url": {
+          "exposed": true,
+          "field": "license_url",
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "license_url: string :: A direct link to the license deed or legal terms."
+        },
+        "license_verbatim": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "license_version: string :: The version of the media license.",
+          "basis": "The Image schema documents license and license_version but no verbatim license-text field."
+        },
+        "attribution_text": {
+          "exposed": true,
+          "field": "attribution",
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "attribution: string :: Legally valid attribution for the media item in plain-text English."
+        },
+        "attribution_required": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "license: string :: The name of license for the media.",
+          "basis": "No boolean attribution-required field is documented; the requirement is implied by the license identifier."
+        },
+        "commercial_allowed": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "license: string :: The name of license for the media.",
+          "basis": "No boolean permission fields are documented; the caller maps the license identifier to its conditions."
+        },
+        "derivatives_allowed": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "license: string :: The name of license for the media.",
+          "basis": "No boolean permission fields are documented; the caller maps the license identifier to its conditions."
+        },
+        "share_alike": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "license: string :: The name of license for the media.",
+          "basis": "No boolean permission fields are documented; the caller maps the license identifier to its conditions."
+        },
+        "provenance_url": {
+          "exposed": true,
+          "field": "foreign_landing_url",
+          "source_url": "https://api.openverse.org/v1/schema/",
+          "capture": "sources/openverse-openapi-schema.json",
+          "quote": "foreign_landing_url: string :: The landing page of the work."
+        }
+      },
+      "notes": [
+        "creator and creator_url are also documented per result and are used to build a credit when attribution is empty."
+      ]
+    },
+    {
+      "id": "wikimedia_commons",
+      "name": "Wikimedia Commons",
+      "endpoint": "GET /w/api.php?action=query&prop=imageinfo",
+      "transport": "JSON",
+      "primary_sources": [
+        {
+          "url": "https://www.mediawiki.org/wiki/API:Imageinfo",
+          "capture": "sources/mediawiki-api-imageinfo.html"
+        },
+        {
+          "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata%7Curl%7Csize&titles=File%3AExample.jpg",
+          "capture": "sources/wikimedia-imageinfo-example.json"
+        }
+      ],
+      "fields": {
+        "license_identifier": {
+          "exposed": true,
+          "field": "imageinfo[].extmetadata.License / LicenseShortName",
+          "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata%7Curl%7Csize&titles=File%3AExample.jpg",
+          "capture": "sources/wikimedia-imageinfo-example.json",
+          "quote": "\"LicenseShortName\": {\"value\": \"Public domain\"} ... \"License\": {\"value\": \"pd\"}"
+        },
+        "license_url": {
+          "exposed": false,
+          "field": "extmetadata.LicenseUrl (extension key; not populated on the sampled file)",
+          "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata%7Curl%7Csize&titles=File%3AExample.jpg",
+          "capture": "sources/wikimedia-imageinfo-example.json",
+          "quote": "\"extmetadata\": {\"Artist\": ... \"LicenseShortName\": {\"value\": \"Public domain\"} ...}",
+          "basis": "The sampled public-domain file has no LicenseUrl key; the key set is not guaranteed for every file, so treat it as optional."
+        },
+        "license_verbatim": {
+          "exposed": true,
+          "field": "imageinfo[].extmetadata.UsageTerms",
+          "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata%7Curl%7Csize&titles=File%3AExample.jpg",
+          "capture": "sources/wikimedia-imageinfo-example.json",
+          "quote": "\"UsageTerms\": {\"value\": \"Public domain\"}"
+        },
+        "attribution_text": {
+          "exposed": true,
+          "field": "imageinfo[].extmetadata.Artist / Credit",
+          "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata%7Curl%7Csize&titles=File%3AExample.jpg",
+          "capture": "sources/wikimedia-imageinfo-example.json",
+          "quote": "\"Artist\": {\"value\": \"<span ...>...</span>\"} ... \"Credit\": {\"value\": \"<span class=\\\"int-own-work\\\" ...>Own work</span>\"}",
+          "basis": "Artist and Credit are HTML fragments, not a single ready-to-use plain-text credit; a caller must strip markup."
+        },
+        "attribution_required": {
+          "exposed": true,
+          "field": "imageinfo[].extmetadata.AttributionRequired",
+          "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata%7Curl%7Csize&titles=File%3AExample.jpg",
+          "capture": "sources/wikimedia-imageinfo-example.json",
+          "quote": "\"AttributionRequired\": {\"value\": false}"
+        },
+        "commercial_allowed": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://www.mediawiki.org/wiki/API:Imageinfo",
+          "capture": "sources/mediawiki-api-imageinfo.html",
+          "quote": "extmetadata Lists formatted metadata combined from multiple sources.",
+          "basis": "No commercial-use boolean is documented in the core extmetadata property list; the caller maps the license."
+        },
+        "derivatives_allowed": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://www.mediawiki.org/wiki/API:Imageinfo",
+          "capture": "sources/mediawiki-api-imageinfo.html",
+          "quote": "extmetadata Lists formatted metadata combined from multiple sources.",
+          "basis": "No derivative-works boolean is documented; the caller maps the license."
+        },
+        "share_alike": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://www.mediawiki.org/wiki/API:Imageinfo",
+          "capture": "sources/mediawiki-api-imageinfo.html",
+          "quote": "extmetadata Lists formatted metadata combined from multiple sources.",
+          "basis": "No share-alike boolean is documented; the caller maps the license."
+        },
+        "provenance_url": {
+          "exposed": true,
+          "field": "imageinfo[].descriptionurl / descriptionshorturl",
+          "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=extmetadata%7Curl%7Csize&titles=File%3AExample.jpg",
+          "capture": "sources/wikimedia-imageinfo-example.json",
+          "quote": "\"descriptionshorturl\": \"https://commons.wikimedia.org/w/index.php?curid=6428847\""
+        }
+      },
+      "notes": [
+        "extmetadata is HTML formatted by the API description: \"Results are HTML formatted.\" Plan to sanitize before display."
+      ]
+    },
+    {
+      "id": "pixabay",
+      "name": "Pixabay",
+      "endpoint": "GET /api/ (image search)",
+      "transport": "JSON",
+      "primary_sources": [
+        {
+          "url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html"
+        }
+      ],
+      "fields": {
+        "license_identifier": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "id :: A unique identifier for this image.",
+          "basis": "The documented image hit fields list no license field; the license is applied site-wide, not per result."
+        },
+        "license_url": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "pageURL :: Source page on Pixabay, which provides a download link for the original image",
+          "basis": "No license or terms URL field is documented in the image hit."
+        },
+        "license_verbatim": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "id :: A unique identifier for this image.",
+          "basis": "No license-text field is documented in the image hit."
+        },
+        "attribution_text": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "userImageURL :: Profile picture URL (250 x 250 px).",
+          "basis": "A contributor name (user) and profile image are returned, but no ready-to-use attribution string or contributor profile URL field."
+        },
+        "attribution_required": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "id :: A unique identifier for this image.",
+          "basis": "No attribution-required flag is documented in the image hit."
+        },
+        "commercial_allowed": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "id :: A unique identifier for this image.",
+          "basis": "No commercial-use flag is documented in the image hit."
+        },
+        "derivatives_allowed": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "id :: A unique identifier for this image.",
+          "basis": "No derivative-works flag is documented in the image hit."
+        },
+        "share_alike": {
+          "exposed": false,
+          "field": null,
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "id :: A unique identifier for this image.",
+          "basis": "No share-alike flag is documented in the image hit."
+        },
+        "provenance_url": {
+          "exposed": true,
+          "field": "pageURL",
+          "source_url": "https://pixabay.com/api/docs/",
+          "capture": "sources/pixabay-api-docs.html",
+          "quote": "pageURL :: Source page on Pixabay, which provides a download link for the original image of the dimension imageWidth x imageHeight"
+        }
+      },
+      "notes": [
+        "The applicable license is site-wide; this comparison records only what the search response exposes and does not restate license terms, because the license-summary page could not be retrieved in this environment (Cloudflare challenge)."
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "provider": "Unsplash",
+      "reason": "The API guidelines page is retrievable and states an attribution and link-back requirement, but the runtime documentation page does not expose the response field table as retrievable text, and the license page returned an anti-bot challenge (HTTP 401) in this environment. Not included rather than guessed.",
+      "capture": "sources/unsplash-api-guidelines.html"
+    },
+    {
+      "provider": "Pexels",
+      "reason": "The API documentation page returned HTTP 403 in this environment and could not be captured.",
+      "capture": null
+    }
+  ]
+}

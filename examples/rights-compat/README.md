@@ -83,6 +83,8 @@ Save the selected search response from an existing example — for instance the 
 
 Once a use is cleared, the next step is to emit the publishing metadata itself: the [image structured-data emitter](image-structured-data) maps the same response fields to Schema.org `ImageObject` JSON-LD, Open Graph image tags and a credit line. It copies this decision's credit string into `creditText` and never fabricates a license URL for an identifier-only license, so run this checker first and treat its warnings as inputs to that emitter.
 
+Which source can be trusted with a declared rights field at all is a separate, upstream question: the [image-API rights-field comparison](image-rights-fields-compare) records, from each provider's own documentation, whether an image search response actually carries a license identifier, an attribution string and a provenance URL per result.
+
 ## Limitations
 
 - Reads source-declared metadata; does not verify the source or the declaration.

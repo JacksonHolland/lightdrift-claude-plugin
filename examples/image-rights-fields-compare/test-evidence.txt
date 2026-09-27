@@ -1,0 +1,39 @@
+test_cli_invalid_dataset_returns_two (test_build_compare.CliTests.test_cli_invalid_dataset_returns_two) ... error: /tmp/paperclip-run-lig-263-acfe924e-127-YaYi9b/tmppg27zmwo/bad.json: top level must be a JSON object
+ok
+test_cli_require_sources_missing_capture_returns_one (test_build_compare.CliTests.test_cli_require_sources_missing_capture_returns_one) ... error: unresolved sources:
+  - beta.license_identifier: capture not found at sources/beta.html
+  - beta.provenance_url: capture not found at sources/beta.html
+ok
+test_cli_valid_returns_zero (test_build_compare.CliTests.test_cli_valid_returns_zero) ... ok
+test_cli_writes_output_file (test_build_compare.CliTests.test_cli_writes_output_file) ... ok
+test_default_dataset_loads_and_validates (test_build_compare.LoadTests.test_default_dataset_loads_and_validates) ... ok
+test_invalid_json_raises (test_build_compare.LoadTests.test_invalid_json_raises) ... ok
+test_missing_file_raises (test_build_compare.LoadTests.test_missing_file_raises) ... ok
+test_all_formats_nonempty (test_build_compare.RenderTests.test_all_formats_nonempty) ... ok
+test_html_escapes_field_values (test_build_compare.RenderTests.test_html_escapes_field_values) ... ok
+test_html_flags_absent_cells (test_build_compare.RenderTests.test_html_flags_absent_cells) ... ok
+test_json_round_trips (test_build_compare.RenderTests.test_json_round_trips) ... ok
+test_markdown_contains_providers_and_dimensions (test_build_compare.RenderTests.test_markdown_contains_providers_and_dimensions) ... ok
+test_matrix_lists_every_dimension (test_build_compare.RenderTests.test_matrix_lists_every_dimension) ... ok
+test_render_is_deterministic (test_build_compare.RenderTests.test_render_is_deterministic) ... ok
+test_missing_capture_is_reported (test_build_compare.SourceGapTests.test_missing_capture_is_reported) ... ok
+test_missing_quote_is_reported (test_build_compare.SourceGapTests.test_missing_quote_is_reported) ... ok
+test_missing_source_url_is_reported (test_build_compare.SourceGapTests.test_missing_source_url_is_reported) ... ok
+test_valid_sources_have_no_gaps (test_build_compare.SourceGapTests.test_valid_sources_have_no_gaps) ... ok
+test_claim_not_object_rejected (test_build_compare.ValidateTests.test_claim_not_object_rejected) ... ok
+test_duplicate_dimension_rejected (test_build_compare.ValidateTests.test_duplicate_dimension_rejected) ... ok
+test_duplicate_provider_rejected (test_build_compare.ValidateTests.test_duplicate_provider_rejected) ... ok
+test_exposed_without_field_rejected (test_build_compare.ValidateTests.test_exposed_without_field_rejected) ... ok
+test_minimal_is_valid (test_build_compare.ValidateTests.test_minimal_is_valid) ... ok
+test_missing_dimensions_rejected (test_build_compare.ValidateTests.test_missing_dimensions_rejected) ... ok
+test_missing_providers_rejected (test_build_compare.ValidateTests.test_missing_providers_rejected) ... ok
+test_non_boolean_exposed_rejected (test_build_compare.ValidateTests.test_non_boolean_exposed_rejected) ... ok
+test_provider_missing_dimension_rejected (test_build_compare.ValidateTests.test_provider_missing_dimension_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.004s
+
+OK
+RIGHTS DIMENSION / Alpha | Beta
+License identifier per result / license | -
+Provenance / source landing URL / - | pageURL

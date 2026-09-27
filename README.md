@@ -62,6 +62,8 @@ Decide whether a saved image's source-declared rights fit an intended use and bu
 
 Keep a batch of search briefs inside the minute, daily and concurrency limits with the [offline rate-limit pacing validator](examples/rate-limit-pacing). It validates a proposed schedule or builds a deterministic earliest-start one from the published plan limits, without sending requests or spending credit.
 
+See which rights fields an image API actually returns, from each provider's own documentation, with the [offline image-rights-field comparison](examples/image-rights-fields-compare). It fails its own build unless every license, attribution and provenance claim keeps a source URL, a verbatim quote and a capture file; `not exposed` means the provider's docs list no such field, not that a license forbids the use.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.
