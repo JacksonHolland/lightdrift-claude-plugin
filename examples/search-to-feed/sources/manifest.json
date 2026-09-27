@@ -1,0 +1,32 @@
+[
+  {
+    "name": "JSON Feed 1.1 specification",
+    "url": "https://www.jsonfeed.org/version/1.1/",
+    "snapshot": "sources/jsonfeed-1.1.html",
+    "http_status": "200",
+    "sha256": "9775f930a0bc8c785fdae66f4dd0233e68f0d8dd69173b7aad146371f34e93d2",
+    "bytes": 34270,
+    "observed_at": "2026-09-27T02:39:02.029983+00:00",
+    "use": "Public specification for the JSON Feed document shape, required fields, image/attachments and underscore extension keys."
+  },
+  {
+    "name": "RSS 2.0 specification",
+    "url": "https://www.rssboard.org/rss-specification",
+    "snapshot": "sources/rss-2.0.html",
+    "http_status": "200",
+    "sha256": "1610f254e9312593a67f6a58e7e7978b0d10c7cd247ec6d2382d1c6fd55079c9",
+    "bytes": 38676,
+    "observed_at": "2026-09-27T02:39:02.029983+00:00",
+    "use": "Public specification for RSS 2.0 channel/item elements and the enclosure length requirement avoided here."
+  },
+  {
+    "name": "Media RSS specification",
+    "url": "https://www.rssboard.org/media-rss",
+    "snapshot": "sources/media-rss.html",
+    "http_status": "200",
+    "sha256": "551c0ff7540f00665d20aea4106ad46265b1f67b8a31d8fade9cb563609e78b1",
+    "bytes": 66480,
+    "observed_at": "2026-09-27T02:39:02.029983+00:00",
+    "use": "Public specification for the media:content and media:thumbnail elements used to attach images without a byte length."
+  }
+]
