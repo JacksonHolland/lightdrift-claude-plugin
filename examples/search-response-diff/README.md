@@ -73,6 +73,8 @@ Malformed envelopes, missing or repeated asset IDs, repeated JSON object keys an
 
 Different briefs, filters, result counts, collection updates or serving conditions can change the returned list. Scores are not calibrated probabilities; some serving paths return null. This tool deliberately does not compute score improvement, significance, search latency averages or a quality winner. Its fixtures verify mechanics only. Large snapshots are loaded into memory; use normal saved search envelopes rather than an unbounded dataset.
 
+This comparison matches results by `asset_id`, so the same underlying image arriving under two different ids appears as one entry leaving and another entering. To group cross-id duplicates by canonical source URL or source-native id before comparing, see the [search-result dedup utility](https://github.com/JacksonHolland/lightdrift-claude-plugin/tree/main/examples/search-result-dedup).
+
 Reports may include query-related metadata, image URLs and attribution text from your inputs. Review them before sharing publicly. No remote content is fetched or rendered by the utility.
 
 ## Next step

@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "generated_by": "dedup_assets.py",
+  "inputs": [
+    {
+      "path": "fixtures/search-response.json",
+      "sha256": "27f7ee1a17f8c6a19e3fab763531d860a1aa78284ddbdc711292523970cdf75c",
+      "results": 10
+    },
+    {
+      "path": "fixtures/second-response.json",
+      "sha256": "eb4acddabc814150f872f51e85f993d9775dc21f924c42f923fbbc8e7dcdf998",
+      "results": 2
+    }
+  ],
+  "counts": {
+    "inputs": 2,
+    "assets": 12,
+    "clusters": 3,
+    "assets_in_clusters": 7,
+    "ungrouped": 5,
+    "assets_without_identity_signal": 1
+  },
+  "signals_used": [
+    "source_external_id",
+    "canonical_url"
+  ],
+  "signals_excluded": [
+    "thumbnail_url",
+    "preview_url",
+    "download_url",
+    "similarity/visual comparison"
+  ],
+  "assets_without_identity_signal": [
+    "fixture:no-signal"
+  ],
+  "clusters": [
+    {
+      "confidence": "asset_id",
+      "shared_keys": [
+        {
+          "type": "asset_id",
+          "value": "fixture:mirror-a"
+        },
+        {
+          "type": "source_external_id",
+          "value": "examplesource:IMG-204"
+        },
+        {
+          "type": "canonical_url",
+          "value": "https://cdn.example.org/photo/CLIFF-01.jpg"
+        }
+      ],
+      "members": [
+        {
+          "asset_id": "fixture:mirror-a",
+          "source": "ExampleSource",
+          "envelope": 1,
+          "rank": 1
+        },
+        {
+          "asset_id": "fixture:mirror-b",
+          "source": "ExampleSource",
+          "envelope": 1,
+          "rank": 2
+        },
+        {
+          "asset_id": "fixture:mirror-a",
+          "source": "ExampleSource",
+          "envelope": 2,
+          "rank": 1
+        }
+      ],
+      "cluster_id": 1
+    },
+    {
+      "confidence": "source_external_id",
+      "shared_keys": [
+        {
+          "type": "source_external_id",
+          "value": "examplesource:ID-7788"
+        }
+      ],
+      "members": [
+        {
+          "asset_id": "fixture:ext-a",
+          "source": "ExampleSource",
+          "envelope": 1,
+          "rank": 4
+        },
+        {
+          "asset_id": "fixture:ext-b",
+          "source": "ExampleSource",
+          "envelope": 1,
+          "rank": 5
+        }
+      ],
+      "cluster_id": 2
+    },
+    {
+      "confidence": "canonical_url",
+      "shared_keys": [
+        {
+          "type": "canonical_url",
+          "value": "https://rights.example.org/assets/AA-1"
+        }
+      ],
+      "members": [
+        {
+          "asset_id": "fixture:rights-url",
+          "source": "RightsSource",
+          "envelope": 1,
+          "rank": 9
+        },
+        {
+          "asset_id": "fixture:rights-url-two",
+          "source": "RightsSource",
+          "envelope": 1,
+          "rank": 10
+        }
+      ],
+      "cluster_id": 3
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,31 @@
+test_invalid_file_exit_two (test_dedup_assets.CliTests.test_invalid_file_exit_two) ... ok
+test_malformed_json_exit_two (test_dedup_assets.CliTests.test_malformed_json_exit_two) ... ok
+test_no_duplicates_reports_zero (test_dedup_assets.CliTests.test_no_duplicates_reports_zero) ... ok
+test_optional_nonzero_on_duplicates (test_dedup_assets.CliTests.test_optional_nonzero_on_duplicates) ... ok
+test_success_exit_zero (test_dedup_assets.CliTests.test_success_exit_zero) ... ok
+test_duplicate_asset_id_within_envelope_is_an_error (test_dedup_assets.EnvelopeValidationTests.test_duplicate_asset_id_within_envelope_is_an_error) ... ok
+test_missing_asset_id_is_an_error (test_dedup_assets.EnvelopeValidationTests.test_missing_asset_id_is_an_error) ... ok
+test_non_list_results_is_an_error (test_dedup_assets.EnvelopeValidationTests.test_non_list_results_is_an_error) ... ok
+test_collects_top_level_and_nested_urls (test_dedup_assets.IdentitySignalTests.test_collects_top_level_and_nested_urls) ... ok
+test_numeric_external_id_is_stringified (test_dedup_assets.IdentitySignalTests.test_numeric_external_id_is_stringified) ... ok
+test_reads_nested_rights_provenance (test_dedup_assets.IdentitySignalTests.test_reads_nested_rights_provenance) ... ok
+test_thumbnail_only_is_not_an_identity_signal (test_dedup_assets.IdentitySignalTests.test_thumbnail_only_is_not_an_identity_signal) ... ok
+test_drops_default_port_and_keeps_other (test_dedup_assets.NormalizeUrlTests.test_drops_default_port_and_keeps_other) ... ok
+test_drops_fragment_and_tracking_params (test_dedup_assets.NormalizeUrlTests.test_drops_fragment_and_tracking_params) ... ok
+test_lowercases_scheme_and_host (test_dedup_assets.NormalizeUrlTests.test_lowercases_scheme_and_host) ... ok
+test_rejects_non_http_and_junk (test_dedup_assets.NormalizeUrlTests.test_rejects_non_http_and_junk) ... ok
+test_root_slash_preserved (test_dedup_assets.NormalizeUrlTests.test_root_slash_preserved) ... ok
+test_sorts_query_and_strips_trailing_slash (test_dedup_assets.NormalizeUrlTests.test_sorts_query_and_strips_trailing_slash) ... ok
+test_canonical_url_cluster (test_dedup_assets.ReportTests.test_canonical_url_cluster) ... ok
+test_counts (test_dedup_assets.ReportTests.test_counts) ... ok
+test_external_id_cluster (test_dedup_assets.ReportTests.test_external_id_cluster) ... ok
+test_shared_thumbnail_only_report_has_no_clusters (test_dedup_assets.ReportTests.test_shared_thumbnail_only_report_has_no_clusters) ... ok
+test_thumbnails_do_not_cluster (test_dedup_assets.ReportTests.test_thumbnails_do_not_cluster) ... ok
+test_accepts_plain_object (test_dedup_assets.StrictJsonTests.test_accepts_plain_object) ... ok
+test_rejects_duplicate_keys (test_dedup_assets.StrictJsonTests.test_rejects_duplicate_keys) ... ok
+test_rejects_non_finite (test_dedup_assets.StrictJsonTests.test_rejects_non_finite) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.004s
+
+OK

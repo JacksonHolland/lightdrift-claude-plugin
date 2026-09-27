@@ -1,0 +1,17 @@
+{
+  "query_id": "synthetic-dedup-fixture-second-envelope",
+  "ranking": "text",
+  "results": [
+    {
+      "asset_id": "fixture:mirror-a",
+      "source": "ExampleSource",
+      "provenance_url": "https://cdn.example.org/photo/CLIFF-01.jpg",
+      "external_id": "IMG-204"
+    },
+    {
+      "asset_id": "fixture:new-one",
+      "source": "ThirdSource",
+      "provenance_url": "https://third.example.org/assets/one"
+    }
+  ]
+}

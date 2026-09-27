@@ -1,0 +1,65 @@
+{
+  "query_id": "synthetic-dedup-fixture-not-a-real-search",
+  "ranking": "text",
+  "results": [
+    {
+      "asset_id": "fixture:mirror-a",
+      "source": "ExampleSource",
+      "provenance_url": "https://cdn.example.org/photo/CLIFF-01.jpg?utm_source=news&utm_medium=email",
+      "external_id": "IMG-204"
+    },
+    {
+      "asset_id": "fixture:mirror-b",
+      "source": "ExampleSource",
+      "provenance_url": "https://CDN.example.org/photo/CLIFF-01.jpg#top",
+      "external_id": "IMG-999"
+    },
+    {
+      "asset_id": "fixture:case-diff",
+      "source": "ExampleSource",
+      "provenance_url": "https://cdn.example.org/photo/cliff-01.jpg"
+    },
+    {
+      "asset_id": "fixture:ext-a",
+      "source": "ExampleSource",
+      "external_id": "ID-7788",
+      "provenance_url": "https://cdn.example.org/photo/harbor.jpg"
+    },
+    {
+      "asset_id": "fixture:ext-b",
+      "source": "ExampleSource",
+      "external_id": "ID-7788",
+      "provenance_url": "https://mirror.example.net/files/harbor-alt.jpg"
+    },
+    {
+      "asset_id": "fixture:thumb-a",
+      "source": "OtherSource",
+      "provenance_url": "https://a.example.com/x",
+      "thumbnail_url": "https://thumbs.example.com/placeholder/default.jpg"
+    },
+    {
+      "asset_id": "fixture:thumb-b",
+      "source": "OtherSource",
+      "provenance_url": "https://b.example.com/y",
+      "thumbnail_url": "https://thumbs.example.com/placeholder/default.jpg"
+    },
+    {
+      "asset_id": "fixture:no-signal",
+      "title": "Synthetic item with no provenance or external id"
+    },
+    {
+      "asset_id": "fixture:rights-url",
+      "source": "RightsSource",
+      "rights": {
+        "provenance_url": "https://rights.example.org/assets/AA-1"
+      }
+    },
+    {
+      "asset_id": "fixture:rights-url-two",
+      "source": "RightsSource",
+      "rights": {
+        "provenance_url": "https://rights.example.org/assets/AA-1?utm_source=partner"
+      }
+    }
+  ]
+}
