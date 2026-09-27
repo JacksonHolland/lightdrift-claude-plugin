@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Search candidate stock images for exactly three slide topics (Python 3.10+)."""
 import argparse
+import http.client
 import json
 import os
 import sys
@@ -57,7 +58,7 @@ def main(argv=None, opener=None):
         except urllib.error.HTTPError as exc:
             print(f"Slide {slide}: HTTP {exc.code}; stopped without retry. Check account balance, limits and API docs.", file=sys.stderr)
             return 1
-        except (urllib.error.URLError, TimeoutError, OSError, ValueError):
+        except (urllib.error.URLError, http.client.HTTPException, TimeoutError, OSError, ValueError):
             print(f"Slide {slide}: transport or response error; outcome may be unknown. Check usage before rerunning; no automatic retry.", file=sys.stderr)
             return 1
         # Preserve the API envelope, including rights, query_id and any degraded flag.

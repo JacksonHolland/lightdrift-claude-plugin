@@ -67,3 +67,7 @@ Contract checked September 26, 2026 against the live [OpenAPI](https://api.light
 Experiment `lig103_presentation_search_v1` is included in each request; a random `client_session` groups the three calls. The signup link uses the same campaign identifier. The hypothesis is that a copyable example reduces integration effort. Measure tagged visits, successful first search, buyer-confirmed useful image selection, repeat workflow use and paid usage separately when observed. A repository view is not activation or payment.
 
 Content version: 1.0.0. Prepared for the `examples/presentation-image-search/` path in the existing Lightdrift plugin repository; publication status is tracked separately from these files.
+
+## Verify interrupted HTTP responses offline
+
+From the repository root, run `python3 examples/test_search_transport.py`. The checks feed synthetic HTTP wire bytes into Python’s real HTTP parser with socket creation disabled. Truncated fixed-length/chunked bodies and malformed status lines must stop with the usage-check message, preserve earlier successful JSONL records, and make no retry. Protocol errors are handled through [`http.client.HTTPException`](https://docs.python.org/3/library/http.client.html#http.client.HTTPException); raw exception text is not printed. These checks do not establish live service reliability or billing outcomes.
