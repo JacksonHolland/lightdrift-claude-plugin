@@ -1,0 +1,25 @@
+[
+  {
+    "role": "schema",
+    "url": "https://api.lightdrift.ai/openapi.json",
+    "mirror": "openapi.json",
+    "note": "Working-copy schema used to confirm the SearchResponse fields this utility reads (query_id, results, latency_ms, timing_ms, mode, ranking, pool_size, reranked, backend, degraded, relaxed, query_type). Live document may differ from this capture.",
+    "sha256": "a2bab79b095b1a3121b2b8c238eba4d63b2a582e4ec07befac090250ad753cd8",
+    "observed_at": "2026-09-27T02:52:00+00:00"
+  },
+  {
+    "role": "docs",
+    "url": "https://docs.lightdrift.ai/api-reference/introduction",
+    "note": "Response envelope and billing context referenced by the guide."
+  },
+  {
+    "role": "docs",
+    "url": "https://docs.lightdrift.ai/guides/search",
+    "note": "Search request/response overview referenced by the guide."
+  },
+  {
+    "role": "docs",
+    "url": "https://docs.lightdrift.ai/guides/rate-limit-pacing",
+    "note": "Documents the plan limits used in the related pacing guide; not read by this utility."
+  }
+]

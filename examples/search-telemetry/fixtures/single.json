@@ -1,0 +1,13 @@
+{
+  "query_id": "fixture-single",
+  "mode": "none",
+  "ranking": "none",
+  "query_type": "text",
+  "backend": "voyage",
+  "latency_ms": 80,
+  "pool_size": 20,
+  "reranked": 0,
+  "results": [
+    {"asset_id": "fixture:s1", "title": "Synthetic S1", "width": 800, "height": 600, "rights": {}}
+  ]
+}

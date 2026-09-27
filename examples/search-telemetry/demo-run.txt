@@ -1,0 +1,9 @@
+responses: 3 (skipped non-response objects: 0)
+results per response: 3 present, min 0 max 2 mean 1.0
+latency_ms: 2 present, min 120 max 210 median 165.0
+degraded responses: 1
+relaxed responses: 1
+modes: {'auto': 2, 'text': 1}
+rankings: {'multimodal': 1, 'none (degraded)': 1, 'text': 1}
+query types: {'image_text': 1, 'text': 2}
+notice: Offline summary of saved response envelopes. Counts describe only the inputs given, not service performance, relevance or a benchmark.

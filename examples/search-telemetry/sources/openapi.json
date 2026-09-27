@@ -1,0 +1,1402 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Lightdrift API",
+    "version": "1.3",
+    "description": "Natural-language image search for agents. Describe what you want \u2014 in text, with a reference image, or both \u2014 and get ranked images back, each with a machine-readable rights answer. Retrieval only: no generation, no checkout."
+  },
+  "paths": {
+    "/v1/search": {
+      "post": {
+        "summary": "Search captioned images",
+        "operationId": "search_v1_search_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search results and source-declared rights.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                },
+                "example": {
+                  "query_id": "q_33b7214c7da1a07ce4355a40",
+                  "results": [
+                    {
+                      "asset_id": "isorepublic:17191",
+                      "score": 0.921875,
+                      "title": "Mini in Brooklyn",
+                      "source": "isorepublic",
+                      "ai_generated": false,
+                      "width": 4000,
+                      "height": 2667,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/isorepublic:17191",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/isorepublic:17191?v=thumb",
+                      "rights": {
+                        "license": "cc0",
+                        "license_verbatim": "CC0 1.0",
+                        "commercial": true,
+                        "attribution_required": false,
+                        "derivatives": true,
+                        "share_alike": false,
+                        "attribution": null,
+                        "provenance_url": "https://isorepublic.com/photo/mini-in-brooklyn/",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    },
+                    {
+                      "asset_id": "flickr:51141533761",
+                      "score": 0.90234375,
+                      "title": "Night in the city-2",
+                      "source": "flickr",
+                      "ai_generated": false,
+                      "width": 1023,
+                      "height": 968,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/flickr:51141533761",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/flickr:51141533761?v=thumb",
+                      "rights": {
+                        "license": "cc-by-sa",
+                        "license_verbatim": "CC BY-SA 2.0",
+                        "commercial": true,
+                        "attribution_required": true,
+                        "derivatives": true,
+                        "share_alike": true,
+                        "attribution": "\"Night in the city-2\" by Tatiana El-Bakri, flickr, CC BY-SA",
+                        "provenance_url": "https://www.flickr.com/photos/189281045@N03/51141533761",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    },
+                    {
+                      "asset_id": "yfcc:9715466326",
+                      "score": 0.85546875,
+                      "title": "MINIPalooza 2013",
+                      "source": "yfcc",
+                      "ai_generated": false,
+                      "width": 1024,
+                      "height": 575,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/yfcc:9715466326",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/yfcc:9715466326?v=thumb",
+                      "rights": {
+                        "license": "cc-by",
+                        "license_verbatim": "by <>",
+                        "commercial": true,
+                        "attribution_required": true,
+                        "derivatives": true,
+                        "share_alike": false,
+                        "attribution": "\"MINIPalooza 2013\" by unknown, yfcc, CC BY 4.0/3.0/2.0",
+                        "provenance_url": "http://www.flickr.com/photos/101530550@N05/9715466326/",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    },
+                    {
+                      "asset_id": "yfcc:9958535786",
+                      "score": 0.85546875,
+                      "title": "Study in Blue - Phibsboro [Dublin] - 89 Phibsborough Road",
+                      "source": "yfcc",
+                      "ai_generated": false,
+                      "width": 1023,
+                      "height": 697,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/yfcc:9958535786",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/yfcc:9958535786?v=thumb",
+                      "rights": {
+                        "license": "cc-by-sa",
+                        "license_verbatim": "by-sa <>",
+                        "commercial": true,
+                        "attribution_required": true,
+                        "derivatives": true,
+                        "share_alike": true,
+                        "attribution": "\"Study in Blue - Phibsboro [Dublin] - 89 Phibsborough Road\" by unknown, yfcc, CC BY-SA",
+                        "provenance_url": "http://www.flickr.com/photos/80824546@N00/9958535786/",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    },
+                    {
+                      "asset_id": "wm_quality:194126027",
+                      "score": 0.8359375,
+                      "title": "AC BD Lochnerstra\u00dfe 21.jpg",
+                      "source": "wm_quality",
+                      "ai_generated": false,
+                      "width": 2581,
+                      "height": 3226,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/wm_quality:194126027",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_33b7214c7da1a07ce4355a40/wm_quality:194126027?v=thumb",
+                      "rights": {
+                        "license": "cc-by-sa",
+                        "license_verbatim": "CC BY-SA 4.0",
+                        "commercial": true,
+                        "attribution_required": true,
+                        "derivatives": true,
+                        "share_alike": true,
+                        "attribution": "\"AC BD Lochnerstra\u00dfe 21.jpg\" by Grunpfnul, wm_quality, CC BY-SA",
+                        "provenance_url": "https://commons.wikimedia.org/wiki/File:AC_BD_Lochnerstra%C3%9Fe_21.jpg",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    }
+                  ],
+                  "latency_ms": 439,
+                  "timing_ms": {
+                    "embed": 180,
+                    "retrieve": 70,
+                    "rerank": 161
+                  },
+                  "mode": "text",
+                  "ranking": "text",
+                  "pool_size": 131,
+                  "reranked": 60,
+                  "backend": "voyage"
+                }
+              }
+            },
+            "headers": {
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "e.g. `60/min, 5000/day`"
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Requests left in the tighter window"
+              },
+              "X-RateLimit-Reset": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Seconds until the minute window resets"
+              },
+              "X-RateLimit-Tier": {
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "promo",
+                    "starter",
+                    "growth",
+                    "scale",
+                    "enterprise"
+                  ]
+                }
+              },
+              "X-Concurrency-Limit": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Searches allowed in flight at once"
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Insufficient prepaid credit.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "detail": "insufficient credit"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit or concurrency limit exceeded; `Retry-After` in seconds.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "e.g. `60/min, 5000/day`"
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Requests left in the tighter window"
+              },
+              "X-RateLimit-Reset": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Seconds until the minute window resets"
+              },
+              "X-RateLimit-Tier": {
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "promo",
+                    "starter",
+                    "growth",
+                    "scale",
+                    "enterprise"
+                  ]
+                }
+              },
+              "X-Concurrency-Limit": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Searches allowed in flight at once"
+              }
+            },
+            "content": {
+              "application/json": {
+                "examples": {
+                  "rate": {
+                    "value": {
+                      "detail": "rate limit exceeded: 30 per minute on the promo tier"
+                    }
+                  },
+                  "concurrency": {
+                    "value": {
+                      "detail": "too many concurrent requests for this account (max 2)"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Search/provider/auth dependency unavailable. Honor Retry-After; failed search is not charged."
+          }
+        }
+      }
+    },
+    "/v1/similar": {
+      "post": {
+        "summary": "Find similar indexed images",
+        "operationId": "similar_v1_similar_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimilarReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search results and source-declared rights.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                },
+                "example": {
+                  "query_id": "q_db7b4305df746986bd859ae0",
+                  "results": [
+                    {
+                      "asset_id": "stocksnap:BAVURMUHRD",
+                      "score": 0.74583352,
+                      "title": "car auto",
+                      "source": "stocksnap",
+                      "ai_generated": false,
+                      "width": 5000,
+                      "height": 4000,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/stocksnap:BAVURMUHRD",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/stocksnap:BAVURMUHRD?v=thumb",
+                      "rights": {
+                        "license": "cc0",
+                        "license_verbatim": "CC0 1.0",
+                        "commercial": true,
+                        "attribution_required": false,
+                        "derivatives": true,
+                        "share_alike": false,
+                        "attribution": null,
+                        "provenance_url": "https://stocksnap.io/photo/car-auto-BAVURMUHRD",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    },
+                    {
+                      "asset_id": "stocksnap:77BA6D52D0",
+                      "score": 0.7300238,
+                      "title": "red car",
+                      "source": "stocksnap",
+                      "ai_generated": false,
+                      "width": 5035,
+                      "height": 3339,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/stocksnap:77BA6D52D0",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/stocksnap:77BA6D52D0?v=thumb",
+                      "rights": {
+                        "license": "cc0",
+                        "license_verbatim": "CC0 1.0",
+                        "commercial": true,
+                        "attribution_required": false,
+                        "derivatives": true,
+                        "share_alike": false,
+                        "attribution": null,
+                        "provenance_url": "https://stocksnap.io/photo/red-car-77BA6D52D0",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    },
+                    {
+                      "asset_id": "wm_quality:153180537",
+                      "score": 0.71327692,
+                      "title": "2024 Mi\u0119dzylesie, ul. Wary\u0144skiego 11.jpg",
+                      "source": "wm_quality",
+                      "ai_generated": false,
+                      "width": 3222,
+                      "height": 2838,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/wm_quality:153180537",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/wm_quality:153180537?v=thumb",
+                      "rights": {
+                        "license": "cc-by-sa",
+                        "license_verbatim": "CC BY-SA 4.0",
+                        "commercial": true,
+                        "attribution_required": true,
+                        "derivatives": true,
+                        "share_alike": true,
+                        "attribution": "\"2024 Mi\u0119dzylesie, ul. Wary\u0144skiego 11.jpg\" by Jacek Halicki, wm_quality, CC BY-SA",
+                        "provenance_url": "https://commons.wikimedia.org/wiki/File:2024_Mi%C4%99dzylesie,_ul._Wary%C5%84skiego_11.jpg",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    },
+                    {
+                      "asset_id": "stocksnap:UOYLKV7K27",
+                      "score": 0.69847137,
+                      "title": "car auto",
+                      "source": "stocksnap",
+                      "ai_generated": false,
+                      "width": 4898,
+                      "height": 3265,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/stocksnap:UOYLKV7K27",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/stocksnap:UOYLKV7K27?v=thumb",
+                      "rights": {
+                        "license": "cc0",
+                        "license_verbatim": "CC0 1.0",
+                        "commercial": true,
+                        "attribution_required": false,
+                        "derivatives": true,
+                        "share_alike": false,
+                        "attribution": null,
+                        "provenance_url": "https://stocksnap.io/photo/car-auto-UOYLKV7K27",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    },
+                    {
+                      "asset_id": "wm_quality:75913777",
+                      "score": 0.69786596,
+                      "title": "2001 Rover Mini Cooper Sport 1.3 Rear.jpg",
+                      "source": "wm_quality",
+                      "ai_generated": false,
+                      "width": 3840,
+                      "height": 2479,
+                      "file": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/wm_quality:75913777",
+                      "thumb": "https://api.lightdrift.ai/v1/asset/q_db7b4305df746986bd859ae0/wm_quality:75913777?v=thumb",
+                      "rights": {
+                        "license": "cc-by-sa",
+                        "license_verbatim": "CC BY-SA 4.0",
+                        "commercial": true,
+                        "attribution_required": true,
+                        "derivatives": true,
+                        "share_alike": true,
+                        "attribution": "\"2001 Rover Mini Cooper Sport 1.3 Rear.jpg\" by Vauxford, wm_quality, CC BY-SA",
+                        "provenance_url": "https://commons.wikimedia.org/wiki/File:2001_Rover_Mini_Cooper_Sport_1.3_Rear.jpg",
+                        "basis": "as-declared by source; verify for critical use"
+                      }
+                    }
+                  ],
+                  "latency_ms": 72,
+                  "timing_ms": {
+                    "retrieve": 72
+                  },
+                  "ranking": "none",
+                  "mode": "none",
+                  "pool_size": 99,
+                  "reranked": 0,
+                  "backend": "voyage"
+                }
+              }
+            },
+            "headers": {
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "e.g. `60/min, 5000/day`"
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Requests left in the tighter window"
+              },
+              "X-RateLimit-Reset": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Seconds until the minute window resets"
+              },
+              "X-RateLimit-Tier": {
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "promo",
+                    "starter",
+                    "growth",
+                    "scale",
+                    "enterprise"
+                  ]
+                }
+              },
+              "X-Concurrency-Limit": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Searches allowed in flight at once"
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Insufficient prepaid credit.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "detail": "insufficient credit"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit or concurrency limit exceeded; `Retry-After` in seconds.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "e.g. `60/min, 5000/day`"
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Requests left in the tighter window"
+              },
+              "X-RateLimit-Reset": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Seconds until the minute window resets"
+              },
+              "X-RateLimit-Tier": {
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "promo",
+                    "starter",
+                    "growth",
+                    "scale",
+                    "enterprise"
+                  ]
+                }
+              },
+              "X-Concurrency-Limit": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Searches allowed in flight at once"
+              }
+            },
+            "content": {
+              "application/json": {
+                "examples": {
+                  "rate": {
+                    "value": {
+                      "detail": "rate limit exceeded: 30 per minute on the promo tier"
+                    }
+                  },
+                  "concurrency": {
+                    "value": {
+                      "detail": "too many concurrent requests for this account (max 2)"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Search/provider/auth dependency unavailable. Honor Retry-After; failed search is not charged."
+          }
+        }
+      }
+    },
+    "/v1/asset/{asset_id}": {
+      "get": {
+        "summary": "Asset Meta",
+        "operationId": "asset_meta_v1_asset__asset_id__get",
+        "parameters": [
+          {
+            "name": "asset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Asset Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset metadata and file links.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetResponse"
+                },
+                "example": {
+                  "asset_id": "isorepublic:17191",
+                  "title": "Mini in Brooklyn",
+                  "source": "isorepublic",
+                  "width": 4000,
+                  "height": 2667,
+                  "format": "jpeg",
+                  "file": "https://api.lightdrift.ai/v1/asset/direct/isorepublic:17191",
+                  "thumb": "https://api.lightdrift.ai/v1/asset/direct/isorepublic:17191?v=thumb",
+                  "rights": {
+                    "license": "cc0",
+                    "license_verbatim": "CC0 1.0",
+                    "commercial": true,
+                    "attribution_required": false,
+                    "derivatives": true,
+                    "share_alike": false,
+                    "attribution": null,
+                    "provenance_url": "https://isorepublic.com/photo/mini-in-brooklyn/",
+                    "basis": "as-declared by source; verify for critical use"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/health": {
+      "get": {
+        "summary": "Health",
+        "description": "Reports the serving configuration. deep=true checks database and Voyage index connectivity; use an actual search to verify provider availability.",
+        "operationId": "health_v1_health_get",
+        "parameters": [
+          {
+            "name": "deep",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Deep"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v1/warm": {
+      "get": {
+        "summary": "Warm",
+        "operationId": "warm_v1_warm_get",
+        "parameters": [
+          {
+            "name": "force",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Force"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "description": "Default Voyage photo search needs no legacy GPU warm-up. Readiness reflects configuration and recent provider activity, not a guarantee of a successful request."
+      }
+    },
+    "/v1/pricing": {
+      "get": {
+        "summary": "Current search pricing",
+        "operationId": "public_pricing",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Effective USD rate and standard rerank limit.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "currency": "USD",
+                  "search_price_usd_micros": 5000,
+                  "search_price_usd": "0.005",
+                  "per_1000_usd": 5,
+                  "standard_rerank_max": 100,
+                  "version": "2026-09-22"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Filters": {
+        "properties": {
+          "commercial": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Commercial"
+          },
+          "attribution_required": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attribution Required"
+          },
+          "derivatives": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Derivatives"
+          },
+          "license_id": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "License Id"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "min_width": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min Width"
+          },
+          "min_height": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min Height"
+          },
+          "orientation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Orientation"
+          },
+          "colors": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Colors"
+          },
+          "monochrome": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Monochrome"
+          },
+          "year_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Year Min"
+          },
+          "year_max": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Year Max"
+          },
+          "ai_generated": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ai Generated"
+          },
+          "nsfw_max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nsfw Max",
+            "default": 0.2
+          },
+          "format": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Format"
+          }
+        },
+        "type": "object",
+        "title": "Filters"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "SearchReq": {
+        "properties": {
+          "query": {
+            "type": "string",
+            "title": "Query",
+            "default": "",
+            "maxLength": 1000
+          },
+          "k": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 1.0,
+            "title": "K",
+            "default": 10
+          },
+          "ann_k": {
+            "type": "integer",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "title": "Ann K",
+            "default": 100
+          },
+          "bm25_k": {
+            "type": "integer",
+            "maximum": 1000.0,
+            "minimum": 0.0,
+            "title": "Bm25 K",
+            "default": 50
+          },
+          "ann_ef": {
+            "type": "integer",
+            "maximum": 4096.0,
+            "minimum": 64.0,
+            "title": "Ann Ef",
+            "default": 2048
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "none",
+              "text"
+            ],
+            "title": "Mode",
+            "default": "auto",
+            "description": "auto: text reranking for text, image similarity for image-only, fused similarity and text reranking for image-plus-text. text requires query text and forces caption reranking. none skips reranking."
+          },
+          "rerank": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rerank"
+          },
+          "rerank_k": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rerank K",
+            "default": 60,
+            "description": "Rerank up to 100 candidates; default 60. Null uses 100. Larger values are rejected before billing."
+          },
+          "rerank_text": {
+            "type": "boolean",
+            "title": "Rerank Text",
+            "default": true
+          },
+          "explain": {
+            "type": "boolean",
+            "title": "Explain",
+            "default": false
+          },
+          "filters": {
+            "$ref": "#/components/schemas/Filters"
+          },
+          "include_graphics": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Include Graphics"
+          },
+          "client_session": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Session"
+          },
+          "experiment": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Experiment"
+          },
+          "image_base64": {
+            "type": "string",
+            "maxLength": 6990572,
+            "description": "JPEG, PNG or WebP base64 data URL or raw base64. Maximum 5 MiB decoded, 20 megapixels; still images only. Resized to a 1024-pixel edge before embedding."
+          },
+          "image_url": {
+            "type": "string",
+            "maxLength": 4096,
+            "description": "Public HTTPS image URL on port 443, without embedded credentials. Same image limits; private addresses blocked. Use this or image_base64, not both."
+          }
+        },
+        "type": "object",
+        "required": [],
+        "title": "SearchReq",
+        "description": "Provide query text, one reference image, or both. image_base64 and image_url are mutually exclusive."
+      },
+      "SimilarReq": {
+        "properties": {
+          "asset_id": {
+            "type": "string",
+            "title": "Asset Id"
+          },
+          "k": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 1.0,
+            "title": "K",
+            "default": 10
+          },
+          "ann_k": {
+            "type": "integer",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "title": "Ann K",
+            "default": 100
+          },
+          "ann_ef": {
+            "type": "integer",
+            "maximum": 4096.0,
+            "minimum": 64.0,
+            "title": "Ann Ef",
+            "default": 2048
+          },
+          "explain": {
+            "type": "boolean",
+            "title": "Explain",
+            "default": false
+          },
+          "filters": {
+            "$ref": "#/components/schemas/Filters"
+          },
+          "client_session": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Session"
+          }
+        },
+        "type": "object",
+        "required": [
+          "asset_id"
+        ],
+        "title": "SimilarReq"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "SearchResponse": {
+        "type": "object",
+        "properties": {
+          "query_id": {
+            "type": "string"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Result"
+            }
+          },
+          "latency_ms": {
+            "type": "integer"
+          },
+          "timing_ms": {
+            "type": "object",
+            "properties": {
+              "embed": {
+                "type": "integer"
+              },
+              "retrieve": {
+                "type": "integer"
+              },
+              "rerank": {
+                "type": "integer"
+              }
+            }
+          },
+          "mode": {
+            "type": "string"
+          },
+          "ranking": {
+            "type": "string",
+            "description": "text, image, multimodal, none, or none (degraded). Multimodal scores fuse similarity and text ranks; scores are not probabilities."
+          },
+          "pool_size": {
+            "type": "integer"
+          },
+          "reranked": {
+            "type": "integer"
+          },
+          "backend": {
+            "type": "string",
+            "description": "Search responses report voyage."
+          },
+          "degraded": {
+            "type": "string",
+            "description": "Reranker unavailable; results are in retrieval order. Successful billed response."
+          },
+          "relaxed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Default filters relaxed to fill results; explicit constraints are not relaxed."
+          },
+          "query_type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "image",
+              "image_text"
+            ],
+            "description": "Input modality for /v1/search."
+          }
+        }
+      },
+      "Result": {
+        "type": "object",
+        "properties": {
+          "asset_id": {
+            "type": "string"
+          },
+          "score": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "ai_generated": {
+            "type": "boolean"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "file": {
+            "type": "string"
+          },
+          "thumb": {
+            "type": "string"
+          },
+          "rights": {
+            "$ref": "#/components/schemas/Rights"
+          }
+        }
+      },
+      "Rights": {
+        "type": "object",
+        "properties": {
+          "license": {
+            "type": "string"
+          },
+          "license_verbatim": {
+            "type": "string"
+          },
+          "commercial": {
+            "type": "boolean"
+          },
+          "attribution_required": {
+            "type": "boolean"
+          },
+          "derivatives": {
+            "type": "boolean"
+          },
+          "share_alike": {
+            "type": "boolean"
+          },
+          "attribution": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "provenance_url": {
+            "type": "string"
+          },
+          "basis": {
+            "type": "string"
+          }
+        }
+      },
+      "AssetResponse": {
+        "type": "object",
+        "properties": {
+          "asset_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "format": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "thumb": {
+            "type": "string"
+          },
+          "rights": {
+            "type": "object",
+            "properties": {
+              "license": {
+                "type": "string"
+              },
+              "license_verbatim": {
+                "type": "string"
+              },
+              "commercial": {
+                "type": "boolean"
+              },
+              "attribution_required": {
+                "type": "boolean"
+              },
+              "derivatives": {
+                "type": "boolean"
+              },
+              "share_alike": {
+                "type": "boolean"
+              },
+              "attribution": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "provenance_url": {
+                "type": "string"
+              },
+              "basis": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Your Lightdrift API key. Usage is metered per query."
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.lightdrift.ai",
+      "description": "Production"
+    }
+  ],
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

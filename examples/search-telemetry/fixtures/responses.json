@@ -1,0 +1,43 @@
+[
+  {
+    "query_id": "fixture-run-a",
+    "mode": "text",
+    "ranking": "text",
+    "query_type": "text",
+    "backend": "voyage",
+    "latency_ms": 120,
+    "timing_ms": {"embed": 18, "retrieve": 40, "rerank": 55},
+    "pool_size": 100,
+    "reranked": 60,
+    "results": [
+      {"asset_id": "fixture:a1", "title": "Synthetic A1", "width": 1920, "height": 1080, "rights": {}},
+      {"asset_id": "fixture:a2", "title": "Synthetic A2", "width": 1000, "height": 1000, "rights": {}}
+    ]
+  },
+  {
+    "query_id": "fixture-run-b",
+    "mode": "auto",
+    "ranking": "multimodal",
+    "query_type": "image_text",
+    "backend": "voyage",
+    "latency_ms": 210,
+    "timing_ms": {"embed": 30, "retrieve": 70, "rerank": 90},
+    "pool_size": 100,
+    "reranked": 40,
+    "relaxed": ["orientation", "min_width"],
+    "results": [
+      {"asset_id": "fixture:b1", "title": null, "width": null, "height": null, "rights": {}}
+    ]
+  },
+  {
+    "query_id": "fixture-run-c",
+    "mode": "auto",
+    "ranking": "none (degraded)",
+    "query_type": "text",
+    "backend": "voyage",
+    "degraded": "reranker_unavailable",
+    "pool_size": 50,
+    "reranked": 0,
+    "results": []
+  }
+]

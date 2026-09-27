@@ -1,0 +1,21 @@
+test_json_stdout (test_search_telemetry.CliTests.test_json_stdout) ... ok
+test_malformed_returns_two (test_search_telemetry.CliTests.test_malformed_returns_two) ... ok
+test_missing_path_returns_two (test_search_telemetry.CliTests.test_missing_path_returns_two) ... ok
+test_mixed_valid_and_invalid_inputs_fail_closed (test_search_telemetry.CliTests.test_mixed_valid_and_invalid_inputs_fail_closed) ... ok
+test_output_file (test_search_telemetry.CliTests.test_output_file) ... ok
+test_text_output (test_search_telemetry.CliTests.test_text_output) ... ok
+test_array_file_yields_three_responses (test_search_telemetry.LoadTests.test_array_file_yields_three_responses) ... ok
+test_malformed_file_reports_error (test_search_telemetry.LoadTests.test_malformed_file_reports_error) ... ok
+test_single_object_file (test_search_telemetry.LoadTests.test_single_object_file) ... ok
+test_counts (test_search_telemetry.ReportTests.test_counts) ... ok
+test_degraded_and_relaxed (test_search_telemetry.ReportTests.test_degraded_and_relaxed) ... ok
+test_empty_input_is_zeroed (test_search_telemetry.ReportTests.test_empty_input_is_zeroed) ... ok
+test_envelope_distributions (test_search_telemetry.ReportTests.test_envelope_distributions) ... ok
+test_latency_only_counts_present_values (test_search_telemetry.ReportTests.test_latency_only_counts_present_values) ... ok
+test_notice_states_scope (test_search_telemetry.ReportTests.test_notice_states_scope) ... ok
+test_ratio_filtered_to_nonzero_pool (test_search_telemetry.ReportTests.test_ratio_filtered_to_nonzero_pool) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.003s
+
+OK
