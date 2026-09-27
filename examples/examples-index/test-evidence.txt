@@ -1,0 +1,17 @@
+test_exit_two_on_bad_input (test_build_examples_index.CliTests.test_exit_two_on_bad_input) ... ok
+test_exit_zero_when_no_strict (test_build_examples_index.CliTests.test_exit_zero_when_no_strict) ... ok
+test_strict_exit_one_when_gap (test_build_examples_index.CliTests.test_strict_exit_one_when_gap) ... ok
+test_writes_output_and_report (test_build_examples_index.CliTests.test_writes_output_and_report) ... ok
+test_discovers_examples_and_titles (test_build_examples_index.DiscoverTests.test_discovers_examples_and_titles) ... ok
+test_missing_dir_raises_input_error (test_build_examples_index.DiscoverTests.test_missing_dir_raises_input_error) ... ok
+test_readme_without_heading_is_error (test_build_examples_index.DiscoverTests.test_readme_without_heading_is_error) ... ok
+test_run_command_ignores_test_files (test_build_examples_index.DiscoverTests.test_run_command_ignores_test_files) ... ok
+test_commit_pinned_example_link_counts (test_build_examples_index.GuideCoverageTests.test_commit_pinned_example_link_counts) ... ok
+test_guide_linked_by_example_path_counts (test_build_examples_index.GuideCoverageTests.test_guide_linked_by_example_path_counts) ... ok
+test_mdx_links_examples_and_existing_guide (test_build_examples_index.GuideCoverageTests.test_mdx_links_examples_and_existing_guide) ... ok
+test_prose_mention_without_example_link_does_not_count (test_build_examples_index.GuideCoverageTests.test_prose_mention_without_example_link_does_not_count) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.004s
+
+OK

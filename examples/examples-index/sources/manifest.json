@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-09-27T03:05:00+00:00",
+  "sources": [
+    {
+      "name": "docs_navigation",
+      "path": "/data/workspaces/content-distribution/lightdrift-docs/docs.json",
+      "sha256": "8d757e132933b15474e4472fbcc0c301ba5924610900f99a6d83d1ae39443f22",
+      "bytes": 3766,
+      "kind": "local_file",
+      "fetched": false
+    },
+    {
+      "name": "guide_bounded_search_plan",
+      "path": "/data/workspaces/content-distribution/lightdrift-docs/guides/bounded-search-plan.mdx",
+      "sha256": "53127345f1d3cac8a72d59aa84527530372dbd1a2c022940fc533b55c22b4d91",
+      "bytes": 7981,
+      "kind": "local_file",
+      "fetched": false
+    },
+    {
+      "name": "guide_n8n_stock_image_selection",
+      "path": "/data/workspaces/content-distribution/lightdrift-docs/guides/n8n-stock-image-selection.mdx",
+      "sha256": "70e08771c89cbd0acfee3c76d9f102faa0e479ba036b8e253bd133d830eff132",
+      "bytes": 14981,
+      "kind": "local_file",
+      "fetched": false
+    },
+    {
+      "name": "example_bounded_search_plan_readme",
+      "path": "/data/workspaces/content-distribution/public-examples/examples/bounded-search-plan/README.md",
+      "sha256": "b71e7de2118d3aeb513b630e27b566b6f8552d5cca54309cb22b324e20064e49",
+      "bytes": 7696,
+      "kind": "local_file",
+      "fetched": false
+    }
+  ],
+  "notes": [
+    "All inputs are local working copies already published by the Content lane; no network fetch was needed or made.",
+    "Guide-to-example linkage convention observed: guides link the example source at .../examples/<key> (optionally commit-pinned)."
+  ]
+}
