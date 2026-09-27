@@ -74,6 +74,8 @@ Pull a saved response into a spreadsheet-ready table with the [offline editorial
 
 Summarize a batch of saved search envelopes with the [offline search telemetry report](examples/search-telemetry). It reads one or more stored `/v1/search` or `/v1/similar` responses and counts what they declare — latency and `timing_ms` phases, `pool_size`/`reranked` ratios, result counts, and `mode`/`ranking`/`query_type`/`backend` distributions, including `degraded` and `relaxed` responses — with no key, network call or credit. The counts describe only the files you pass in, not service performance.
 
+Reconcile saved search and `/v1/asset/{asset_id}` responses into one canonical inventory with the [offline asset-inventory reconciler](examples/asset-inventory). It merges metadata for known asset ids, lists the assets still missing canonical metadata with a ready-to-run `GET /v1/asset/{id}` plan, counts duplicates, and flags field/rights conflicts between the two views; it makes no network call and a conflict is a signal to review, not a verdict.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

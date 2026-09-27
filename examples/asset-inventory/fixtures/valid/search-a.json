@@ -1,0 +1,10 @@
+{
+  "query_id": "fixture-search-a",
+  "mode": "text",
+  "ranking": "text",
+  "results": [
+    {"asset_id": "fixture:a1", "title": "Synthetic A1", "source": "synthetic", "width": 1920, "height": 1080, "file": "https://api.lightdrift.ai/v1/asset/direct/fixture:a1", "rights": {"commercial": false, "attribution_required": false, "license": "cc0"}},
+    {"asset_id": "fixture:a2", "title": "Synthetic A2", "source": "synthetic", "width": 1000, "height": 1000, "rights": {"commercial": null, "attribution_required": null}},
+    {"asset_id": "fixture:a3", "title": "Synthetic A3", "source": "synthetic", "width": 800, "height": 600, "rights": {"commercial": true, "attribution_required": false}}
+  ]
+}

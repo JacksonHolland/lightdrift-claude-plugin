@@ -1,0 +1,25 @@
+# asset-inventory test evidence
+# command: python3 asset_inventory_test.py
+# date: 2026-09-27T02:56:01Z
+
+test_search_and_asset_are_distinguished (__main__.ClassificationTests.test_search_and_asset_are_distinguished) ... ok
+test_json_output_is_valid (__main__.CliTests.test_json_output_is_valid) ... ok
+test_malformed_input_exits_two (__main__.CliTests.test_malformed_input_exits_two) ... asset-inventory: /data/context/gtm-machine/handoffs/3117e533-cc86-4a27-b7ee-e2d7b304e7bb/73263cc8-a8e5-4409-b4d1-ea5c7c17a0a8/asset-inventory-v1/package/asset-inventory/fixtures/malformed.json: invalid JSON (Expecting value)
+ok
+test_plan_only_is_a_list (__main__.CliTests.test_plan_only_is_a_list) ... ok
+test_text_format_summarises (__main__.CliTests.test_text_format_summarises) ... ok
+test_counts (__main__.InventoryTests.test_counts) ... ok
+test_duplicate_detection (__main__.InventoryTests.test_duplicate_detection) ... ok
+test_field_conflict_width_and_rights (__main__.InventoryTests.test_field_conflict_width_and_rights) ... ok
+test_inventory_flags_presence (__main__.InventoryTests.test_inventory_flags_presence) ... ok
+test_request_plan_shape_and_order (__main__.InventoryTests.test_request_plan_shape_and_order) ... ok
+test_rights_attribution_conflict (__main__.InventoryTests.test_rights_attribution_conflict) ... ok
+test_unresolved_ids (__main__.InventoryTests.test_unresolved_ids) ... ok
+test_directory_loads_every_json (__main__.LoadTests.test_directory_loads_every_json) ... ok
+test_malformed_reports_error_not_crash (__main__.LoadTests.test_malformed_reports_error_not_crash) ... ok
+test_missing_path_reports_error (__main__.LoadTests.test_missing_path_reports_error) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.003s
+
+OK

@@ -1,0 +1,9 @@
+{
+  "query_id": "fixture-search-b",
+  "mode": "auto",
+  "ranking": "multimodal",
+  "results": [
+    {"asset_id": "fixture:a3", "title": "Synthetic A3", "source": "synthetic", "width": 800, "height": 600, "rights": {"commercial": true, "attribution_required": false}},
+    {"asset_id": "fixture:a4", "title": "Synthetic A4", "source": "synthetic", "width": 640, "height": 480, "rights": {"commercial": false}}
+  ]
+}

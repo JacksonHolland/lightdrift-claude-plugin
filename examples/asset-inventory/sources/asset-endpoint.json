@@ -1,0 +1,165 @@
+{
+  "source": "lightdrift-docs/openapi.json",
+  "note": "Extracted evidence for the /v1/asset/{asset_id} endpoint and AssetResponse schema used by asset-inventory.",
+  "path": {
+    "get": {
+      "summary": "Asset Meta",
+      "operationId": "asset_meta_v1_asset__asset_id__get",
+      "parameters": [
+        {
+          "name": "asset_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "title": "Asset Id"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Asset metadata and file links.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssetResponse"
+              },
+              "example": {
+                "asset_id": "isorepublic:17191",
+                "title": "Mini in Brooklyn",
+                "source": "isorepublic",
+                "width": 4000,
+                "height": 2667,
+                "format": "jpeg",
+                "file": "https://api.lightdrift.ai/v1/asset/direct/isorepublic:17191",
+                "thumb": "https://api.lightdrift.ai/v1/asset/direct/isorepublic:17191?v=thumb",
+                "rights": {
+                  "license": "cc0",
+                  "license_verbatim": "CC0 1.0",
+                  "commercial": true,
+                  "attribution_required": false,
+                  "derivatives": true,
+                  "share_alike": false,
+                  "attribution": null,
+                  "provenance_url": "https://isorepublic.com/photo/mini-in-brooklyn/",
+                  "basis": "as-declared by source; verify for critical use"
+                }
+              }
+            }
+          }
+        },
+        "422": {
+          "description": "Validation Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HTTPValidationError"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "schemas": {
+    "AssetResponse": {
+      "type": "object",
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "format": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "thumb": {
+          "type": "string"
+        },
+        "rights": {
+          "type": "object",
+          "properties": {
+            "license": {
+              "type": "string"
+            },
+            "license_verbatim": {
+              "type": "string"
+            },
+            "commercial": {
+              "type": "boolean"
+            },
+            "attribution_required": {
+              "type": "boolean"
+            },
+            "derivatives": {
+              "type": "boolean"
+            },
+            "share_alike": {
+              "type": "boolean"
+            },
+            "attribution": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "provenance_url": {
+              "type": "string"
+            },
+            "basis": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Rights": {
+      "type": "object",
+      "properties": {
+        "license": {
+          "type": "string"
+        },
+        "license_verbatim": {
+          "type": "string"
+        },
+        "commercial": {
+          "type": "boolean"
+        },
+        "attribution_required": {
+          "type": "boolean"
+        },
+        "derivatives": {
+          "type": "boolean"
+        },
+        "share_alike": {
+          "type": "boolean"
+        },
+        "attribution": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance_url": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

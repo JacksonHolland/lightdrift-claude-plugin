@@ -1,0 +1,21 @@
+{
+  "asset_id": "fixture:a1",
+  "title": "Synthetic A1",
+  "source": "synthetic",
+  "width": 1900,
+  "height": 1080,
+  "format": "jpeg",
+  "file": "https://api.lightdrift.ai/v1/asset/direct/fixture:a1",
+  "thumb": "https://api.lightdrift.ai/v1/asset/direct/fixture:a1?v=thumb",
+  "rights": {
+    "license": "cc0",
+    "license_verbatim": "CC0 1.0",
+    "commercial": true,
+    "attribution_required": false,
+    "derivatives": true,
+    "share_alike": false,
+    "attribution": null,
+    "provenance_url": "https://example.invalid/a1",
+    "basis": "as-declared by source; verify for critical use"
+  }
+}

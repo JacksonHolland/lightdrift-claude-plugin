@@ -1,0 +1,17 @@
+{
+  "asset_id": "fixture:a3",
+  "title": "Synthetic A3",
+  "source": "synthetic",
+  "width": 800,
+  "height": 600,
+  "format": "jpeg",
+  "rights": {
+    "license": "cc-by-4.0",
+    "commercial": true,
+    "attribution_required": true,
+    "attribution": "Synthetic Photographer",
+    "derivatives": true,
+    "share_alike": false,
+    "provenance_url": "https://example.invalid/a3"
+  }
+}
