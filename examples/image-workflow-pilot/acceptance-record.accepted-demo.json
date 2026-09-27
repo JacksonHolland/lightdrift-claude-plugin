@@ -1,0 +1,119 @@
+{
+  "buyer_answers_supplied": true,
+  "criteria": [
+    {
+      "detail": "20 confirmed briefs match requests",
+      "evidence": [
+        {
+          "brief_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16",
+            "S17",
+            "S18",
+            "S19",
+            "S20"
+          ],
+          "requests": 20
+        }
+      ],
+      "id": "A1",
+      "requirement": "the twenty briefs used are the buyer-confirmed list",
+      "status": "pass"
+    },
+    {
+      "detail": "exactly 20 requests",
+      "evidence": [
+        {
+          "requests": 20
+        }
+      ],
+      "id": "A2",
+      "requirement": "one searchable request per brief is produced",
+      "status": "pass"
+    },
+    {
+      "detail": "20 briefs have candidate records (0 with result_count 0)",
+      "evidence": [
+        {
+          "candidate_briefs": 20,
+          "empty_result_briefs": []
+        }
+      ],
+      "id": "A3",
+      "requirement": "candidates + provenance returned for every brief that returned results",
+      "status": "pass"
+    },
+    {
+      "detail": "20 rows carry rights + review_status",
+      "evidence": [
+        {
+          "rows": 20
+        }
+      ],
+      "id": "A4",
+      "requirement": "every candidate row carries its rights fields and a review_status",
+      "status": "pass"
+    },
+    {
+      "detail": "buyer reported 17 usable briefs (>= 16)",
+      "evidence": [
+        {
+          "key": "usable_briefs",
+          "value": 17
+        }
+      ],
+      "id": "A5",
+      "requirement": "usable candidate found for >= 16 of 20 briefs (buyer-recorded)",
+      "status": "pass"
+    },
+    {
+      "detail": "buyer confirmed credit/source survives for selected assets",
+      "evidence": [
+        {
+          "key": "attribution_survives",
+          "value": true
+        }
+      ],
+      "id": "A6",
+      "requirement": "required credit/source info survives to the review step (buyer-recorded)",
+      "status": "pass"
+    },
+    {
+      "detail": "buyer confirmed they ran the handoff on their own briefs",
+      "evidence": [
+        {
+          "key": "handoff_run",
+          "value": true
+        }
+      ],
+      "id": "A7",
+      "requirement": "the buyer can run the handoff on their own briefs (buyer-recorded)",
+      "status": "pass"
+    }
+  ],
+  "expected_count": 20,
+  "pilot_id": "image-workflow-pilot-v1",
+  "schema_version": 1,
+  "source": "fixtures",
+  "summary": {
+    "checked": 7,
+    "fail": 0,
+    "pass": 7,
+    "unchecked": 0
+  },
+  "verdict": "accepted"
+}
