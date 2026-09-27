@@ -31,7 +31,7 @@ Look for `POST /v1/search`, one brief per request, `k: 5`, and the commercial/la
 
 ## 2. Make the explicit transition to live execution
 
-[Create your Lightdrift account and API key](https://lightdrift.ai/sign-up?utm_source=github&utm_medium=demo&utm_campaign=lig122_terminal_demo_v1&utm_content=walkthrough). Check your account entitlement and [current pricing](https://api.lightdrift.ai/v1/pricing) before continuing. On September 26, 2026 the pricing endpoint returned $0.005 per search ($5 per 1,000). Three successful searches would cost $0.015 at that rate; running both examples would make up to six searches. The dry-run establishes no free-search entitlement.
+[Create your Lightdrift account and API key](https://lightdrift.ai/sign-up?utm_source=github&utm_medium=demo&utm_campaign=lig122_terminal_demo_v1&utm_content=walkthrough). Check your remaining credits and [current pricing](https://api.lightdrift.ai/v1/pricing) before continuing. Each search costs 1 credit per 10 results requested, rounded up, minimum 1. Three 5-result searches use 3 credits; running both examples makes up to six searches, or 6 credits. The Free plan includes 500 credits per month for text search. The dry-run uses no credits.
 
 Supply your own `LIGHTDRIFT_API_KEY` through your backend environment or secret manager. For an interactive **Bash** session, this prompt keeps the value out of shell history and terminal echo:
 

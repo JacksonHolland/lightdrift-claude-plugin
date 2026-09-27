@@ -49,7 +49,7 @@ Keep preview output private when it contains unpublished editorial briefs. The r
 
 ## 4. Opt into one search, then optionally one draft write
 
-After checking your account entitlement and the [current price](https://api.lightdrift.ai/v1/pricing):
+After checking your remaining credits and [current pricing](https://api.lightdrift.ai/v1/pricing):
 
 ```sh
 python3 review_queue.py --content-draft drafts.article-1 \
@@ -57,9 +57,9 @@ python3 review_queue.py --content-draft drafts.article-1 \
   --live-search > live-preview.json
 ```
 
-This makes one search requesting five candidates. On September 26, 2026, the public price was $0.005 per successful search, or $5 per 1,000. Five returned candidates are one search. Filtering for commercial and derivative permissions expresses source-declared conditions; it does not approve your intended use.
+This makes one search requesting five candidates. Each search costs 1 credit per 10 results requested, rounded up, minimum 1, so a five-candidate search uses 1 credit from your monthly allowance. Filtering for commercial and derivative permissions expresses source-declared conditions; it does not approve your intended use.
 
-To combine one search with one Sanity draft mutation, add `--write-draft`. This is a new invocation and can incur another search charge. To test the Sanity write without a paid search, use the separately gated fixture path against your test dataset:
+To combine one search with one Sanity draft mutation, add `--write-draft`. This is a new invocation and can use another credit. To test the Sanity write without a paid search, use the separately gated fixture path against your test dataset:
 
 ```sh
 python3 review_queue.py --content-draft drafts.article-1 \

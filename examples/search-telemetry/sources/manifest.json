@@ -4,7 +4,7 @@
     "url": "https://api.lightdrift.ai/openapi.json",
     "mirror": "openapi.json",
     "note": "Working-copy schema used to confirm the SearchResponse fields this utility reads (query_id, results, latency_ms, timing_ms, mode, ranking, pool_size, reranked, backend, degraded, relaxed, query_type). Live document may differ from this capture.",
-    "sha256": "a2bab79b095b1a3121b2b8c238eba4d63b2a582e4ec07befac090250ad753cd8",
+    "sha256": "55e904cb8d21c3c268b550ea9092c46292669d929cd7ea7b9c96448e14a7718d",
     "observed_at": "2026-09-27T02:52:00+00:00"
   },
   {

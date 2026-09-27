@@ -4,18 +4,18 @@ from pathlib import Path
 import subprocess
 import sys
 import unittest
-from search_plan import build_plan, load, request, money, unique_object
+from search_plan import build_plan, load, request, credits_for, unique_object
 
 ROOT = Path(__file__).parent
 
 def base():
-    return {'requests': [{'query': 'solar panels'}], 'budget_usd': '0.005', 'max_requests': 1, 'attempts_per_request': 1}
+    return {'requests': [{'query': 'solar panels'}], 'budget_credits': 1, 'max_requests': 1, 'attempts_per_request': 1}
 
 class PlanTests(unittest.TestCase):
     def test_boundary(self):
         r = build_plan(base())
         self.assertEqual(r['status'], 'within_plan_limits')
-        self.assertEqual(r['valid_subset_estimate_usd'], '0.005000')
+        self.assertEqual(r['valid_subset_estimate_credits'], 1)
     def test_duplicates(self):
         r = build_plan(load(ROOT/'fixtures/duplicates.json'))
         self.assertEqual(r['valid_unique_count'], 1)
@@ -33,24 +33,24 @@ class PlanTests(unittest.TestCase):
         self.assertEqual(r['valid_subset_request_ceiling'], 4)
         self.assertEqual(r['requests'], [])
     def test_retries_cap(self):
-        p = base(); p['attempts_per_request'] = 2; p['budget_usd'] = '1'
+        p = base(); p['attempts_per_request'] = 2; p['budget_credits'] = 100
         self.assertEqual(build_plan(p)['block_reasons'], ['request_cap_exceeded'])
     def test_retry_price(self):
-        p = base(); p.update(attempts_per_request=3, max_requests=3, budget_usd='0.015')
-        self.assertEqual(build_plan(p)['valid_subset_estimate_usd'], '0.015000')
+        p = base(); p.update(attempts_per_request=3, max_requests=3, budget_credits=3)
+        self.assertEqual(build_plan(p)['valid_subset_estimate_credits'], 3)
     def test_invalid_does_not_partially_execute(self):
         p = base(); p['requests'].append({'query': ''})
         self.assertEqual(build_plan(p)['executable_request_count'], 0)
     def test_exact_text(self):
-        p = base(); p.update(budget_usd='1', max_requests=10)
+        p = base(); p.update(budget_credits=100, max_requests=10)
         p['requests'] = [{'query': x} for x in ['cat', 'Cat', ' cat', 'cat ']]
         self.assertEqual(build_plan(p)['valid_unique_count'], 4)
     def test_null_omission_order(self):
-        p = base(); p.update(budget_usd='1', max_requests=10)
+        p = base(); p.update(budget_credits=100, max_requests=10)
         p['requests'] = [{'query': 'cat', 'filters': f} for f in [{}, {'commercial': None}, {'source': ['a','b']}, {'source': ['b','a']}]]
         self.assertEqual(build_plan(p)['valid_unique_count'], 4)
     def test_changed_k(self):
-        p = base(); p.update(budget_usd='1', max_requests=10)
+        p = base(); p.update(budget_credits=100, max_requests=10)
         p['requests'] += [{'query': 'solar panels', 'k': 5}]
         self.assertEqual(build_plan(p)['valid_unique_count'], 2)
     def test_bad_types(self):
@@ -62,10 +62,21 @@ class PlanTests(unittest.TestCase):
     def test_query_bounds(self):
         self.assertEqual(len(request({'query':'x'*1000})['query']),1000)
         with self.assertRaises(ValueError): request({'query':'x'*1001})
-    def test_decimal(self):
-        self.assertEqual(money('0.000001'), 1)
-        for v in ['NaN','1e3','-1','0.0000001',0.005,True]:
-            with self.subTest(v=v), self.assertRaises(ValueError): money(v)
+    def test_credit_rule(self):
+        for k, want in [(1, 1), (10, 1), (11, 2), (50, 5), (100, 10)]:
+            with self.subTest(k=k): self.assertEqual(credits_for(k), want)
+    def test_credits_follow_k(self):
+        p = base(); p.update(budget_credits=6, max_requests=10)
+        p['requests'] = [{'query': 'cat', 'k': 50}, {'query': 'dog', 'k': 5}]
+        r = build_plan(p)
+        self.assertEqual(r['base_estimate_credits'], 6)
+        self.assertEqual(r['status'], 'within_plan_limits')
+        p['budget_credits'] = 5
+        self.assertEqual(build_plan(p)['block_reasons'], ['budget_exceeded'])
+    def test_budget_type(self):
+        for v in ['1', 1.5, -1, True, None]:
+            p = base(); p['budget_credits'] = v
+            with self.subTest(v=v), self.assertRaises(ValueError): build_plan(p)
     def test_no_mutation(self):
         p=base(); before=copy.deepcopy(p); build_plan(p); self.assertEqual(p,before)
     def test_duplicate_keys(self):

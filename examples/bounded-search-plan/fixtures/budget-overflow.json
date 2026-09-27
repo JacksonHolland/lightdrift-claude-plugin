@@ -7,7 +7,7 @@
       "query": "wind turbines"
     }
   ],
-  "budget_usd": "0.019999",
+  "budget_credits": 3,
   "max_requests": 10,
   "attempts_per_request": 2
 }

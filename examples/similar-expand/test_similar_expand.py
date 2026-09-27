@@ -44,39 +44,40 @@ class SeedExtractionTests(unittest.TestCase):
 
 class PlanTests(unittest.TestCase):
     def test_planned_cost_and_skip(self):
-        plan = se.plan_expansion(["a", "b", "c"], k=10, max_seeds=2,
-                                 price_micros=5000)
+        plan = se.plan_expansion(["a", "b", "c"], k=10, max_seeds=2)
         self.assertEqual(plan["seeds"], ["a", "b"])
         self.assertEqual(plan["planned_requests"], 2)
-        self.assertEqual(plan["planned_cost_usd"], "0.010000")
+        self.assertEqual(plan["planned_credits"], 2)
         self.assertEqual(plan["seeds_skipped"], 1)
         self.assertFalse(plan["blocked"])
 
     def test_budget_blocks_plan(self):
-        plan = se.plan_expansion(["a", "b"], k=5, max_seeds=5, price_micros=5000,
-                                 budget_micros=9999)
+        plan = se.plan_expansion(["a", "b"], k=5, max_seeds=5,
+                                 budget_credits=1)
         self.assertTrue(plan["blocked"])
 
     def test_budget_boundary_is_inclusive(self):
-        plan = se.plan_expansion(["a", "b"], k=5, max_seeds=5, price_micros=5000,
-                                 budget_micros=10000)
+        plan = se.plan_expansion(["a", "b"], k=5, max_seeds=5,
+                                 budget_credits=2)
         self.assertFalse(plan["blocked"])
 
     def test_rejects_out_of_range_k(self):
         with self.assertRaises(se.InputError):
-            se.plan_expansion(["a"], k=101, max_seeds=5, price_micros=5000)
+            se.plan_expansion(["a"], k=101, max_seeds=5)
 
 
-class MoneyTests(unittest.TestCase):
-    def test_micros_round_trip(self):
-        self.assertEqual(se._micros_from_decimal("0.005"), 5000)
-        self.assertEqual(se._micros_from_decimal("0.03"), 30000)
-        self.assertEqual(se._usd_from_micros(30000), "0.030000")
+class CreditTests(unittest.TestCase):
+    def test_credit_rule(self):
+        for k, want in [(1, 1), (10, 1), (11, 2), (50, 5), (100, 10)]:
+            self.assertEqual(se.credits_per_request(k), want)
 
-    def test_rejects_bad_decimal(self):
-        for value in ["-1", "abc", "1.2.3", ""]:
-            with self.assertRaises(se.InputError):
-                se._micros_from_decimal(value)
+    def test_larger_k_costs_more_credits(self):
+        plan = se.plan_expansion(["a", "b"], k=25, max_seeds=5)
+        self.assertEqual(plan["planned_credits"], 6)
+
+    def test_rejects_negative_budget(self):
+        with self.assertRaises(se.InputError):
+            se.plan_expansion(["a"], k=10, max_seeds=5, budget_credits=-1)
 
 
 class MergeTests(unittest.TestCase):
@@ -112,18 +113,19 @@ class CliTests(unittest.TestCase):
     def test_dry_run_plan_from_saved_response(self):
         code, stdout = self._run(
             ["--seeds-from", str(FIXTURES / "seed-response.json"),
-             "--budget-usd", "0.02"])
+             "--budget-credits", "2"])
         self.assertEqual(code, 0)
         report = json.loads(stdout)
         self.assertEqual(report["mode"], "plan")
         self.assertEqual(report["planned_requests"], 2)
-        self.assertEqual(report["planned_cost_usd"], "0.010000")
+        self.assertEqual(report["planned_credits"], 2)
+        self.assertEqual(report["credits_per_request"], 1)
         self.assertFalse(report["blocked"])
         self.assertEqual(report["shortlist_count"], 0)
 
     def test_budget_exceeded_exits_one_without_requests(self):
         code, stdout = self._run(
-            ["--seed", "a", "--seed", "b", "--budget-usd", "0.005"])
+            ["--seed", "a", "--seed", "b", "--budget-credits", "1"])
         self.assertEqual(code, 1)
         report = json.loads(stdout)
         self.assertTrue(report["blocked"])
@@ -138,7 +140,7 @@ class CliTests(unittest.TestCase):
         report = json.loads(stdout)
         self.assertEqual(report["mode"], "merge")
         self.assertEqual(report["shortlist_count"], 4)
-        self.assertEqual(report["planned_cost_usd"], "0.000000")
+        self.assertEqual(report["planned_credits"], 0)
 
     def test_malformed_input_exits_two(self):
         code = None
@@ -162,11 +164,19 @@ class CliTests(unittest.TestCase):
 
 class AbortPolicyTests(unittest.TestCase):
     def test_abort_reasons(self):
-        self.assertEqual(se._abort_reason(402), "insufficient_credit")
+        self.assertEqual(se._abort_reason(402), "credits_exhausted")
+        self.assertEqual(se._abort_reason(403), "paid_feature")
         self.assertEqual(se._abort_reason(429), "rate_limited")
         self.assertEqual(se._abort_reason(503), "provider_unavailable")
         self.assertIsNone(se._abort_reason(404))
         self.assertIsNone(se._abort_reason(422))
+
+    def test_upgrade_url_is_extracted(self):
+        body = json.dumps({"detail": {"error": "paid_feature", "feature": "similar_search",
+                                      "upgrade_url": "https://lightdrift.ai/dashboard/billing"}})
+        self.assertEqual(se._upgrade_url(body), "https://lightdrift.ai/dashboard/billing")
+        self.assertIsNone(se._upgrade_url("not json"))
+        self.assertIsNone(se._upgrade_url(json.dumps({"detail": "rate limited"})))
 
     def test_idempotency_key_is_stable_and_seed_specific(self):
         self.assertEqual(se._idempotency_key("a", 5), se._idempotency_key("a", 5))

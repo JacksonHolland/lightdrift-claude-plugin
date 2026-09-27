@@ -7,13 +7,16 @@ into one identity-deduplicated shortlist that keeps the source-declared rights.
 
 Two safety properties matter:
 
-* The default is a **plan**: nothing is sent and no credit is spent until the
+* The default is a **plan**: nothing is sent and no credits are spent until the
   caller passes ``--live`` and supplies an API key in ``LIGHTDRIFT_API_KEY``.
 * Saved responses can be merged offline with ``--expansion`` so a run is
   reproducible without a key, network or search credit.
 
-It never retries ambiguously. A ``404`` seed is skipped, a ``402`` or ``429``
-aborts the remainder, and a ``5xx`` aborts rather than burning credit. It never
+It never retries ambiguously. A ``404`` seed is skipped; a ``402``
+(``credits_exhausted``), ``403`` (``paid_feature``: find-similar needs a paid
+plan) or ``429`` aborts the remainder, and a ``5xx`` aborts rather than
+spending credits. On 402/403 the error body's ``upgrade_url`` is kept in the
+report so the user can upgrade. It never
 forwards the API key to a returned file URL.
 
 This is a plan/merge helper, not a rights decision. Permissions come from the
@@ -32,7 +35,7 @@ import urllib.request
 
 SCHEMA = "similar-expand/1"
 DEFAULT_BASE_URL = "https://api.lightdrift.ai"
-DEFAULT_PRICE_MICROS = 5000  # documented $0.005 per successful search/similar call
+RESULTS_PER_CREDIT = 10  # 1 credit per 10 results requested, rounded up, minimum 1
 
 
 class InputError(ValueError):
@@ -91,47 +94,30 @@ def extract_seed_asset_ids(response, source_label: str):
     return seeds
 
 
-def _micros_from_decimal(value: str) -> int:
-    """Parse a decimal USD string into integer microdollars.
-
-    Plain decimal arithmetic on money is unreliable; the plan compares integer
-    microdollars instead.
-    """
-    try:
-        whole, _, frac = str(value).partition(".")
-        frac = (frac + "000000")[:6]
-        if not whole.isdigit() or not frac.isdigit():
-            raise ValueError
-        return int(whole) * 1_000_000 + int(frac)
-    except (TypeError, ValueError):
-        raise InputError("budget_usd must be a non-negative decimal, got %r" % (value,))
+def credits_per_request(k: int) -> int:
+    """Credits reserved for one /v1/similar call: ceil(k / 10), minimum 1."""
+    return max(1, -(-k // RESULTS_PER_CREDIT))
 
 
-def _usd_from_micros(micros: int) -> str:
-    sign = "-" if micros < 0 else ""
-    micros = abs(micros)
-    return "%s%d.%06d" % (sign, micros // 1_000_000, micros % 1_000_000)
-
-
-def plan_expansion(seeds, k, max_seeds, price_micros, budget_micros=None):
+def plan_expansion(seeds, k, max_seeds, budget_credits=None):
     """Return a deterministic plan dict; no network and no mutation."""
     if k < 1 or k > 100:
         raise InputError("k must be between 1 and 100")
     if max_seeds < 1:
         raise InputError("max_seeds must be at least 1")
-    if price_micros < 0:
-        raise InputError("price_usd_micros must be non-negative")
+    if budget_credits is not None and budget_credits < 0:
+        raise InputError("budget_credits must be non-negative")
 
     selected = list(seeds)[:max_seeds]
-    planned_micros = price_micros * len(selected)
-    blocked = budget_micros is not None and planned_micros > budget_micros
+    planned_credits = credits_per_request(k) * len(selected)
+    blocked = budget_credits is not None and planned_credits > budget_credits
     return {
         "seeds": selected,
         "seeds_available": len(seeds),
         "seeds_skipped": max(0, len(seeds) - len(selected)),
         "planned_requests": len(selected),
-        "planned_cost_usd": _usd_from_micros(planned_micros),
-        "budget_usd": None if budget_micros is None else _usd_from_micros(budget_micros),
+        "planned_credits": planned_credits,
+        "budget_credits": budget_credits,
         "blocked": blocked,
     }
 
@@ -229,12 +215,26 @@ def live_lookup(base_url, api_key, seed, k, timeout):
 
 def _abort_reason(http_status):
     if http_status == 402:
-        return "insufficient_credit"
+        return "credits_exhausted"
+    if http_status == 403:
+        return "paid_feature"
     if http_status == 429:
         return "rate_limited"
     if http_status is not None and 500 <= http_status < 600:
         return "provider_unavailable"
     return None
+
+
+def _upgrade_url(detail):
+    """Return upgrade_url (or buy_credits_url) from a 402/403 error body, if any."""
+    try:
+        body = json.loads(detail or "")
+    except ValueError:
+        return None
+    inner = body.get("detail") if isinstance(body, dict) else None
+    if not isinstance(inner, dict):
+        return None
+    return inner.get("upgrade_url") or inner.get("buy_credits_url")
 
 
 def run_live(plan, base_url, api_key, k, timeout):
@@ -263,6 +263,9 @@ def run_live(plan, base_url, api_key, k, timeout):
             entry["error"] = outcome.get("error")
             if outcome.get("retry_after"):
                 entry["retry_after"] = outcome["retry_after"]
+            upgrade_url = _upgrade_url(outcome.get("error"))
+            if upgrade_url:
+                entry["upgrade_url"] = upgrade_url
             reason = _abort_reason(outcome.get("http_status"))
             if reason:
                 aborted = reason
@@ -272,7 +275,7 @@ def run_live(plan, base_url, api_key, k, timeout):
     return requests_out, shortlist, aborted
 
 
-def build_report(mode, base_url, k, price_micros, plan, requests_out, shortlist,
+def build_report(mode, base_url, k, plan, requests_out, shortlist,
                  aborted=None, notes=None):
     return {
         "schema": SCHEMA,
@@ -280,14 +283,13 @@ def build_report(mode, base_url, k, price_micros, plan, requests_out, shortlist,
         "mode": mode,
         "base_url": base_url,
         "k": k,
-        "price_usd_micros": price_micros,
-        "price_usd": _usd_from_micros(price_micros),
+        "credits_per_request": credits_per_request(k),
         "seeds": plan["seeds"],
         "seeds_available": plan["seeds_available"],
         "seeds_skipped": plan["seeds_skipped"],
         "planned_requests": plan["planned_requests"],
-        "planned_cost_usd": plan["planned_cost_usd"],
-        "budget_usd": plan["budget_usd"],
+        "planned_credits": plan["planned_credits"],
+        "budget_credits": plan["budget_credits"],
         "blocked": plan["blocked"],
         "aborted": aborted,
         "requests": requests_out,
@@ -308,8 +310,8 @@ def _parse_args(argv):
                         help='Offline record {"seed":..., "response":...} to merge (repeatable).')
     parser.add_argument("--k", type=int, default=10)
     parser.add_argument("--max-seeds", type=int, default=5)
-    parser.add_argument("--budget-usd", default=None)
-    parser.add_argument("--price-usd-micros", type=int, default=DEFAULT_PRICE_MICROS)
+    parser.add_argument("--budget-credits", type=int, default=None,
+                        help="Maximum credits the plan may reserve (1 credit per 10 results, min 1 per call).")
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
     parser.add_argument("--live", action="store_true",
                         help="Actually send requests. Requires LIGHTDRIFT_API_KEY.")
@@ -343,32 +345,28 @@ def main(argv=None):
             "seeds_available": len(records),
             "seeds_skipped": 0,
             "planned_requests": 0,
-            "planned_cost_usd": "0.000000",
-            "budget_usd": None,
+            "planned_credits": 0,
+            "budget_credits": None,
             "blocked": False,
         }
-        report = build_report("merge", args.base_url, args.k, args.price_usd_micros,
+        report = build_report("merge", args.base_url, args.k,
                               plan, request_log, shortlist,
-                              notes=["Offline merge: no network, no search credit."])
+                              notes=["Offline merge: no network, no credits used."])
         _emit(report, args.report)
         return 0
 
-    budget_micros = None
-    if args.budget_usd is not None:
-        budget_micros = _micros_from_decimal(args.budget_usd)
-
-    plan = plan_expansion(seeds, args.k, args.max_seeds, args.price_usd_micros, budget_micros)
+    plan = plan_expansion(seeds, args.k, args.max_seeds, args.budget_credits)
     plan["seed_sources"] = {seed: seed_sources.get(seed, "unknown") for seed in plan["seeds"]}
 
     if plan["blocked"]:
-        report = build_report("plan", args.base_url, args.k, args.price_usd_micros,
+        report = build_report("plan", args.base_url, args.k,
                               plan, [], [], aborted="budget_exceeded",
                               notes=["Plan exceeds the stated budget; no request was sent."])
         _emit(report, args.report)
         return 1
 
     if not args.live:
-        report = build_report("plan", args.base_url, args.k, args.price_usd_micros,
+        report = build_report("plan", args.base_url, args.k,
                               plan, [], [],
                               notes=["Dry run. Pass --live and set LIGHTDRIFT_API_KEY to execute."])
         _emit(report, args.report)
@@ -380,10 +378,10 @@ def main(argv=None):
 
     requests_out, shortlist, aborted = run_live(plan, args.base_url, api_key,
                                                 args.k, args.timeout)
-    report = build_report("live", args.base_url, args.k, args.price_usd_micros,
+    report = build_report("live", args.base_url, args.k,
                           plan, requests_out, shortlist, aborted=aborted,
                           notes=["No request was retried. 404 seeds were skipped; "
-                                 "402/429/5xx aborted the remainder."])
+                                 "402/403/429/5xx aborted the remainder."])
     _emit(report, args.report)
     return 0
 

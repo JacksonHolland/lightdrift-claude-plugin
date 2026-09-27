@@ -76,7 +76,7 @@ buyer-recorded criteria and all four exit codes.
 | Example | Focus |
 | --- | --- |
 | `response-to-shortlist` | flatten a saved response into a review table |
-| `bounded-search-plan` | validate and price a batch offline before execution |
+| `bounded-search-plan` | validate a batch and estimate its credits offline before execution |
 | `delivery-url-audit` | detect a changed image-delivery URL |
 | **this utility** | check a pilot's acceptance record against published criteria |
 

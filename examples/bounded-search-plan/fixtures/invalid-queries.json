@@ -16,7 +16,7 @@
       "query": "valid remaining row"
     }
   ],
-  "budget_usd": "1",
+  "budget_credits": 100,
   "max_requests": 10,
   "attempts_per_request": 1
 }

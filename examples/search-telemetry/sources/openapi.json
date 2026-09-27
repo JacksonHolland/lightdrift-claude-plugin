@@ -218,11 +218,33 @@
             }
           },
           "402": {
-            "description": "Insufficient prepaid credit.",
+            "description": "Monthly credits used up (`credits_exhausted`). Upgrade with `upgrade_url`; Scale and Custom plans can buy credit packs.",
             "content": {
               "application/json": {
                 "example": {
-                  "detail": "insufficient credit"
+                  "detail": {
+                    "error": "credits_exhausted",
+                    "plan": "starter",
+                    "message": "Your monthly credits are used up. Upgrade to continue, or wait for your monthly reset.",
+                    "upgrade_url": "https://lightdrift.ai/dashboard/billing",
+                    "next_plan": "pro"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Search by image, image plus text, and find-similar need a paid plan (`paid_feature`).",
+            "content": {
+              "application/json": {
+                "example": {
+                  "detail": {
+                    "error": "paid_feature",
+                    "feature": "image_search",
+                    "plan": "free",
+                    "message": "Search by image, image plus text, and find-similar are available on paid plans (from $29/month). Upgrade: https://lightdrift.ai/dashboard/billing",
+                    "upgrade_url": "https://lightdrift.ai/dashboard/billing"
+                  }
                 }
               }
             }
@@ -505,11 +527,33 @@
             }
           },
           "402": {
-            "description": "Insufficient prepaid credit.",
+            "description": "Monthly credits used up (`credits_exhausted`). Upgrade with `upgrade_url`; Scale and Custom plans can buy credit packs.",
             "content": {
               "application/json": {
                 "example": {
-                  "detail": "insufficient credit"
+                  "detail": {
+                    "error": "credits_exhausted",
+                    "plan": "starter",
+                    "message": "Your monthly credits are used up. Upgrade to continue, or wait for your monthly reset.",
+                    "upgrade_url": "https://lightdrift.ai/dashboard/billing",
+                    "next_plan": "pro"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Search by image, image plus text, and find-similar need a paid plan (`paid_feature`).",
+            "content": {
+              "application/json": {
+                "example": {
+                  "detail": {
+                    "error": "paid_feature",
+                    "feature": "similar_search",
+                    "plan": "free",
+                    "message": "Search by image, image plus text, and find-similar are available on paid plans (from $29/month). Upgrade: https://lightdrift.ai/dashboard/billing",
+                    "upgrade_url": "https://lightdrift.ai/dashboard/billing"
+                  }
                 }
               }
             }
@@ -723,21 +767,50 @@
     },
     "/v1/pricing": {
       "get": {
-        "summary": "Current search pricing",
+        "summary": "Plans and credit rules",
         "operationId": "public_pricing",
         "security": [],
         "responses": {
           "200": {
-            "description": "Effective USD rate and standard rerank limit.",
+            "description": "Subscription plans, monthly credits and the credit rule (1 credit per 10 results, rounded up, minimum 1).",
             "content": {
               "application/json": {
                 "example": {
+                  "version": "2026-09-28",
                   "currency": "USD",
-                  "search_price_usd_micros": 5000,
-                  "search_price_usd": "0.005",
-                  "per_1000_usd": 5,
-                  "standard_rerank_max": 100,
-                  "version": "2026-09-22"
+                  "credits": {
+                    "results_per_credit": 10,
+                    "minimum_per_search": 1,
+                    "asset_lookup_credits": 0,
+                    "reset": "monthly on your billing date; unused credits do not roll over"
+                  },
+                  "plans": [
+                    {
+                      "id": "free",
+                      "name": "Free",
+                      "monthly_usd": 0,
+                      "annual_usd": null,
+                      "monthly_credits": 500,
+                      "image_search": false,
+                      "similar_search": false,
+                      "max_results": 10,
+                      "limits": {
+                        "rpm": 30,
+                        "rpd": 1000,
+                        "concurrent": 2
+                      },
+                      "support": "Docs",
+                      "credit_packs": false
+                    }
+                  ],
+                  "credit_pack": {
+                    "credits": 10000,
+                    "usd": 40,
+                    "plans": [
+                      "scale",
+                      "custom"
+                    ]
+                  }
                 }
               }
             }

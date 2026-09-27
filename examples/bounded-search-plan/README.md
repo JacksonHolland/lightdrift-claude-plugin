@@ -13,15 +13,15 @@ python3 search_plan.py fixtures/budget-overflow.json
 python3 -m unittest -v
 ```
 
-The duplicate fixture has two identical requests in different JSON key order. It produces one unique request and a $0.005000 base estimate. The changed-filter fixture produces three unique requests: commercial true, commercial false, and commercial true with a minimum width. Those requests must not collapse into one simply because their query text matches.
+The duplicate fixture has two identical requests in different JSON key order. It produces one unique request (k = 10) and a base estimate of 1 credit. The changed-filter fixture produces three unique requests: commercial true, commercial false, and commercial true with a minimum width. Those requests must not collapse into one simply because their query text matches.
 
-The overflow fixture has two unique requests and allows two attempts per request. Its ceiling is four attempts, estimated at $0.020000. The supplied $0.019999 budget is one microdollar too small, so the report is blocked and contains no executable request bodies. All fixtures are synthetic; they are not observed customer searches.
+The overflow fixture has two unique requests and allows two attempts per request. Its ceiling is four attempts of 1 credit each, estimated at 4 credits. The supplied budget of 3 credits is one credit too small, so the report is blocked and contains no executable request bodies. All fixtures are synthetic; they are not observed customer searches.
 
 ## Define your plan
 
 ```json
 {
-  "budget_usd": "0.030",
+  "budget_credits": 6,
   "max_requests": 6,
   "attempts_per_request": 2,
   "requests": [
@@ -35,7 +35,7 @@ The overflow fixture has two unique requests and allows two attempts per request
 
 `max_requests` caps attempts, including possible retries; it does not cap returned images. `attempts_per_request` includes the first attempt: 1 means no retry allowance. This tool does not implement a retry policy. A future executor must track attempts and stop at the configured limit. Do not blindly retry timeouts: first reconcile their unknown billing outcome.
 
-Budget is a decimal string with up to six decimal places, evaluated with integer microdollars. The planner requires an explicit budget, attempt allowance and request cap. Local limits are 10,000 input rows, a 5 MB JSON file, 100,000 attempts and 1–10 attempts per request. These are utility limits, not account entitlements.
+Budget is a whole number of credits. The planner requires an explicit budget, attempt allowance and request cap. Local limits are 10,000 input rows, a 5 MB JSON file, 100,000 attempts and 1–10 attempts per request. These are utility limits, not account entitlements.
 
 ## What counts as a duplicate?
 
@@ -58,24 +58,25 @@ The planner handles text queries only, with `query`, `k`, and `filters`. It reje
 
 Exit 0 means within the supplied plan limits. Exit 1 means invalid request rows, budget overflow or request-cap overflow. Exit 2 means malformed plan/schema/JSON or unreadable input. Unknown fields, duplicate JSON keys, boolean integers and nonfinite JSON numbers fail. Any invalid row blocks the whole plan. A blocked report emits no request bodies; `valid_subset_*` figures describe only valid unique rows and are not a total for the invalid batch. Reports can contain brief text when valid, so store them with the same privacy controls as the input.
 
-## Understand the price estimate
+## Understand the credit estimate
 
-The [public pricing endpoint](https://api.lightdrift.ai/v1/pricing), observed September 26, 2026, returned USD 5,000 microdollars per search: $0.005, or $5 per 1,000 searches, pricing version `2026-09-22`. The shipped utility pins that observed rate and exposes its date in every report. It does not refresh pricing in the background.
+Lightdrift plans include a monthly credit allowance. A search costs 1 credit per 10 results requested, rounded up, minimum 1: k = 1 to 10 is 1 credit, k = 50 is 5 credits, k = 100 is 10 credits (pricing version `2026-09-28`). Credits are reserved from the requested `k` and settled to the results actually returned, so the estimate here is an upper bound. The utility pins this rule and reports it in every output. It does not refresh pricing in the background.
 
 ```
-base estimate = unique valid requests × $0.005
+credits per request = max(1, ceil(k / 10))
+base estimate = sum of credits per unique valid request
 attempt ceiling = unique valid requests × attempts per request
-ceiling estimate = attempt ceiling × $0.005
+ceiling estimate = base estimate × attempts per request
 ```
 
-For planning, every allowed attempt is priced in full. Actual billing for failures, credits, refunds and account entitlements is not inferred. This is a search-usage estimate, not a topup amount, invoice, contractual MRR or guarantee of spend. Before any execution, recheck [current pricing](https://docs.lightdrift.ai/api-reference/current-search-pricing), your account balance, authorized budget and [plans and limits](https://docs.lightdrift.ai/guides/plans-and-limits). If the price changes, update the constant and source evidence and rerun tests before relying on the output.
+For planning, every allowed attempt is counted at its full reserved credits. Failed searches are not charged, so the ceiling is conservative. This is a credit-usage estimate, not an invoice or guarantee of spend. The Free plan caps each search at 10 results and supports text search only. Before any execution, recheck [current pricing](https://api.lightdrift.ai/v1/pricing), your remaining credits and your plan limits. If the credit rule changes, update the constant and rerun tests before relying on the output.
 
 ## Connect the plan to a reviewed workflow
 
-A caller can use the JSON report as a CI check, treating any nonzero exit as a stop. This package intentionally contains no executor. A separately authorized backend must enforce the plan's request and retry ceilings and reconcile actual usage; an offline report alone cannot enforce spend in another program. After the spend is bounded, pace the batch so the minute, daily and concurrency limits hold with the [offline rate-limit pacing validator](examples/rate-limit-pacing). Use the [presentation image search guide](https://docs.lightdrift.ai/guides/presentation-image-search) for an existing bounded request example. Review candidates with the [agent image review flow](https://docs.lightdrift.ai/guides/agent-image-review), and preserve [source rights and attribution](https://docs.lightdrift.ai/guides/rights). A commercial filter does not grant universal rights clearance.
+A caller can use the JSON report as a CI check, treating any nonzero exit as a stop. This package intentionally contains no executor. A separately authorized backend must enforce the plan's request and retry ceilings and reconcile actual usage from each response's `credits.charged`; it should stop on a 402 `credits_exhausted` response and not retry; an offline report alone cannot enforce spend in another program. After the spend is bounded, pace the batch so the minute, daily and concurrency limits hold with the [offline rate-limit pacing validator](examples/rate-limit-pacing). Use the [presentation image search guide](https://docs.lightdrift.ai/guides/presentation-image-search) for an existing bounded request example. Review candidates with the [agent image review flow](https://docs.lightdrift.ai/guides/agent-image-review), and preserve [source rights and attribution](https://docs.lightdrift.ai/guides/rights). A commercial filter does not grant universal rights clearance.
 
 When ready to integrate, [create a Lightdrift account](https://lightdrift.ai/sign-up?utm_source=github&utm_medium=example&utm_campaign=bounded_search_plan_v1) and follow the [API introduction](https://docs.lightdrift.ai/api-reference/introduction). Keep keys in a backend secret manager. No measured performance, cache savings, search quality or acquisition-economics claim is made by this utility.
 
 ## Evidence
 
-`test-evidence.txt` records 20 passing local tests. `sources/manifest.json` identifies current pricing, OpenAPI, sitemap, repository tree, plans guide and the pinned presentation example with capture timestamps and SHA-256 hashes. The captures establish the inspected contract and overlap boundary; tests establish only offline behavior. No paid requests or live account writes were performed.
+`test-evidence.txt` records 22 passing local tests. `sources/manifest.json` identifies the OpenAPI, sitemap, repository tree and the pinned presentation example with capture timestamps and SHA-256 hashes; old pricing text was removed from those snapshots on 2026-09-27. The captures establish the inspected contract and overlap boundary; tests establish only offline behavior. No paid requests or live account writes were performed.

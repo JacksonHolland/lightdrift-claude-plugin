@@ -10,9 +10,9 @@ import sys
 from pathlib import Path
 
 PLANS = {
-    'promo': {'rpm': 30, 'rpd': 1000, 'concurrency': 2},
+    'free': {'rpm': 30, 'rpd': 1000, 'concurrency': 2},
     'starter': {'rpm': 60, 'rpd': 5000, 'concurrency': 4},
-    'growth': {'rpm': 300, 'rpd': 25000, 'concurrency': 10},
+    'pro': {'rpm': 300, 'rpd': 25000, 'concurrency': 10},
     'scale': {'rpm': 1000, 'rpd': 100000, 'concurrency': 25},
 }
 PLAN_NAMES = {name: name.capitalize() for name in PLANS}
@@ -53,7 +53,7 @@ def resolve_limits(data):
     plan = data.get('plan')
     if plan is not None:
         if not isinstance(plan, str) or plan.strip().lower() not in PLANS:
-            raise InputError('plan must be one of Promo, Starter, Growth, Scale')
+            raise InputError('plan must be one of Free, Starter, Pro, Scale')
         limits = dict(PLANS[plan.strip().lower()])
         basis = f'plan {PLAN_NAMES[plan.strip().lower()]}'
     supplied = data.get('limits', {})

@@ -124,7 +124,7 @@ response.raise_for_status()
 print(response.json())
 ```
 
-JPEG, PNG and WebP still images are supported, up to **5 MiB decoded** and **20 megapixels**. Images are oriented, resized to a maximum 1024-pixel edge, stripped of metadata, and sent to Voyage. URLs must use public HTTPS on port 443, with no embedded credentials; private addresses are blocked and redirects are checked. Invalid inputs return 422; oversized request bodies return 413. Failed searches are not charged. Successful image searches have the same $0.005 price as text searches.
+JPEG, PNG and WebP still images are supported, up to **5 MiB decoded** and **20 megapixels**. Images are oriented, resized to a maximum 1024-pixel edge, stripped of metadata, and sent to Voyage. URLs must use public HTTPS on port 443, with no embedded credentials; private addresses are blocked and redirects are checked. Invalid inputs return 422; oversized request bodies return 413. Failed searches are not charged. [Old pricing text removed from this snapshot on 2026-09-27.]
 
 The playground's image attachment button accepts local files, previews the reference, and allows optional text. Clear the text for image-only search. Images MCP accepts the same `image_base64` and `image_url` fields through `search_images`; reconnect clients to refresh tool schemas.
 
@@ -172,4 +172,4 @@ Send a stable `Idempotency-Key` for retries of the same logical request to avoid
 
 ## Billing and limits
 
-Each successful API or MCP search/similar call costs $0.005 in account credit. The signed-in playground has its separate daily free allowance. See [Plans and limits](/guides/plans-and-limits) for current tiers, request limits, and concurrency limits. Authentication, billing, and key management are unchanged by the Voyage migration.
+[Old pricing text removed from this snapshot on 2026-09-27.] The signed-in playground has its separate daily free allowance. See [Plans and limits](/guides/plans-and-limits) for current tiers, request limits, and concurrency limits. Authentication, billing, and key management are unchanged by the Voyage migration.

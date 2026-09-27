@@ -3,12 +3,10 @@ import argparse
 import copy
 import hashlib
 import json
-import re
 from pathlib import Path
 
-PRICE_MICROS = 5000
-PRICE_VERSION = '2026-09-22'
-PRICE_OBSERVED = '2026-09-26'
+RESULTS_PER_CREDIT = 10  # 1 credit per 10 results, rounded up, minimum 1 per search.
+PRICING_VERSION = '2026-09-28'
 BOOL_FILTERS = {'commercial', 'attribution_required', 'derivatives', 'monochrome', 'ai_generated'}
 LIST_FILTERS = {'license_id', 'source', 'colors', 'format'}
 INT_FILTERS = {'min_width', 'min_height', 'year_min', 'year_max'}
@@ -21,16 +19,9 @@ def integer(value, low, high, name):
     return value
 
 
-def money(value):
-    # Fixed-point input avoids float rounding, exponent notation, NaN and infinity.
-    if not isinstance(value, str) or not re.fullmatch(r'\d{1,9}(?:\.\d{1,6})?', value):
-        raise ValueError('budget_usd must be a nonnegative decimal string, at most 6 decimal places')
-    whole, _, fraction = value.partition('.')
-    return int(whole) * 1_000_000 + int((fraction + '000000')[:6])
-
-
-def usd(micros):
-    return f'{micros // 1_000_000}.{micros % 1_000_000:06d}'
+def credits_for(k):
+    # Credits are reserved from the requested k: ceil(k / 10), minimum 1.
+    return max(1, -(-k // RESULTS_PER_CREDIT))
 
 
 def request(row):
@@ -64,12 +55,12 @@ def request(row):
 
 
 def build_plan(data):
-    if not isinstance(data, dict) or set(data) != {'requests', 'budget_usd', 'max_requests', 'attempts_per_request'}:
-        raise ValueError('plan requires exactly requests, budget_usd, max_requests, attempts_per_request')
+    if not isinstance(data, dict) or set(data) != {'requests', 'budget_credits', 'max_requests', 'attempts_per_request'}:
+        raise ValueError('plan requires exactly requests, budget_credits, max_requests, attempts_per_request')
     rows = data['requests']
     if not isinstance(rows, list) or not 1 <= len(rows) <= 10000:
         raise ValueError('requests must contain 1..10000 entries (local planner limit)')
-    budget = money(data['budget_usd'])
+    budget = integer(data['budget_credits'], 0, 10_000_000, 'budget_credits')
     cap = integer(data['max_requests'], 0, 100000, 'max_requests')
     attempts = integer(data['attempts_per_request'], 1, 10, 'attempts_per_request')
     errors, unique, positions, duplicates = [], [], {}, []
@@ -86,7 +77,8 @@ def build_plan(data):
             positions[key] = index
             unique.append({'first_index': index, 'request_sha256': hashlib.sha256(key.encode()).hexdigest(), 'body': normalized})
     ceiling = len(unique) * attempts
-    cost = ceiling * PRICE_MICROS
+    base = sum(credits_for(row['body']['k']) for row in unique)
+    cost = base * attempts
     reasons = []
     if errors:
         reasons.append('invalid_requests')
@@ -99,13 +91,13 @@ def build_plan(data):
             'input_count': len(rows), 'valid_unique_count': len(unique), 'duplicates': duplicates,
             'invalid': errors, 'attempts_per_request': attempts,
             'valid_subset_request_ceiling': ceiling, 'max_requests': cap,
-            'budget_usd': usd(budget), 'valid_subset_estimate_usd': usd(cost),
-            'base_estimate_usd': usd(len(unique) * PRICE_MICROS),
-            'price': {'usd_per_search': usd(PRICE_MICROS), 'version': PRICE_VERSION,
-                      'observed_on': PRICE_OBSERVED, 'source': 'https://api.lightdrift.ai/v1/pricing'},
+            'budget_credits': budget, 'valid_subset_estimate_credits': cost,
+            'base_estimate_credits': base,
+            'credit_rule': {'results_per_credit': RESULTS_PER_CREDIT, 'minimum_per_search': 1,
+                            'version': PRICING_VERSION, 'source': 'https://api.lightdrift.ai/v1/pricing'},
             'executable_request_count': len(unique) if allowed else 0,
             'requests': unique if allowed else [],
-            'note': 'Offline estimate only. Every allowed attempt is budgeted at full price; invalid rows block the entire plan. No calls executed or funds reserved.'}
+            'note': 'Offline estimate only. Every allowed attempt is budgeted at its full reserved credits (from requested k); invalid rows block the entire plan. No calls executed or credits reserved.'}
 
 
 def unique_object(pairs):

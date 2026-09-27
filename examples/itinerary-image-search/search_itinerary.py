@@ -57,7 +57,7 @@ def main(argv=None, opener=None):
             if not isinstance(data, dict) or not isinstance(data.get("results"), list) or not isinstance(data.get("query_id"), str):
                 raise ValueError("Unexpected response envelope")
         except urllib.error.HTTPError as exc:
-            print(f"Stop {stop}: HTTP {exc.code}; stopped without retry. Check account balance, limits and API docs.", file=sys.stderr)
+            print(f"Stop {stop}: HTTP {exc.code}; stopped without retry. Check remaining credits, plan, limits and API docs.", file=sys.stderr)
             return 1
         except (urllib.error.URLError, http.client.HTTPException, TimeoutError, OSError, ValueError):
             print(f"Stop {stop}: transport or response error; outcome may be unknown. Check usage before rerunning; no automatic retry.", file=sys.stderr)

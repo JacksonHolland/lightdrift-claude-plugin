@@ -1,26 +1,28 @@
-test_abort_reasons (test_similar_expand.AbortPolicyTests.test_abort_reasons) ... ok
-test_idempotency_key_is_stable_and_seed_specific (test_similar_expand.AbortPolicyTests.test_idempotency_key_is_stable_and_seed_specific) ... ok
-test_budget_exceeded_exits_one_without_requests (test_similar_expand.CliTests.test_budget_exceeded_exits_one_without_requests) ... ok
-test_dry_run_plan_from_saved_response (test_similar_expand.CliTests.test_dry_run_plan_from_saved_response) ... ok
-test_live_without_key_is_an_input_error (test_similar_expand.CliTests.test_live_without_key_is_an_input_error) ... ok
-test_malformed_input_exits_two (test_similar_expand.CliTests.test_malformed_input_exits_two) ... ok
-test_offline_merge_mode (test_similar_expand.CliTests.test_offline_merge_mode) ... ok
-test_merge_dedups_and_accumulates_found_by (test_similar_expand.MergeTests.test_merge_dedups_and_accumulates_found_by) ... ok
-test_merge_requires_seed (test_similar_expand.MergeTests.test_merge_requires_seed) ... ok
-test_micros_round_trip (test_similar_expand.MoneyTests.test_micros_round_trip) ... ok
-test_rejects_bad_decimal (test_similar_expand.MoneyTests.test_rejects_bad_decimal) ... ok
-test_budget_blocks_plan (test_similar_expand.PlanTests.test_budget_blocks_plan) ... ok
-test_budget_boundary_is_inclusive (test_similar_expand.PlanTests.test_budget_boundary_is_inclusive) ... ok
-test_planned_cost_and_skip (test_similar_expand.PlanTests.test_planned_cost_and_skip) ... ok
-test_rejects_out_of_range_k (test_similar_expand.PlanTests.test_rejects_out_of_range_k) ... ok
-test_dedups_preserving_first_order (test_similar_expand.SeedExtractionTests.test_dedups_preserving_first_order) ... ok
-test_rejects_missing_results (test_similar_expand.SeedExtractionTests.test_rejects_missing_results) ... ok
-test_rejects_result_without_asset_id (test_similar_expand.SeedExtractionTests.test_rejects_result_without_asset_id) ... ok
-test_accepts_normal_json (test_similar_expand.StrictJsonTests.test_accepts_normal_json) ... ok
-test_rejects_duplicate_keys (test_similar_expand.StrictJsonTests.test_rejects_duplicate_keys) ... ok
-test_rejects_non_finite (test_similar_expand.StrictJsonTests.test_rejects_non_finite) ... ok
+test_abort_reasons (test_similar_expand.AbortPolicyTests) ... ok
+test_idempotency_key_is_stable_and_seed_specific (test_similar_expand.AbortPolicyTests) ... ok
+test_upgrade_url_is_extracted (test_similar_expand.AbortPolicyTests) ... ok
+test_budget_exceeded_exits_one_without_requests (test_similar_expand.CliTests) ... ok
+test_dry_run_plan_from_saved_response (test_similar_expand.CliTests) ... ok
+test_live_without_key_is_an_input_error (test_similar_expand.CliTests) ... ok
+test_malformed_input_exits_two (test_similar_expand.CliTests) ... ok
+test_offline_merge_mode (test_similar_expand.CliTests) ... ok
+test_credit_rule (test_similar_expand.CreditTests) ... ok
+test_larger_k_costs_more_credits (test_similar_expand.CreditTests) ... ok
+test_rejects_negative_budget (test_similar_expand.CreditTests) ... ok
+test_merge_dedups_and_accumulates_found_by (test_similar_expand.MergeTests) ... ok
+test_merge_requires_seed (test_similar_expand.MergeTests) ... ok
+test_budget_blocks_plan (test_similar_expand.PlanTests) ... ok
+test_budget_boundary_is_inclusive (test_similar_expand.PlanTests) ... ok
+test_planned_cost_and_skip (test_similar_expand.PlanTests) ... ok
+test_rejects_out_of_range_k (test_similar_expand.PlanTests) ... ok
+test_dedups_preserving_first_order (test_similar_expand.SeedExtractionTests) ... ok
+test_rejects_missing_results (test_similar_expand.SeedExtractionTests) ... ok
+test_rejects_result_without_asset_id (test_similar_expand.SeedExtractionTests) ... ok
+test_accepts_normal_json (test_similar_expand.StrictJsonTests) ... ok
+test_rejects_duplicate_keys (test_similar_expand.StrictJsonTests) ... ok
+test_rejects_non_finite (test_similar_expand.StrictJsonTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 21 tests in 0.003s
+Ran 23 tests in 0.003s
 
 OK

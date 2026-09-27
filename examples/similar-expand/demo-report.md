@@ -7,7 +7,7 @@ Run: `python3 similar_expand.py --expansion fixtures/similar-a.json --expansion 
 | mode | merge (offline) |
 | seeds merged | 2 (`isorepublic:17191`, `stocksnap:BAVURMUHRD`) |
 | shortlist size | 4 unique assets |
-| search credit spent | $0 (no network) |
+| credits used | 0 (no network) |
 
 ## Merged shortlist
 

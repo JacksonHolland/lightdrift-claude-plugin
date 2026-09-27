@@ -24,7 +24,7 @@ python3 search_slides.py \
   "City skyline at dawn with space for a headline" > candidates.jsonl
 ```
 
-Live execution consumes your account's search entitlement. The public [pricing endpoint](https://api.lightdrift.ai/v1/pricing) returned $0.005/search ($5/1,000) on September 26, 2026: three successful searches would total $0.015 at that rate. Check current pricing and your balance before running. No product searches were made to validate this example.
+Live execution consumes your account's search entitlement. [Old pricing text removed from this snapshot on 2026-09-27; see the current presentation example README.] No product searches were made to validate this example.
 
 The requests ask for five landscape candidates whose source-declared licenses permit commercial use. Composition text expresses a preference, not a guarantee. Other API defaults still apply. Fewer or no candidates may be returned; matching a filter is not universal rights clearance.
 

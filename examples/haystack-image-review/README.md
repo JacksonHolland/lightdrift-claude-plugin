@@ -19,7 +19,7 @@ python demo.py
 
 ## Explicit live use on a backend
 
-After reviewing [pricing](https://api.lightdrift.ai/v1/pricing), account balance and search entitlement, set `LIGHTDRIFT_API_KEY` through your backend secret manager or environment. Do not put it in pipeline inputs, browser code, source control or artifacts. Then use:
+After reviewing [pricing](https://api.lightdrift.ai/v1/pricing) and your remaining credits, set `LIGHTDRIFT_API_KEY` through your backend secret manager or environment. Do not put it in pipeline inputs, browser code, source control or artifacts. Then use:
 
 ```python
 from haystack import Pipeline
@@ -35,7 +35,7 @@ for candidate in result["review_queue"]:
     print(candidate["asset_id"], candidate["provenance_url"], candidate["review_state"])
 ```
 
-One invocation makes one POST to `https://api.lightdrift.ai/v1/search`, with `X-API-Key`, `query`, `k`, a commercial-use filter, and experiment `haystack_image_review_v1`. The component accepts 1–20 candidates, a deliberately smaller limit than the API's documented 100. Briefs must contain 1–1000 characters. It refuses redirects and does not retry. Public pricing observed September 26, 2026 was $0.005/search ($5/1,000). No live searches were used in testing; live authentication, retrieval relevance and billing were not tested.
+One invocation makes one POST to `https://api.lightdrift.ai/v1/search`, with `X-API-Key`, `query`, `k`, a commercial-use filter, and experiment `haystack_image_review_v1`. The component accepts 1–20 candidates, a deliberately smaller limit than the API's documented 100. Briefs must contain 1–1000 characters. It refuses redirects and does not retry. Each search costs 1 credit per 10 results requested, rounded up, minimum 1, so 1–10 candidates use 1 credit and 11–20 use 2. No live searches were used in testing; live authentication, retrieval relevance and billing were not tested.
 
 ## Review contract and failures
 

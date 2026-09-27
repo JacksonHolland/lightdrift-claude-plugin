@@ -9,8 +9,8 @@
       "source_url": "https://api.lightdrift.ai/openapi.json",
       "observed_at": "2026-09-27T02:12:00Z",
       "http_status": 200,
-      "sha256": "4a8f14f098dece6eb70f29adac55365870d8ddbb83a4d1eeff6a88e226c163f6",
-      "bytes": 24246,
+      "sha256": "ac81ef4d7d88c3a97d09367a9e82d1a4b64a6670f71a97a5e1a469095cfb73ad",
+      "bytes": 21271,
       "note": "live OpenAPI schema (info.version 1.0); confirms request fields and that filters include commercial/derivatives/attribution_required"
     },
     {

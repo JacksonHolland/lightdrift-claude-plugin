@@ -1,5 +1,5 @@
 {
-  "plan": "Promo",
+  "plan": "Free",
   "requests": [
     {"id": "burst-1", "at_second": 0}, {"id": "burst-2", "at_second": 0},
     {"id": "burst-3", "at_second": 0}, {"id": "burst-4", "at_second": 0},

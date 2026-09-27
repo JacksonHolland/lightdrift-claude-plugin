@@ -4,8 +4,7 @@
   "mode": "merge",
   "base_url": "https://api.lightdrift.ai",
   "k": 10,
-  "price_usd_micros": 5000,
-  "price_usd": "0.005000",
+  "credits_per_request": 1,
   "seeds": [
     "isorepublic:17191",
     "stocksnap:BAVURMUHRD"
@@ -13,8 +12,8 @@
   "seeds_available": 2,
   "seeds_skipped": 0,
   "planned_requests": 0,
-  "planned_cost_usd": "0.000000",
-  "budget_usd": null,
+  "planned_credits": 0,
+  "budget_credits": null,
   "blocked": false,
   "aborted": null,
   "requests": [
@@ -136,6 +135,6 @@
     }
   ],
   "notes": [
-    "Offline merge: no network, no search credit."
+    "Offline merge: no network, no credits used."
   ]
 }

@@ -1,6 +1,6 @@
 # Pace an image-search batch against Lightdrift rate limits before sending it
 
-An integration that fires many search briefs at once gets `429` responses: either the minute or daily request allowance is exhausted, or too many searches run at the same time. This Python 3.10+ standard-library utility checks a proposed schedule against those limits, or builds a deterministic earliest-start schedule for the same limits, entirely offline. It needs no key, sends no requests, and spends no credit.
+An integration that fires many search briefs at once gets `429` responses: either the minute or daily request allowance is exhausted, or too many searches run at the same time. This Python 3.10+ standard-library utility checks a proposed schedule against those limits, or builds a deterministic earliest-start schedule for the same limits, entirely offline. It needs no key, sends no requests, and uses no credits.
 
 It does not decide budget or remove duplicates — the [bounded search planner](/guides/bounded-search-plan) does that. This tool answers the pacing question: given a list of search requests, when may each one start so the minute, daily and concurrency limits stay satisfied?
 
@@ -18,7 +18,7 @@ python3 pace_plan.py --mode schedule fixtures/schedule-concurrency.json
 python3 -m unittest -v
 ```
 
-`valid-schedule.json` passes with the Starter limits. `minute-violation.json` has 31 requests in one minute against Promo's 30 per minute. `concurrency-violation.json` overlaps three searches against a concurrency limit of two. `daily-violation.json` places six requests in a day against a daily limit of five. `schedule-burst.json` spreads five briefs across three minute windows at two per minute. All fixtures are synthetic; they are not observed customer searches.
+`valid-schedule.json` passes with the Starter limits. `minute-violation.json` has 31 requests in one minute against Free's 30 per minute. `concurrency-violation.json` overlaps three searches against a concurrency limit of two. `daily-violation.json` places six requests in a day against a daily limit of five. `schedule-burst.json` spreads five briefs across three minute windows at two per minute. All fixtures are synthetic; they are not observed customer searches.
 
 Exit codes are `0` for a valid or scheduled run, `1` for an invalid or infeasible run, and `2` for unreadable or malformed input. Output is JSON by default; add `--format text` for a short report.
 
@@ -38,14 +38,16 @@ A run file names either a plan or explicit limits:
 }
 ```
 
-`plan` is `Promo`, `Starter`, `Growth` or `Scale`. The limits come from the [plans and limits guide](https://docs.lightdrift.ai/guides/plans-and-limits):
+`plan` is `Free`, `Starter`, `Pro` or `Scale`. The limits are the plan defaults from the [pricing endpoint](https://api.lightdrift.ai/v1/pricing) (version 2026-09-28):
 
-| Plan | Total credit purchased | Requests per minute | Requests per day | Concurrent searches |
+| Plan | Monthly price | Requests per minute | Requests per day | Concurrent searches |
 | --- | --- | --- | --- | --- |
-| Promo | Less than $10 | 30 | 1,000 | 2 |
-| Starter | $10 or more | 60 | 5,000 | 4 |
-| Growth | $100 or more | 300 | 25,000 | 10 |
-| Scale | $1,000 or more | 1,000 | 100,000 | 25 |
+| Free | $0 | 30 | 1,000 | 2 |
+| Starter | $29 | 60 | 5,000 | 4 |
+| Pro | $99 | 300 | 25,000 | 10 |
+| Scale | $299 | 1,000 | 100,000 | 25 |
+
+Custom plans have custom limits; pass them with `limits`. Rate limits are separate from monthly credits.
 
 Use explicit `limits` instead when an API key has custom limits:
 

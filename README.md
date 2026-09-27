@@ -24,11 +24,11 @@ In Claude, open Customize → Connectors → Add custom connector. Use `https://
 
 | Tool | Function | Cost |
 |---|---|---|
-| search_images | Semantic image search with filters | Paid; see live tool description |
-| find_similar_images | Find images similar to an indexed asset | Paid; see live tool description |
+| search_images | Semantic image search with filters | 1 credit per 10 results, rounded up, minimum 1. Search by image or image plus text needs a paid plan |
+| find_similar_images | Find images similar to an indexed asset | 1 credit per 10 results, rounded up, minimum 1. Paid plans only |
 | get_image | Retrieve file URLs and image metadata | Free |
 
-A Lightdrift account and available credit are required for paid searches. This plugin does not include credits or an Anthropic subscription. The plugin runtime uses browser OAuth and contains no API keys, scripts, hooks, or executable dependencies. The optional API examples below are separate scripts; they are not run by the plugin.
+A Lightdrift account is required. Plans come with monthly credits: the Free plan has 500 credits every month for text search with up to 10 results per search; paid plans add search by image, image plus text, find-similar, and up to 100 results per search. Failed searches are not charged. On Free, image and find-similar calls return 403 `paid_feature`; when monthly credits run out, calls return 402 `credits_exhausted`. Both errors include an `upgrade_url`. Plans and limits: https://lightdrift.ai/#pricing. This plugin does not include credits or an Anthropic subscription. The plugin runtime uses browser OAuth and contains no API keys, scripts, hooks, or executable dependencies. The optional API examples below are separate scripts; they are not run by the plugin.
 
 ## Runnable workflow examples
 

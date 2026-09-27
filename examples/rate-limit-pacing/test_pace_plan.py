@@ -31,7 +31,7 @@ def write(payload):
 
 class LimitsTests(unittest.TestCase):
     def test_all_plans_resolve(self):
-        for plan in ('Promo', 'Starter', 'Growth', 'Scale'):
+        for plan in ('Free', 'Starter', 'Pro', 'Scale'):
             limits, basis = pace_plan.resolve_limits({'plan': plan})
             self.assertEqual(basis, f'plan {plan}')
             self.assertGreaterEqual(limits['rpm'], 1)
@@ -51,7 +51,7 @@ class LimitsTests(unittest.TestCase):
         self.assertEqual(basis, 'explicit limits')
 
     def test_explicit_limit_overrides_plan(self):
-        limits, _ = pace_plan.resolve_limits({'plan': 'Promo', 'limits': {'rpm': 999}})
+        limits, _ = pace_plan.resolve_limits({'plan': 'Free', 'limits': {'rpm': 999}})
         self.assertEqual(limits['rpm'], 999)
         self.assertEqual(limits['rpd'], 1000)
 
