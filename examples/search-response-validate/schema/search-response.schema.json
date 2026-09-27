@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.lightdrift.ai/schemas/search-response.schema.json",
+  "title": "Lightdrift /v1/search response",
+  "description": "Schema extracted from the published Lightdrift OpenAPI document for the /v1/search response body.",
+  "type": "object",
+  "properties": {
+    "query_id": {
+      "type": "string"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Result"
+      }
+    },
+    "latency_ms": {
+      "type": "integer"
+    },
+    "timing_ms": {
+      "type": "object",
+      "properties": {
+        "embed": {
+          "type": "integer"
+        },
+        "retrieve": {
+          "type": "integer"
+        },
+        "rerank": {
+          "type": "integer"
+        }
+      }
+    },
+    "mode": {
+      "type": "string"
+    },
+    "ranking": {
+      "type": "string",
+      "description": "text, image, multimodal, none, or none (degraded). Multimodal scores fuse similarity and text ranks; scores are not probabilities."
+    },
+    "pool_size": {
+      "type": "integer"
+    },
+    "reranked": {
+      "type": "integer"
+    },
+    "backend": {
+      "type": "string",
+      "description": "Search responses report voyage."
+    },
+    "degraded": {
+      "type": "string",
+      "description": "Reranker unavailable; results are in retrieval order. Successful billed response."
+    },
+    "relaxed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Default filters relaxed to fill results; explicit constraints are not relaxed."
+    },
+    "query_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "image",
+        "image_text"
+      ],
+      "description": "Input modality for /v1/search."
+    }
+  },
+  "$defs": {
+    "Result": {
+      "type": "object",
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "ai_generated": {
+          "type": "boolean"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "file": {
+          "type": "string"
+        },
+        "thumb": {
+          "type": "string"
+        },
+        "rights": {
+          "$ref": "#/$defs/Rights"
+        }
+      }
+    },
+    "Rights": {
+      "type": "object",
+      "properties": {
+        "license": {
+          "type": "string"
+        },
+        "license_verbatim": {
+          "type": "string"
+        },
+        "commercial": {
+          "type": "boolean"
+        },
+        "attribution_required": {
+          "type": "boolean"
+        },
+        "derivatives": {
+          "type": "boolean"
+        },
+        "share_alike": {
+          "type": "boolean"
+        },
+        "attribution": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance_url": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

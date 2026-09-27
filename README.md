@@ -64,6 +64,8 @@ Keep a batch of search briefs inside the minute, daily and concurrency limits wi
 
 See which rights fields an image API actually returns, from each provider's own documentation, with the [offline image-rights-field comparison](examples/image-rights-fields-compare). It fails its own build unless every license, attribution and provenance claim keeps a source URL, a verbatim quote and a capture file; `not exposed` means the provider's docs list no such field, not that a license forbids the use.
 
+Catch a drifted or malformed saved response before a template consumes it with the [offline search-response validator](examples/search-response-validate). It checks a stored `/v1/search` response against the published OpenAPI response schema and documented field expectations in two severities — errors contradict the schema, warnings are schema-valid gaps a downstream template still needs — and it is structural, not a rights decision.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

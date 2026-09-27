@@ -56,6 +56,7 @@ Do not suppress a nonzero exit code to force a publish. Missing metadata is usef
 ## Related examples
 
 - [Compare which rights fields each image API returns](image-rights-fields-compare) before relying on a response shape.
+- [Validate a saved response against the published schema](search-response-validate) before emitting markup from it, so a drifted field fails the build instead of shipping.
 - [Compare two saved responses offline](search-response-diff) to see what changed between two briefs.
 - [Republish a saved response as a JSON Feed or RSS feed](search-to-feed) when an aggregator or newsletter consumes the result set.
 - [Find the same image under two asset ids](search-result-dedup) before publishing duplicates.

@@ -1,0 +1,57 @@
+{
+  "query_id": "q_synthetic_fixture_not_a_real_search",
+  "results": [
+    {
+      "asset_id": "govflickr:8412901414",
+      "score": 0.7518,
+      "title": "Sea otter floating on its back",
+      "source": "govflickr",
+      "ai_generated": false,
+      "width": 1024,
+      "height": 768,
+      "file": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/govflickr:8412901414",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/govflickr:8412901414?v=thumb",
+      "rights": {
+        "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "license_verbatim": "Public Domain Mark 1.0",
+        "commercial": true,
+        "attribution_required": false,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution": "US Fish and Wildlife Service",
+        "provenance_url": "https://www.flickr.com/photos/usfws/8412901414",
+        "basis": "source-declared"
+      }
+    },
+    {
+      "asset_id": "wikimedia:Example-Lighthouse.jpg",
+      "score": 0.612,
+      "title": "Coastal lighthouse at dusk",
+      "source": "wikimedia",
+      "ai_generated": false,
+      "width": 800,
+      "height": 600,
+      "file": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/wikimedia:Example-Lighthouse.jpg",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/wikimedia:Example-Lighthouse.jpg?v=thumb",
+      "rights": {
+        "license": "cc-by-sa-4.0",
+        "license_verbatim": "CC BY-SA 4.0",
+        "commercial": true,
+        "attribution_required": true,
+        "derivatives": true,
+        "share_alike": true,
+        "attribution": "Example Photographer",
+        "provenance_url": "https://commons.wikimedia.org/wiki/File:Example-Lighthouse.jpg",
+        "basis": "source-declared"
+      }
+    }
+  ],
+  "latency_ms": 5965,
+  "timing_ms": {"embed": 40, "retrieve": 120, "rerank": 300},
+  "mode": "auto",
+  "ranking": "text",
+  "pool_size": 100,
+  "reranked": 60,
+  "backend": "voyage",
+  "query_type": "text"
+}

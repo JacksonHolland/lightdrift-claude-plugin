@@ -1,0 +1,61 @@
+{
+  "status": "invalid",
+  "error_count": 6,
+  "warning_count": 7,
+  "errors": [
+    {
+      "path": "$.query_type",
+      "message": "'video' is not one of ['text', 'image', 'image_text']"
+    },
+    {
+      "path": "$.relaxed[0]",
+      "message": "expected string, got int"
+    },
+    {
+      "path": "$.results[0].width",
+      "message": "expected integer, got str"
+    },
+    {
+      "path": "$.results[0].score",
+      "message": "expected number or null, got str"
+    },
+    {
+      "path": "$.results[0].rights.commercial",
+      "message": "expected boolean, got str"
+    },
+    {
+      "path": "$.results[1]",
+      "message": "expected object, got str"
+    }
+  ],
+  "warnings": [
+    {
+      "path": "results[0].title",
+      "message": "documented per-result field is absent (title)"
+    },
+    {
+      "path": "results[0].source",
+      "message": "documented per-result field is absent (source)"
+    },
+    {
+      "path": "results[0].height",
+      "message": "documented per-result field is absent (height)"
+    },
+    {
+      "path": "results[0].file",
+      "message": "documented per-result field is absent (file)"
+    },
+    {
+      "path": "results[0].rights.license",
+      "message": "documented rights field is absent (license)"
+    },
+    {
+      "path": "results[0].rights.attribution",
+      "message": "documented rights field is absent (attribution)"
+    },
+    {
+      "path": "results[0].rights.provenance_url",
+      "message": "documented rights field is absent (provenance_url)"
+    }
+  ]
+}

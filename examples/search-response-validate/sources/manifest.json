@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Lightdrift OpenAPI document",
+    "url": "https://docs.lightdrift.ai/openapi.json",
+    "snapshot": "sources/lightdrift-openapi.json",
+    "http_status": "200",
+    "sha256": "a2bab79b095b1a3121b2b8c238eba4d63b2a582e4ec07befac090250ad753cd8",
+    "bytes": 44355,
+    "observed_at": "2026-09-27T02:46:16.331416+00:00",
+    "use": "Public OpenAPI document; its components.schemas.SearchResponse / Result / Rights are the source of the bundled schema snapshot and the --schema override input."
+  },
+  {
+    "name": "Lightdrift search guide",
+    "url": "https://docs.lightdrift.ai/guides/search",
+    "snapshot": "sources/lightdrift-search-guide.html",
+    "http_status": "200",
+    "sha256": "bc213cc02990fe0e066d933e30bf457a25b594ed274a670922c580c71f7d9f34",
+    "bytes": 346873,
+    "observed_at": "2026-09-27T02:46:16.331416+00:00",
+    "use": "Public product contract documenting the response fields (query_id, results, backend, ranking, degraded, relaxed, query_type) and the per-result rights fields the validator checks."
+  },
+  {
+    "name": "JSON Schema 2020-12 core",
+    "url": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+    "snapshot": "sources/json-schema-core.html",
+    "http_status": "200",
+    "sha256": "bcec18ec5000aa7e05f0da11996f8e02c222bf77eebcac2308bcb778e67ec298",
+    "bytes": 342931,
+    "observed_at": "2026-09-27T02:46:16.331416+00:00",
+    "use": "Public specification for the type, enum, anyOf, items and numeric-bound keywords the validator interprets."
+  }
+]

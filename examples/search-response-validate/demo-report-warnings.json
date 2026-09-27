@@ -1,0 +1,48 @@
+{
+  "status": "warnings",
+  "error_count": 0,
+  "warning_count": 10,
+  "errors": [],
+  "warnings": [
+    {
+      "path": "query_id",
+      "message": "response has no query_id"
+    },
+    {
+      "path": "results[0].file",
+      "message": "value is not an absolute http(s) URL"
+    },
+    {
+      "path": "results[0].width",
+      "message": "pixel width must be positive"
+    },
+    {
+      "path": "results[0].rights.license",
+      "message": "documented rights field is absent (license)"
+    },
+    {
+      "path": "results[0].rights.attribution",
+      "message": "documented rights field is absent (attribution)"
+    },
+    {
+      "path": "results[0].rights.provenance_url",
+      "message": "documented rights field is absent (provenance_url)"
+    },
+    {
+      "path": "results[0].rights.attribution",
+      "message": "attribution_required is true but no attribution is declared"
+    },
+    {
+      "path": "results[1].title",
+      "message": "documented per-result field is absent (title)"
+    },
+    {
+      "path": "results[1].rights",
+      "message": "documented per-result field is absent (rights)"
+    },
+    {
+      "path": "results[1].asset_id",
+      "message": "duplicate asset_id, also at results[0]"
+    }
+  ]
+}

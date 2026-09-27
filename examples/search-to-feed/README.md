@@ -63,6 +63,8 @@ Feeds are consumed by aggregators, newsletter tools, static-site generators and 
 
 Local limits: a 5 MB input file is not enforced here, but inputs are read fully into memory, so keep saved responses modest. The tool does not paginate, merge multiple responses, fetch URLs, verify that a license is valid, or decide whether a use is permitted. It does not read or write to Lightdrift. Whether an item may be republished is a rights decision — see the [rights guide](/guides/rights) and the `rights-compat` example before publishing.
 
+Validate the saved response against the published schema with the [offline search-response validator](search-response-validate) before converting it, so a drifted field fails the build instead of reaching a feed subscriber.
+
 ## Files
 
 - `search_to_feed.py` — the utility

@@ -1,0 +1,9 @@
+{
+  "query_id": "q_synthetic_fixture_not_a_real_search",
+  "query_type": "video",
+  "relaxed": [1000],
+  "results": [
+    {"asset_id": "example:bad", "width": "big", "score": "high", "rights": {"commercial": "yes"}},
+    "not-an-object"
+  ]
+}
