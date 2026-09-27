@@ -76,8 +76,6 @@ Summarize a batch of saved search envelopes with the [offline search telemetry r
 
 Reconcile saved search and `/v1/asset/{asset_id}` responses into one canonical inventory with the [offline asset-inventory reconciler](examples/asset-inventory). It merges metadata for known asset ids, lists the assets still missing canonical metadata with a ready-to-run `GET /v1/asset/{id}` plan, counts duplicates, and flags field/rights conflicts between the two views; it makes no network call and a conflict is a signal to review, not a verdict.
 
-Check a fixed-scope image-workflow pilot's acceptance record against its published criteria with the [offline pilot acceptance checker](examples/image-workflow-pilot). It reads the twenty-brief run artifacts plus optional buyer answers and reports each of A1–A7 as `pass`, `fail` or `unchecked` — A1–A4 from the files, A5–A7 buyer-recorded and never inferred — with no network call, key or credit spend.
-
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.
