@@ -1,0 +1,45 @@
+{
+  "query_id": "q_synthetic_fixture_not_a_real_search",
+  "results": [
+    {
+      "asset_id": "govflickr:8412901414",
+      "score": 0.7518,
+      "title": "Sea otter floating on its back",
+      "source": "govflickr",
+      "width": 1024,
+      "height": 768,
+      "file": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/govflickr:8412901414",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/govflickr:8412901414?v=thumb",
+      "rights": {
+        "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "license_verbatim": "Public Domain Mark 1.0",
+        "attribution": "US Fish and Wildlife Service",
+        "attribution_required": false,
+        "provenance_url": "https://www.flickr.com/photos/usfws/8412901414",
+        "basis": "source-declared"
+      }
+    },
+    {
+      "asset_id": "wikimedia:Example-Lighthouse.jpg",
+      "score": 0.612,
+      "title": "Coastal lighthouse at dusk",
+      "source": "wikimedia",
+      "width": 800,
+      "height": 600,
+      "file": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/wikimedia:Example-Lighthouse.jpg",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/wikimedia:Example-Lighthouse.jpg?v=thumb",
+      "rights": {
+        "license": "cc-by-sa-4.0",
+        "license_verbatim": "CC BY-SA 4.0",
+        "attribution": "Example Photographer",
+        "attribution_required": true,
+        "provenance_url": "https://commons.wikimedia.org/wiki/File:Example-Lighthouse.jpg",
+        "basis": "source-declared"
+      }
+    }
+  ],
+  "backend": "voyage",
+  "mode": "auto",
+  "ranking": "text",
+  "latency_ms": 5965
+}

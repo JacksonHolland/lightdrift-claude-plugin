@@ -8,4 +8,4 @@ The fixture is synthetic test data, never a ledger event or claimed search resul
 
 ## Check metadata after export
 
-After editor selection, use the [attribution round-trip checker](../attribution-roundtrip) to compare an independent original baseline against your CMS export. It detects missing credits and nested rights metadata, including null-to-empty transformations. A passing metadata comparison does not establish rights clearance.
+After editor selection, use the [attribution round-trip checker](../attribution-roundtrip) to compare an independent original baseline against your CMS export. It detects missing credits and nested rights metadata, including null-to-empty transformations. A passing metadata comparison does not establish rights clearance. To hand the same saved response to a reviewer as a self-contained HTML page of thumbnails with declared credits and missing-metadata markers, render it with the [offline review-gallery builder](../review-gallery).

@@ -1,0 +1,15 @@
+{
+  "results": [
+    {
+      "asset_id": "example:unknown-rights",
+      "width": 640,
+      "file": "https://api.lightdrift.ai/v1/asset/q_partial/example:unknown-rights",
+      "rights": {"attribution_required": true}
+    },
+    {
+      "title": "Relative image is not loadable",
+      "file": "/v1/asset/relative.jpg",
+      "rights": {"provenance_url": "not-a-url", "license": 42}
+    }
+  ]
+}

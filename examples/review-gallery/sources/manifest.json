@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Lightdrift search guide",
+    "url": "https://docs.lightdrift.ai/guides/search",
+    "snapshot": "sources/lightdrift-search-guide.html",
+    "http_status": "200",
+    "sha256": "bc213cc02990fe0e066d933e30bf457a25b594ed274a670922c580c71f7d9f34",
+    "bytes": 346873,
+    "observed_at": "2026-09-27T02:42:22.751029+00:00",
+    "use": "Public product contract for the saved search response shape: results[], asset_id, title, width/height, file/thumb and the rights object (license, license_verbatim, attribution, attribution_required, provenance_url)."
+  },
+  {
+    "name": "HTML Living Standard: the figure and figcaption elements",
+    "url": "https://html.spec.whatwg.org/multipage/semantics.html",
+    "snapshot": "sources/html-figure-figcaption.html",
+    "http_status": "200",
+    "sha256": "abd7192fdaa780c713cfa020452ec11ce8e38393002ead8811610c3503a4d350",
+    "bytes": 328112,
+    "observed_at": "2026-09-27T02:42:22.751029+00:00",
+    "use": "Public specification for the figure/figcaption grouping and semantics used to present one result per figure with its declared caption."
+  },
+  {
+    "name": "HTML Living Standard: the img element",
+    "url": "https://html.spec.whatwg.org/multipage/embedded-content.html",
+    "snapshot": "sources/html-img-element.html",
+    "http_status": "200",
+    "sha256": "8753698fcc9f4c9b6e2cb08255a778d8be37ef7db52084787c98d6a264424b64",
+    "bytes": 155205,
+    "observed_at": "2026-09-27T02:42:22.751029+00:00",
+    "use": "Public specification for the img attributes used: src, alt, width, height, loading and decoding (no external resources)."
+  }
+]

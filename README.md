@@ -66,6 +66,8 @@ See which rights fields an image API actually returns, from each provider's own 
 
 Catch a drifted or malformed saved response before a template consumes it with the [offline search-response validator](examples/search-response-validate). It checks a stored `/v1/search` response against the published OpenAPI response schema and documented field expectations in two severities — errors contradict the schema, warnings are schema-valid gaps a downstream template still needs — and it is structural, not a rights decision.
 
+Review candidates as images instead of JSON with the [offline review-gallery builder](examples/review-gallery). It renders a saved `/v1/search` response as one self-contained HTML page — a figure per result with declared credit, license and source link, plus a visible marker for any missing metadata — and it copies only declared values, inventing no caption, creator, license or source page.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

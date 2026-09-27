@@ -47,7 +47,7 @@ Before approving a candidate in your own application, follow `rights.provenance_
 
 ## Adapt the queue
 
-Store the query ID together with the selected asset and full rights object in your existing review system. Have a person record the decision there. This example deliberately stops before storage, selection, approval and export; it does not define a permissions policy for your application. For non-Haystack scripts, see [presentation image search](https://docs.lightdrift.ai/guides/presentation-image-search). For general review flow, see [agent image review](https://docs.lightdrift.ai/guides/agent-image-review). To run an authorized live search, [create a Lightdrift account](https://lightdrift.ai/sign-up) and read the [API introduction](https://docs.lightdrift.ai/api-reference/introduction).
+Store the query ID together with the selected asset and full rights object in your existing review system. Have a person record the decision there. This example deliberately stops before storage, selection, approval and export; it does not define a permissions policy for your application. For non-Haystack scripts, see [presentation image search](https://docs.lightdrift.ai/guides/presentation-image-search). For general review flow, see [agent image review](https://docs.lightdrift.ai/guides/agent-image-review). When a reviewer wants the queue as images instead of JSON, render the saved response with the [offline review-gallery builder](../review-gallery). To run an authorized live search, [create a Lightdrift account](https://lightdrift.ai/sign-up) and read the [API introduction](https://docs.lightdrift.ai/api-reference/introduction).
 
 ## Verification and maintenance
 

@@ -1,0 +1,14 @@
+{
+  "result_count": 2,
+  "assets": [
+    {
+      "anchor": "govflickr:8412901414",
+      "missing": []
+    },
+    {
+      "anchor": "wikimedia:Example-Lighthouse.jpg",
+      "missing": []
+    }
+  ],
+  "warnings": []
+}

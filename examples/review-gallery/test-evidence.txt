@@ -1,0 +1,41 @@
+test_anchor_position_fallback (test_build_review_gallery.DescribeTests.test_anchor_position_fallback) ... ok
+test_anchor_query_fallback (test_build_review_gallery.DescribeTests.test_anchor_query_fallback) ... ok
+test_anchor_uses_asset_id (test_build_review_gallery.DescribeTests.test_anchor_uses_asset_id) ... ok
+test_attribution_required_without_text_flagged (test_build_review_gallery.DescribeTests.test_attribution_required_without_text_flagged) ... ok
+test_complete_result_has_no_missing (test_build_review_gallery.DescribeTests.test_complete_result_has_no_missing) ... ok
+test_file_used_when_thumb_missing (test_build_review_gallery.DescribeTests.test_file_used_when_thumb_missing) ... ok
+test_image_missing_when_paths_relative (test_build_review_gallery.DescribeTests.test_image_missing_when_paths_relative) ... ok
+test_license_verbatim_counts_as_license (test_build_review_gallery.DescribeTests.test_license_verbatim_counts_as_license) ... ok
+test_missing_dimensions_flagged (test_build_review_gallery.DescribeTests.test_missing_dimensions_flagged) ... ok
+test_missing_provenance_flagged (test_build_review_gallery.DescribeTests.test_missing_provenance_flagged) ... ok
+test_missing_title_flagged (test_build_review_gallery.DescribeTests.test_missing_title_flagged) ... ok
+test_thumb_preferred_over_file (test_build_review_gallery.DescribeTests.test_thumb_preferred_over_file) ... ok
+test_invalid_json_is_error (test_build_review_gallery.LoadTests.test_invalid_json_is_error) ... ok
+test_missing_file_is_error (test_build_review_gallery.LoadTests.test_missing_file_is_error) ... ok
+test_result_must_be_object (test_build_review_gallery.LoadTests.test_result_must_be_object) ... ok
+test_results_must_be_array (test_build_review_gallery.LoadTests.test_results_must_be_array) ... ok
+test_top_level_must_be_object (test_build_review_gallery.LoadTests.test_top_level_must_be_object) ... ok
+test_missing_response_exit_two (test_build_review_gallery.MainTests.test_missing_response_exit_two) ... ok
+test_output_file_written (test_build_review_gallery.MainTests.test_output_file_written) ... ok
+test_report_written (test_build_review_gallery.MainTests.test_report_written) ... /data/context/gtm-machine/handoffs/3117e533-cc86-4a27-b7ee-e2d7b304e7bb/5ce2218a-538a-40ce-b4e6-ca64df8cf440/review-gallery-v1/test_build_review_gallery.py:197: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/paperclip-run-lig-244-4a7bac22-766-yDHFe5/tmp_ui5aufx.json' mode='r' encoding='UTF-8'>
+  report = json.load(open(handle.name))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_require_complete_fails_when_incomplete (test_build_review_gallery.MainTests.test_require_complete_fails_when_incomplete) ... ok
+test_require_complete_passes_when_clean (test_build_review_gallery.MainTests.test_require_complete_passes_when_clean) ... ok
+test_stdout_exit_zero (test_build_review_gallery.MainTests.test_stdout_exit_zero) ... ok
+test_title_is_escaped (test_build_review_gallery.MainTests.test_title_is_escaped) ... ok
+test_value_is_escaped_in_caption (test_build_review_gallery.MainTests.test_value_is_escaped_in_caption) ... ok
+test_credit_line_combines_attribution_and_license (test_build_review_gallery.RenderTests.test_credit_line_combines_attribution_and_license) ... ok
+test_document_structure (test_build_review_gallery.RenderTests.test_document_structure) ... ok
+test_empty_results_warns (test_build_review_gallery.RenderTests.test_empty_results_warns) ... ok
+test_generated_at_absent_by_default (test_build_review_gallery.RenderTests.test_generated_at_absent_by_default) ... ok
+test_image_attributes (test_build_review_gallery.RenderTests.test_image_attributes) ... ok
+test_missing_markers_rendered (test_build_review_gallery.RenderTests.test_missing_markers_rendered) ... ok
+test_no_external_resources (test_build_review_gallery.RenderTests.test_no_external_resources) ... ok
+test_subtitle_and_generated_at (test_build_review_gallery.RenderTests.test_subtitle_and_generated_at) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.022s
+
+OK

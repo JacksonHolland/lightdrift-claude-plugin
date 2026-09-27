@@ -1,0 +1,39 @@
+{
+  "result_count": 2,
+  "assets": [
+    {
+      "anchor": "example:unknown-rights",
+      "missing": [
+        "title",
+        "provenance_url",
+        "license",
+        "attribution",
+        "dimensions"
+      ]
+    },
+    {
+      "anchor": "result-2",
+      "missing": [
+        "asset_id",
+        "image",
+        "provenance_url",
+        "license",
+        "attribution",
+        "dimensions"
+      ]
+    }
+  ],
+  "warnings": [
+    "example:unknown-rights: missing title",
+    "example:unknown-rights: missing provenance_url",
+    "example:unknown-rights: missing license",
+    "example:unknown-rights: missing attribution",
+    "example:unknown-rights: missing dimensions",
+    "result-2: missing asset_id",
+    "result-2: missing image",
+    "result-2: missing provenance_url",
+    "result-2: missing license",
+    "result-2: missing attribution",
+    "result-2: missing dimensions"
+  ]
+}

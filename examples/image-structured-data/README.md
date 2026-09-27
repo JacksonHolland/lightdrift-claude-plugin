@@ -59,6 +59,7 @@ Do not suppress a nonzero exit code to force a publish. Missing metadata is usef
 - [Validate a saved response against the published schema](search-response-validate) before emitting markup from it, so a drifted field fails the build instead of shipping.
 - [Compare two saved responses offline](search-response-diff) to see what changed between two briefs.
 - [Republish a saved response as a JSON Feed or RSS feed](search-to-feed) when an aggregator or newsletter consumes the result set.
+- [Render a saved response as an offline HTML review gallery](review-gallery) when a person reviews candidates as images before the page metadata is emitted.
 - [Find the same image under two asset ids](search-result-dedup) before publishing duplicates.
 - [Check attribution survives a CMS export](attribution-roundtrip) after the page is live.
 - [Plan a bounded search batch](bounded-search-plan) before spending on a large pull.
