@@ -1,0 +1,41 @@
+$ python3 -m unittest -v test_emit_structured_data.py
+test_cli_full_returns_zero (test_emit_structured_data.CliTests.test_cli_full_returns_zero) ... ok
+test_cli_incomplete_returns_one (test_emit_structured_data.CliTests.test_cli_incomplete_returns_one) ... ok
+test_cli_invalid_returns_two (test_emit_structured_data.CliTests.test_cli_invalid_returns_two) ... ok
+test_cli_unknown_format_exits_two (test_emit_structured_data.CliTests.test_cli_unknown_format_exits_two) ... ok
+test_jsonld_format_single (test_emit_structured_data.CliTests.test_jsonld_format_single) ... ok
+test_credit_empty_when_nothing_declared (test_emit_structured_data.CreditTests.test_credit_empty_when_nothing_declared) ... ok
+test_credit_joins_attribution_and_provenance (test_emit_structured_data.CreditTests.test_credit_joins_attribution_and_provenance) ... ok
+test_only_provenance (test_emit_structured_data.CreditTests.test_only_provenance) ... ok
+test_attribution_required_without_text_warns (test_emit_structured_data.DescribeTests.test_attribution_required_without_text_warns) ... ok
+test_blank_title_treated_as_missing (test_emit_structured_data.DescribeTests.test_blank_title_treated_as_missing) ... ok
+test_bool_width_ignored (test_emit_structured_data.DescribeTests.test_bool_width_ignored) ... ok
+test_license_identifier_not_mapped_to_url (test_emit_structured_data.DescribeTests.test_license_identifier_not_mapped_to_url) ... ok
+test_maps_known_fields (test_emit_structured_data.DescribeTests.test_maps_known_fields) ... ok
+test_missing_asset_id_warns (test_emit_structured_data.DescribeTests.test_missing_asset_id_warns) ... ok
+test_missing_dimensions_warn (test_emit_structured_data.DescribeTests.test_missing_dimensions_warn) ... ok
+test_missing_rights_warns_unknown (test_emit_structured_data.DescribeTests.test_missing_rights_warns_unknown) ... ok
+test_non_string_width_ignored (test_emit_structured_data.DescribeTests.test_non_string_width_ignored) ... ok
+test_null_title_is_warned_not_invented (test_emit_structured_data.DescribeTests.test_null_title_is_warned_not_invented) ... ok
+test_relative_file_url_not_used (test_emit_structured_data.DescribeTests.test_relative_file_url_not_used) ... ok
+test_graph_many_results_uses_graph (test_emit_structured_data.ImageObjectTests.test_graph_many_results_uses_graph) ... ok
+test_graph_single_result_is_plain_image_object (test_emit_structured_data.ImageObjectTests.test_graph_single_result_is_plain_image_object) ... ok
+test_minimal_object (test_emit_structured_data.ImageObjectTests.test_minimal_object) ... ok
+test_unknown_fields_omitted_not_faked (test_emit_structured_data.ImageObjectTests.test_unknown_fields_omitted_not_faked) ... ok
+test_width_height_are_integers (test_emit_structured_data.ImageObjectTests.test_width_height_are_integers) ... ok
+test_invalid_json_raises (test_emit_structured_data.LoadResponseTests.test_invalid_json_raises) ... ok
+test_loads_full_fixture (test_emit_structured_data.LoadResponseTests.test_loads_full_fixture) ... ok
+test_missing_results_raises (test_emit_structured_data.LoadResponseTests.test_missing_results_raises) ... ok
+test_non_object_result_raises (test_emit_structured_data.LoadResponseTests.test_non_object_result_raises) ... ok
+test_html_escapes_quotes_and_ampersands (test_emit_structured_data.OpenGraphTests.test_html_escapes_quotes_and_ampersands) ... ok
+test_og_omits_alt_when_no_title (test_emit_structured_data.OpenGraphTests.test_og_omits_alt_when_no_title) ... ok
+test_og_omits_relative_url (test_emit_structured_data.OpenGraphTests.test_og_omits_relative_url) ... ok
+test_og_tags_for_absolute_url (test_emit_structured_data.OpenGraphTests.test_og_tags_for_absolute_url) ... ok
+test_completeness_gate (test_emit_structured_data.ReportTests.test_completeness_gate) ... ok
+test_report_collects_warnings_from_incomplete_fixture (test_emit_structured_data.ReportTests.test_report_collects_warnings_from_incomplete_fixture) ... ok
+test_report_marks_rights_unevaluated (test_emit_structured_data.ReportTests.test_report_marks_rights_unevaluated) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.002s
+
+OK

@@ -1,0 +1,44 @@
+{
+  "input": "",
+  "query_id": "q_synthetic_fixture_not_a_real_search",
+  "result_count": 2,
+  "rights_not_evaluated": true,
+  "tracked_url_note": "contentUrl is a Lightdrift tracked URL that redirects (302) to a short-lived signed link; confirm your publishing pipeline follows redirects or replace it with a stable URL you control.",
+  "results": [
+    {
+      "asset_id": "govflickr:8412901414",
+      "name": "Sea otter floating on its back",
+      "content_url": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/govflickr:8412901414",
+      "content_url_is_absolute": true,
+      "width": 1024,
+      "height": 768,
+      "source": "govflickr",
+      "rights_present": true,
+      "license_id": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "license_url_used": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "attribution_required": false,
+      "credit": "US Fish and Wildlife Service — https://www.flickr.com/photos/usfws/8412901414",
+      "warnings": []
+    },
+    {
+      "asset_id": "wikimedia:Example-Lighthouse.jpg",
+      "name": "Coastal lighthouse at dusk",
+      "content_url": "https://api.lightdrift.ai/v1/asset/q_synthetic_fixture_not_a_real_search/wikimedia:Example-Lighthouse.jpg",
+      "content_url_is_absolute": true,
+      "width": 800,
+      "height": 600,
+      "source": "wikimedia",
+      "rights_present": true,
+      "license_id": "cc-by-sa-4.0",
+      "license_url_used": null,
+      "attribution_required": true,
+      "credit": "Example Photographer — https://commons.wikimedia.org/wiki/File:Example-Lighthouse.jpg",
+      "warnings": [
+        "rights.license is an identifier, not a URL; 'license' is omitted from JSON-LD"
+      ]
+    }
+  ],
+  "warnings": [
+    "wikimedia:Example-Lighthouse.jpg: rights.license is an identifier, not a URL; 'license' is omitted from JSON-LD"
+  ]
+}

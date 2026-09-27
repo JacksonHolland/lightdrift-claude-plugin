@@ -1,0 +1,32 @@
+{
+  "query_id": "q_synthetic_incomplete_fixture",
+  "results": [
+    {
+      "asset_id": "fixture:incomplete",
+      "score": null,
+      "title": null,
+      "source": "ExampleSource",
+      "width": 640,
+      "height": null,
+      "file": "/v1/asset/q_synthetic_incomplete_fixture/fixture:incomplete",
+      "thumb": "/v1/asset/q_synthetic_incomplete_fixture/fixture:incomplete?v=thumb",
+      "rights": {
+        "license": "cc0",
+        "attribution_required": true,
+        "attribution": null,
+        "provenance_url": "not-a-url"
+      }
+    },
+    {
+      "asset_id": "fixture:no-rights",
+      "title": "A result with no rights object",
+      "source": "ExampleSource",
+      "width": 1200,
+      "height": 900,
+      "file": "https://api.lightdrift.ai/v1/asset/q_synthetic_incomplete_fixture/fixture:no-rights"
+    }
+  ],
+  "backend": "voyage",
+  "mode": "auto",
+  "ranking": "text"
+}

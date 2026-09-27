@@ -81,6 +81,8 @@ All four keys are required and must be booleans. `commercial` and `derivatives` 
 
 Save the selected search response from an existing example — for instance the [Sanity review queue](https://docs.lightdrift.ai/guides/sanity-image-review-queue) or the [presentation workflow](https://docs.lightdrift.ai/guides/presentation-image-search) — then run this checker in the build step before publication. It is complementary to the [attribution export round-trip checker](/guides/attribution-roundtrip-check): that one detects whether metadata survived a CMS export, while this one turns the retained metadata into a use decision and a credit block. Keep the two steps separate; a preserved credit on a non-commercial asset is still a blocked use.
 
+Once a use is cleared, the next step is to emit the publishing metadata itself: the [image structured-data emitter](image-structured-data) maps the same response fields to Schema.org `ImageObject` JSON-LD, Open Graph image tags and a credit line. It copies this decision's credit string into `creditText` and never fabricates a license URL for an identifier-only license, so run this checker first and treat its warnings as inputs to that emitter.
+
 ## Limitations
 
 - Reads source-declared metadata; does not verify the source or the declaration.
