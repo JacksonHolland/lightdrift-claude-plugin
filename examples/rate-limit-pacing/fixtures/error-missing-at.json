@@ -1,0 +1,7 @@
+{
+  "plan": "Starter",
+  "requests": [
+    {"id": "brief-1", "at_second": 0},
+    {"id": "brief-2"}
+  ]
+}

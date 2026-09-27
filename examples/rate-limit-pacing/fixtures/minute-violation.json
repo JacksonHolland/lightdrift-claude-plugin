@@ -1,0 +1,21 @@
+{
+  "plan": "Promo",
+  "requests": [
+    {"id": "burst-1", "at_second": 0}, {"id": "burst-2", "at_second": 0},
+    {"id": "burst-3", "at_second": 0}, {"id": "burst-4", "at_second": 0},
+    {"id": "burst-5", "at_second": 0}, {"id": "burst-6", "at_second": 0},
+    {"id": "burst-7", "at_second": 0}, {"id": "burst-8", "at_second": 0},
+    {"id": "burst-9", "at_second": 0}, {"id": "burst-10", "at_second": 0},
+    {"id": "burst-11", "at_second": 0}, {"id": "burst-12", "at_second": 0},
+    {"id": "burst-13", "at_second": 0}, {"id": "burst-14", "at_second": 0},
+    {"id": "burst-15", "at_second": 0}, {"id": "burst-16", "at_second": 0},
+    {"id": "burst-17", "at_second": 0}, {"id": "burst-18", "at_second": 0},
+    {"id": "burst-19", "at_second": 0}, {"id": "burst-20", "at_second": 0},
+    {"id": "burst-21", "at_second": 0}, {"id": "burst-22", "at_second": 0},
+    {"id": "burst-23", "at_second": 0}, {"id": "burst-24", "at_second": 0},
+    {"id": "burst-25", "at_second": 0}, {"id": "burst-26", "at_second": 0},
+    {"id": "burst-27", "at_second": 0}, {"id": "burst-28", "at_second": 0},
+    {"id": "burst-29", "at_second": 0}, {"id": "burst-30", "at_second": 0},
+    {"id": "burst-31", "at_second": 0}
+  ]
+}

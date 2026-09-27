@@ -1,0 +1,7 @@
+{
+  "limits": {"rpm": 100, "rpd": 1000, "concurrency": 2},
+  "duration_seconds": 10,
+  "requests": [
+    {"id": "c-1"}, {"id": "c-2"}, {"id": "c-3"}, {"id": "c-4"}
+  ]
+}

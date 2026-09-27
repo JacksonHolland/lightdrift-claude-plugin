@@ -1,0 +1,9 @@
+{
+  "limits": {"rpm": 1000, "rpd": 100000, "concurrency": 2},
+  "duration_seconds": 10,
+  "requests": [
+    {"id": "slide-1", "at_second": 0},
+    {"id": "slide-2", "at_second": 1},
+    {"id": "slide-3", "at_second": 2}
+  ]
+}

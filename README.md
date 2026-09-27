@@ -60,6 +60,8 @@ Catch a changed image-delivery URL before publishing with the [offline delivery 
 
 Decide whether a saved image's source-declared rights fit an intended use and build the required credit with the [offline rights-compatibility planner](examples/rights-compat). It returns `ok`, `ok_with_attribution`, `review` or `blocked` per asset against a saved use profile and emits a credit block; unknown flags route to review, and a pass is a review aid, not legal clearance.
 
+Keep a batch of search briefs inside the minute, daily and concurrency limits with the [offline rate-limit pacing validator](examples/rate-limit-pacing). It validates a proposed schedule or builds a deterministic earliest-start one from the published plan limits, without sending requests or spending credit.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

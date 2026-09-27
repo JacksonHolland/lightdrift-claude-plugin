@@ -1,0 +1,43 @@
+Rate-limit pacing v1 test evidence
+Generated: 2026-09-27T02:29:32Z
+
+test_all_plans_resolve (test_pace_plan.LimitsTests.test_all_plans_resolve) ... ok
+test_boolean_limit_is_input_error (test_pace_plan.LimitsTests.test_boolean_limit_is_input_error) ... ok
+test_explicit_limit_overrides_plan (test_pace_plan.LimitsTests.test_explicit_limit_overrides_plan) ... ok
+test_explicit_limits_without_plan (test_pace_plan.LimitsTests.test_explicit_limits_without_plan) ... ok
+test_missing_limit_is_input_error (test_pace_plan.LimitsTests.test_missing_limit_is_input_error) ... ok
+test_plan_is_case_insensitive (test_pace_plan.LimitsTests.test_plan_is_case_insensitive) ... ok
+test_unknown_plan_is_input_error (test_pace_plan.LimitsTests.test_unknown_plan_is_input_error) ... ok
+test_zero_limit_is_input_error (test_pace_plan.LimitsTests.test_zero_limit_is_input_error) ... ok
+test_default_duration_applied (test_pace_plan.RequestParsingTests.test_default_duration_applied) ... ok
+test_duplicate_id_is_error (test_pace_plan.RequestParsingTests.test_duplicate_id_is_error) ... ok
+test_empty_requests_is_error (test_pace_plan.RequestParsingTests.test_empty_requests_is_error) ... ok
+test_missing_id_is_error (test_pace_plan.RequestParsingTests.test_missing_id_is_error) ... ok
+test_missing_requests_is_error (test_pace_plan.RequestParsingTests.test_missing_requests_is_error) ... ok
+test_negative_duration_is_error (test_pace_plan.RequestParsingTests.test_negative_duration_is_error) ... ok
+test_request_duration_overrides_default (test_pace_plan.RequestParsingTests.test_request_duration_overrides_default) ... ok
+test_burst_is_spaced_by_minute (test_pace_plan.ScheduleTests.test_burst_is_spaced_by_minute) ... ok
+test_concurrency_pushes_start (test_pace_plan.ScheduleTests.test_concurrency_pushes_start) ... ok
+test_infeasible_past_horizon (test_pace_plan.ScheduleTests.test_infeasible_past_horizon) ... ok
+test_schedule_is_deterministic (test_pace_plan.ScheduleTests.test_schedule_is_deterministic) ... ok
+test_schedule_respects_limits (test_pace_plan.ScheduleTests.test_schedule_respects_limits) ... ok
+test_schedule_rolls_to_next_day (test_pace_plan.ScheduleTests.test_schedule_rolls_to_next_day) ... ok
+test_concurrency_boundary_is_valid (test_pace_plan.ValidateTests.test_concurrency_boundary_is_valid) ... ok
+test_concurrency_violation_exit_one (test_pace_plan.ValidateTests.test_concurrency_violation_exit_one) ... ok
+test_daily_violation_exit_one (test_pace_plan.ValidateTests.test_daily_violation_exit_one) ... ok
+test_invalid_json_exit_two (test_pace_plan.ValidateTests.test_invalid_json_exit_two) ... ok
+test_minute_boundary_is_valid (test_pace_plan.ValidateTests.test_minute_boundary_is_valid) ... ok
+test_minute_violation_exit_one (test_pace_plan.ValidateTests.test_minute_violation_exit_one) ... ok
+test_missing_at_second_exit_two (test_pace_plan.ValidateTests.test_missing_at_second_exit_two) ... ok
+test_missing_file_exit_two (test_pace_plan.ValidateTests.test_missing_file_exit_two) ... ok
+test_negative_at_second_exit_two (test_pace_plan.ValidateTests.test_negative_at_second_exit_two) ... ok
+test_non_object_top_level_exit_two (test_pace_plan.ValidateTests.test_non_object_top_level_exit_two) ... ok
+test_text_format_valid (test_pace_plan.ValidateTests.test_text_format_valid) ... ok
+test_valid_schedule_exit_zero (test_pace_plan.ValidateTests.test_valid_schedule_exit_zero) ... ok
+test_window_is_half_open (test_pace_plan.ValidateTests.test_window_is_half_open) ... ok
+test_zero_duration_never_overlaps (test_pace_plan.ValidateTests.test_zero_duration_never_overlaps) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.007s
+
+OK

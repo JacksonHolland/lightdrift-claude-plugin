@@ -1,0 +1,51 @@
+{
+  "tool": "pace_plan",
+  "mode": "schedule",
+  "status": "scheduled",
+  "limits": {
+    "rpm": 2,
+    "rpd": 1000,
+    "concurrency": 1
+  },
+  "limits_basis": "explicit limits",
+  "total_requests": 5,
+  "makespan_seconds": 120,
+  "observed": {
+    "max_per_minute": 2,
+    "max_per_day": 5,
+    "max_concurrent": 0
+  },
+  "schedule": [
+    {
+      "id": "b-1",
+      "start_second": 0,
+      "end_second": 0
+    },
+    {
+      "id": "b-2",
+      "start_second": 0,
+      "end_second": 0
+    },
+    {
+      "id": "b-3",
+      "start_second": 60,
+      "end_second": 60
+    },
+    {
+      "id": "b-4",
+      "start_second": 60,
+      "end_second": 60
+    },
+    {
+      "id": "b-5",
+      "start_second": 120,
+      "end_second": 120
+    }
+  ],
+  "warnings": [
+    "zero-duration requests never overlap, so concurrency is not bounded for them"
+  ],
+  "limitations": [
+    "Minute and daily limits are fixed windows in the product; this tool checks conservative sliding windows, so a schedule it passes is safe but a schedule it flags may still pass against the real fixed windows. Durations are caller estimates, not observed service times. This tool does not reserve credit, send requests, or implement retries."
+  ]
+}

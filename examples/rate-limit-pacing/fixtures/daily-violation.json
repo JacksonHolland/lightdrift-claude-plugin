@@ -1,0 +1,8 @@
+{
+  "limits": {"rpm": 1000, "rpd": 5, "concurrency": 100},
+  "requests": [
+    {"id": "day-1", "at_second": 0}, {"id": "day-2", "at_second": 1},
+    {"id": "day-3", "at_second": 2}, {"id": "day-4", "at_second": 3},
+    {"id": "day-5", "at_second": 4}, {"id": "day-6", "at_second": 5}
+  ]
+}
