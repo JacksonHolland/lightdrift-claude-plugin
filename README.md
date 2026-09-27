@@ -58,6 +58,8 @@ Check that selected credits and source metadata survive a CMS export with the [o
 
 Catch a changed image-delivery URL before publishing with the [offline delivery URL audit](examples/delivery-url-audit). It compares the URL saved at selection time with the exported URL and flags likely signed or temporary addresses; a clean report does not establish URL lifetime or availability.
 
+Decide whether a saved image's source-declared rights fit an intended use and build the required credit with the [offline rights-compatibility planner](examples/rights-compat). It returns `ok`, `ok_with_attribution`, `review` or `blocked` per asset against a saved use profile and emits a credit block; unknown flags route to review, and a pass is a review aid, not legal clearance.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

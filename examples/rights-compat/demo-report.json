@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "generated_by": "rights_compat.py",
+  "rights_clearance": "not_evaluated",
+  "use_profile": {
+    "commercial": true,
+    "derivatives": true,
+    "share_alike_ok": false,
+    "attribution_in_output": true
+  },
+  "summary": {
+    "assets": 9,
+    "ok": 1,
+    "ok_with_attribution": 1,
+    "review": 5,
+    "blocked": 2
+  },
+  "decisions": [
+    {
+      "asset_id": "fixture-cc0-0001",
+      "status": "ok",
+      "reason_codes": [],
+      "reasons": [],
+      "license": "cc0",
+      "attribution": null,
+      "provenance_url": "https://example.org/assets/fixture-cc0-0001"
+    },
+    {
+      "asset_id": "fixture-ccby-0002",
+      "status": "ok_with_attribution",
+      "reason_codes": [],
+      "reasons": [],
+      "license": "cc-by",
+      "attribution": "Coastal cliffs at dawn by A. Author via ExampleSource, CC BY 4.0",
+      "provenance_url": "https://example.org/assets/fixture-ccby-0002"
+    },
+    {
+      "asset_id": "fixture-ccbync-0003",
+      "status": "blocked",
+      "reason_codes": [
+        "license_declares_noncommercial"
+      ],
+      "reasons": [
+        "The source declares commercial use is not permitted, but commercial use was requested."
+      ],
+      "license": "cc-by-nc",
+      "attribution": "Market at dusk by B. Author via ExampleSource, CC BY-NC 4.0",
+      "provenance_url": "https://example.org/assets/fixture-ccbync-0003"
+    },
+    {
+      "asset_id": "fixture-ccbynd-0004",
+      "status": "blocked",
+      "reason_codes": [
+        "license_forbids_derivatives"
+      ],
+      "reasons": [
+        "The source declares derivatives are not permitted, but derivative use was requested."
+      ],
+      "license": "cc-by-nd",
+      "attribution": "Bridge at night by C. Author via ExampleSource, CC BY-ND 4.0",
+      "provenance_url": "https://example.org/assets/fixture-ccbynd-0004"
+    },
+    {
+      "asset_id": "fixture-ccbysa-0005",
+      "status": "review",
+      "reason_codes": [
+        "share_alike_obligation"
+      ],
+      "reasons": [
+        "The source declares share-alike; the intended use was not marked as accepting that obligation."
+      ],
+      "license": "cc-by-sa",
+      "attribution": "Forest path by D. Author via ExampleSource, CC BY-SA 4.0",
+      "provenance_url": "https://example.org/assets/fixture-ccbysa-0005"
+    },
+    {
+      "asset_id": "fixture-missing-attribution-0007",
+      "status": "review",
+      "reason_codes": [
+        "attribution_required_but_missing"
+      ],
+      "reasons": [
+        "Attribution is required but no attribution string is present; hold the asset."
+      ],
+      "license": "cc-by",
+      "attribution": null,
+      "provenance_url": "https://example.org/assets/fixture-missing-attribution-0007"
+    },
+    {
+      "asset_id": "fixture-no-license-0009",
+      "status": "review",
+      "reason_codes": [
+        "license_unknown"
+      ],
+      "reasons": [
+        "No normalized license identifier is present; the source's terms were not resolved."
+      ],
+      "license": null,
+      "attribution": null,
+      "provenance_url": "https://example.org/assets/fixture-no-license-0009"
+    },
+    {
+      "asset_id": "fixture-no-rights-0008",
+      "status": "review",
+      "reason_codes": [
+        "rights_missing"
+      ],
+      "reasons": [
+        "The asset carries no rights object; nothing about its terms is known."
+      ],
+      "license": null,
+      "attribution": null,
+      "provenance_url": null
+    },
+    {
+      "asset_id": "fixture-unknown-flags-0006",
+      "status": "review",
+      "reason_codes": [
+        "commercial_permission_unknown",
+        "derivative_permission_unknown",
+        "attribution_requirement_unknown"
+      ],
+      "reasons": [
+        "Commercial permission is not declared (null); treat as unknown, not as permission.",
+        "Derivative permission is not declared (null); treat as unknown, not as permission.",
+        "It is not declared whether attribution is required while attribution in output was requested."
+      ],
+      "license": "cc-by",
+      "attribution": null,
+      "provenance_url": "https://example.org/assets/fixture-unknown-flags-0006"
+    }
+  ],
+  "credit_lines": [
+    "- Coastal cliffs at dawn by A. Author via ExampleSource, CC BY 4.0 (https://example.org/assets/fixture-ccby-0002)"
+  ],
+  "limitations": [
+    "This tool reads source-declared metadata; it does not verify the source or the declaration.",
+    "It does not assess likeness, trademark, property, model or other rights beyond copyright.",
+    "A pass is not legal clearance: rights_clearance remains not_evaluated for every asset.",
+    "It does not check revocations or whether a downloaded file matches the selected asset ID.",
+    "It does not evaluate where the credit is rendered or whether a CMS preserved it."
+  ]
+}

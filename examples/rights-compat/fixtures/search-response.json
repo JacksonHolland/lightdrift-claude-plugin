@@ -1,0 +1,129 @@
+{
+  "query_id": "synthetic-fixture-not-a-real-search",
+  "results": [
+    {
+      "asset_id": "fixture-cc0-0001",
+      "source": "ExampleSource",
+      "rights": {
+        "license": "cc0",
+        "license_verbatim": "CC0 1.0 Universal",
+        "commercial": true,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution_required": false,
+        "attribution": null,
+        "provenance_url": "https://example.org/assets/fixture-cc0-0001",
+        "basis": "synthetic fixture"
+      }
+    },
+    {
+      "asset_id": "fixture-ccby-0002",
+      "source": "ExampleSource",
+      "rights": {
+        "license": "cc-by",
+        "license_verbatim": "Creative Commons Attribution 4.0",
+        "commercial": true,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution_required": true,
+        "attribution": "Coastal cliffs at dawn by A. Author via ExampleSource, CC BY 4.0",
+        "provenance_url": "https://example.org/assets/fixture-ccby-0002",
+        "basis": "synthetic fixture"
+      }
+    },
+    {
+      "asset_id": "fixture-ccbync-0003",
+      "source": "ExampleSource",
+      "rights": {
+        "license": "cc-by-nc",
+        "license_verbatim": "Creative Commons Attribution-NonCommercial 4.0",
+        "commercial": false,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution_required": true,
+        "attribution": "Market at dusk by B. Author via ExampleSource, CC BY-NC 4.0",
+        "provenance_url": "https://example.org/assets/fixture-ccbync-0003",
+        "basis": "synthetic fixture"
+      }
+    },
+    {
+      "asset_id": "fixture-ccbynd-0004",
+      "source": "ExampleSource",
+      "rights": {
+        "license": "cc-by-nd",
+        "license_verbatim": "Creative Commons Attribution-NoDerivatives 4.0",
+        "commercial": true,
+        "derivatives": false,
+        "share_alike": false,
+        "attribution_required": true,
+        "attribution": "Bridge at night by C. Author via ExampleSource, CC BY-ND 4.0",
+        "provenance_url": "https://example.org/assets/fixture-ccbynd-0004",
+        "basis": "synthetic fixture"
+      }
+    },
+    {
+      "asset_id": "fixture-ccbysa-0005",
+      "source": "ExampleSource",
+      "rights": {
+        "license": "cc-by-sa",
+        "license_verbatim": "Creative Commons Attribution-ShareAlike 4.0",
+        "commercial": true,
+        "derivatives": true,
+        "share_alike": true,
+        "attribution_required": true,
+        "attribution": "Forest path by D. Author via ExampleSource, CC BY-SA 4.0",
+        "provenance_url": "https://example.org/assets/fixture-ccbysa-0005",
+        "basis": "synthetic fixture"
+      }
+    },
+    {
+      "asset_id": "fixture-unknown-flags-0006",
+      "source": "ExampleSource",
+      "rights": {
+        "license": "cc-by",
+        "license_verbatim": "Creative Commons Attribution 4.0",
+        "commercial": null,
+        "derivatives": null,
+        "share_alike": null,
+        "attribution_required": null,
+        "attribution": null,
+        "provenance_url": "https://example.org/assets/fixture-unknown-flags-0006",
+        "basis": "synthetic fixture"
+      }
+    },
+    {
+      "asset_id": "fixture-missing-attribution-0007",
+      "source": "ExampleSource",
+      "rights": {
+        "license": "cc-by",
+        "license_verbatim": "Creative Commons Attribution 4.0",
+        "commercial": true,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution_required": true,
+        "attribution": null,
+        "provenance_url": "https://example.org/assets/fixture-missing-attribution-0007",
+        "basis": "synthetic fixture"
+      }
+    },
+    {
+      "asset_id": "fixture-no-rights-0008",
+      "source": "ExampleSource",
+      "rights": null
+    },
+    {
+      "asset_id": "fixture-no-license-0009",
+      "source": "ExampleSource",
+      "rights": {
+        "license": null,
+        "commercial": true,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution_required": false,
+        "attribution": null,
+        "provenance_url": "https://example.org/assets/fixture-no-license-0009",
+        "basis": "synthetic fixture"
+      }
+    }
+  ]
+}

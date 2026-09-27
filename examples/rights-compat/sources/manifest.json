@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-09-27T02:12:00Z",
+  "captured_by": "SEO & Linkable Assets (LIG-258 batch rights-compat-credit-v1)",
+  "method": "curl -s with 30s timeout; no authenticated request, no paid search",
+  "files": [
+    {
+      "file": "sources/openapi.json",
+      "source_url": "https://api.lightdrift.ai/openapi.json",
+      "observed_at": "2026-09-27T02:12:00Z",
+      "http_status": 200,
+      "sha256": "4a8f14f098dece6eb70f29adac55365870d8ddbb83a4d1eeff6a88e226c163f6",
+      "bytes": 24246,
+      "note": "live OpenAPI schema (info.version 1.0); confirms request fields and that filters include commercial/derivatives/attribution_required"
+    },
+    {
+      "file": "sources/rights-guide.html",
+      "source_url": "https://docs.lightdrift.ai/guides/rights",
+      "observed_at": "2026-09-27T02:12:00Z",
+      "http_status": 200,
+      "sha256": "394feade9550642a2bcdd55e2a903342b672d29f930b63a536053b7012eb599b",
+      "bytes": 261066,
+      "note": "rendered rights guide; documents rights object fields license, license_verbatim, commercial, derivatives, share_alike, attribution_required, attribution, provenance_url, basis"
+    },
+    {
+      "file": "sources/search-guide.html",
+      "source_url": "https://docs.lightdrift.ai/guides/search",
+      "observed_at": "2026-09-27T02:12:00Z",
+      "http_status": 200,
+      "sha256": "736198d50afb9c9012cadeebc6df61d7429988c172058361f1b748ba517f868e",
+      "bytes": 341629,
+      "note": "rendered search guide; context for how search results and rights travel with candidates"
+    }
+  ]
+}
