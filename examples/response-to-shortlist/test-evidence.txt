@@ -1,0 +1,19 @@
+test_bool_cells_lowercase (test_shortlist_export.BuildTests.test_bool_cells_lowercase) ... ok
+test_clean_csv_has_header_and_row (test_shortlist_export.BuildTests.test_clean_csv_has_header_and_row) ... ok
+test_empty_results (test_shortlist_export.BuildTests.test_empty_results) ... ok
+test_partial_flags_and_preserves_unknown_rights_field (test_shortlist_export.BuildTests.test_partial_flags_and_preserves_unknown_rights_field) ... ok
+test_exit_two_bad_input (test_shortlist_export.CliTests.test_exit_two_bad_input) ... ok
+test_exit_zero_clean (test_shortlist_export.CliTests.test_exit_zero_clean) ... ok
+test_strict_exit_one (test_shortlist_export.CliTests.test_strict_exit_one) ... ok
+test_writes_both_files (test_shortlist_export.CliTests.test_writes_both_files) ... ok
+test_invalid_json_raises (test_shortlist_export.ParseTests.test_invalid_json_raises) ... ok
+test_loads_results (test_shortlist_export.ParseTests.test_loads_results) ... ok
+test_missing_results_raises (test_shortlist_export.ParseTests.test_missing_results_raises) ... ok
+test_attribution_missing (test_shortlist_export.ReviewStatusTests.test_attribution_missing) ... ok
+test_ready_when_license_and_attribution_present (test_shortlist_export.ReviewStatusTests.test_ready_when_license_and_attribution_present) ... ok
+test_rights_missing (test_shortlist_export.ReviewStatusTests.test_rights_missing) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

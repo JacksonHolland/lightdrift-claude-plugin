@@ -1,0 +1,3 @@
+row_index,asset_id,score,title,source,ai_generated,width,height,file_url,thumb_url,rights_license,rights_license_verbatim,rights_commercial,rights_attribution_required,rights_derivatives,rights_share_alike,rights_attribution,rights_provenance_url,rights_basis,review_status
+0,b1,,No license,example,,800,600,https://media.example/b1,https://media.example/b1_t,,,true,false,,,,,source_declared,needs_rights_review
+1,b2,,Needs attribution,example,,1000,1000,https://media.example/b2,https://media.example/b2_t,CC BY-SA 4.0,,true,true,,,,,source_declared,needs_attribution_review

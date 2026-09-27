@@ -1,0 +1,40 @@
+{
+  "query_id": "q_partial",
+  "results": [
+    {
+      "asset_id": "b1",
+      "file": "https://media.example/b1",
+      "height": 600,
+      "review_status": "needs_rights_review",
+      "rights": {
+        "attribution_required": false,
+        "basis": "source_declared",
+        "commercial": true,
+        "future_field": "keep-me"
+      },
+      "row_index": 0,
+      "source": "example",
+      "thumb": "https://media.example/b1_t",
+      "title": "No license",
+      "width": 800
+    },
+    {
+      "asset_id": "b2",
+      "file": "https://media.example/b2",
+      "height": 1000,
+      "review_status": "needs_attribution_review",
+      "rights": {
+        "attribution": null,
+        "attribution_required": true,
+        "basis": "source_declared",
+        "commercial": true,
+        "license": "CC BY-SA 4.0"
+      },
+      "row_index": 1,
+      "source": "example",
+      "thumb": "https://media.example/b2_t",
+      "title": "Needs attribution",
+      "width": 1000
+    }
+  ]
+}

@@ -70,6 +70,8 @@ Review candidates as images instead of JSON with the [offline review-gallery bui
 
 Turn one or two on-brief images into more like them with the [bounded similar-image expansion utility](examples/similar-expand). It reads seeds from a saved response, plans the request count and worst-case cost before spending, then merges the responses into one identity-deduplicated shortlist that keeps each result's source-declared rights; the default is a dry run.
 
+Pull a saved response into a spreadsheet-ready table with the [offline editorial shortlist exporter](examples/response-to-shortlist). It writes a CSV with the rights fields flattened into columns and a JSON shortlist that keeps each result's full rights object, flags rows that still need review, and never calls Lightdrift or spends credit.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

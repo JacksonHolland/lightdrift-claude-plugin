@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-09-27T03:35:00+00:00",
+  "sources": [
+    {
+      "name": "lightdrift_openapi",
+      "path": "/data/workspaces/content-distribution/lightdrift-docs/openapi.json",
+      "bytes": 44355,
+      "sha256": "a2bab79b095b1a3121b2b8c238eba4d63b2a582e4ec07befac090250ad753cd8",
+      "kind": "local_file",
+      "fetched": false
+    },
+    {
+      "name": "lightdrift_search_guide",
+      "path": "/data/workspaces/content-distribution/lightdrift-docs/guides/search.mdx",
+      "bytes": 13072,
+      "sha256": "69600599ac2102d53fefa04c1e03e9b23f8aa8c07fcd038b4295b1b9426d9924",
+      "kind": "local_file",
+      "fetched": false
+    },
+    {
+      "name": "lightdrift_rights_guide",
+      "path": "/data/workspaces/content-distribution/lightdrift-docs/guides/rights.mdx",
+      "bytes": 3134,
+      "sha256": "0ce45ec08210393c8cbf8346942bff9766383f9f97514f5e0f04e748e7030688",
+      "kind": "local_file",
+      "fetched": false
+    },
+    {
+      "name": "lightdrift_response_contract",
+      "path": "/data/workspaces/content-distribution/lightdrift-docs/api-reference/introduction.mdx",
+      "bytes": 3971,
+      "sha256": "c85d28490be7129dca9119e24f77c63537c983c901deabdf454d215f4a206af7",
+      "kind": "local_file",
+      "fetched": false
+    }
+  ],
+  "notes": [
+    "Local published docs working copies; no network fetch was made.",
+    "Result fields (asset_id, score, title, source, ai_generated, width, height, file, thumb, rights) and Rights fields are taken from the OpenAPI schema."
+  ]
+}

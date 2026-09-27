@@ -1,0 +1,27 @@
+{
+  "query_id": "q_clean",
+  "results": [
+    {
+      "asset_id": "a1",
+      "score": 0.9,
+      "title": "Wind turbines",
+      "source": "example",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "file": "https://media.example/a1?query_id=q_clean",
+      "thumb": "https://media.example/a1_t.jpg?query_id=q_clean",
+      "rights": {
+        "license": "CC BY 4.0",
+        "license_verbatim": "CC BY 4.0",
+        "commercial": true,
+        "attribution_required": true,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution": "Example Photographer",
+        "provenance_url": "https://source.example/a1",
+        "basis": "source_declared"
+      }
+    }
+  ]
+}

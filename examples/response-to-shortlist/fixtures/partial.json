@@ -1,0 +1,36 @@
+{
+  "query_id": "q_partial",
+  "results": [
+    {
+      "asset_id": "b1",
+      "title": "No license",
+      "source": "example",
+      "width": 800,
+      "height": 600,
+      "file": "https://media.example/b1",
+      "thumb": "https://media.example/b1_t",
+      "rights": {
+        "commercial": true,
+        "attribution_required": false,
+        "basis": "source_declared",
+        "future_field": "keep-me"
+      }
+    },
+    {
+      "asset_id": "b2",
+      "title": "Needs attribution",
+      "source": "example",
+      "width": 1000,
+      "height": 1000,
+      "file": "https://media.example/b2",
+      "thumb": "https://media.example/b2_t",
+      "rights": {
+        "license": "CC BY-SA 4.0",
+        "commercial": true,
+        "attribution_required": true,
+        "attribution": null,
+        "basis": "source_declared"
+      }
+    }
+  ]
+}
