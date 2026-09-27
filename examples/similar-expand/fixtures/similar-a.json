@@ -1,0 +1,52 @@
+{
+  "seed": "isorepublic:17191",
+  "response": {
+    "query_id": "q_synthetic_similar_a",
+    "ranking": "image",
+    "mode": "auto",
+    "results": [
+      {
+        "asset_id": "stocksnap:BAVURMUHRD",
+        "score": 0.74583352,
+        "title": "car auto",
+        "source": "stocksnap",
+        "width": 5000,
+        "height": 4000,
+        "file": "https://api.lightdrift.ai/v1/asset/q_a/stocksnap:BAVURMUHRD",
+        "thumb": "https://api.lightdrift.ai/v1/asset/q_a/stocksnap:BAVURMUHRD?v=thumb",
+        "rights": {
+          "license": "cc0",
+          "license_verbatim": "CC0 1.0",
+          "commercial": true,
+          "attribution_required": false,
+          "derivatives": true,
+          "share_alike": false,
+          "attribution": null,
+          "provenance_url": "https://stocksnap.io/photo/car-auto-BAVURMUHRD",
+          "basis": "as-declared by source; verify for critical use"
+        }
+      },
+      {
+        "asset_id": "flickr:51141533761",
+        "score": 0.73,
+        "title": "Night in the city-2",
+        "source": "flickr",
+        "width": 1023,
+        "height": 968,
+        "file": "https://api.lightdrift.ai/v1/asset/q_a/flickr:51141533761",
+        "thumb": "https://api.lightdrift.ai/v1/asset/q_a/flickr:51141533761?v=thumb",
+        "rights": {
+          "license": "cc-by-sa",
+          "license_verbatim": "CC BY-SA 2.0",
+          "commercial": true,
+          "attribution_required": true,
+          "derivatives": true,
+          "share_alike": true,
+          "attribution": "\"Night in the city-2\" by Tatiana El-Bakri, flickr, CC BY-SA",
+          "provenance_url": "https://www.flickr.com/photos/189281045@N03/51141533761",
+          "basis": "as-declared by source; verify for critical use"
+        }
+      }
+    ]
+  }
+}

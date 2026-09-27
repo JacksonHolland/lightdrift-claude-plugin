@@ -1,0 +1,71 @@
+{
+  "query_id": "q_synthetic_seed_response",
+  "query_type": "text",
+  "ranking": "text",
+  "mode": "auto",
+  "results": [
+    {
+      "asset_id": "isorepublic:17191",
+      "score": 0.921875,
+      "title": "Mini in Brooklyn",
+      "source": "isorepublic",
+      "width": 4000,
+      "height": 2667,
+      "file": "https://api.lightdrift.ai/v1/asset/q_synthetic/isorepublic:17191",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_synthetic/isorepublic:17191?v=thumb",
+      "rights": {
+        "license": "cc0",
+        "license_verbatim": "CC0 1.0",
+        "commercial": true,
+        "attribution_required": false,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution": null,
+        "provenance_url": "https://isorepublic.com/photo/mini-in-brooklyn/",
+        "basis": "as-declared by source; verify for critical use"
+      }
+    },
+    {
+      "asset_id": "stocksnap:BAVURMUHRD",
+      "score": 0.8,
+      "title": "car auto",
+      "source": "stocksnap",
+      "width": 5000,
+      "height": 4000,
+      "file": "https://api.lightdrift.ai/v1/asset/q_synthetic/stocksnap:BAVURMUHRD",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_synthetic/stocksnap:BAVURMUHRD?v=thumb",
+      "rights": {
+        "license": "cc0",
+        "license_verbatim": "CC0 1.0",
+        "commercial": true,
+        "attribution_required": false,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution": null,
+        "provenance_url": "https://stocksnap.io/photo/car-auto-BAVURMUHRD",
+        "basis": "as-declared by source; verify for critical use"
+      }
+    },
+    {
+      "asset_id": "isorepublic:17191",
+      "score": 0.79,
+      "title": "Mini in Brooklyn",
+      "source": "isorepublic",
+      "width": 4000,
+      "height": 2667,
+      "file": "https://api.lightdrift.ai/v1/asset/q_synthetic/isorepublic:17191",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_synthetic/isorepublic:17191?v=thumb",
+      "rights": {
+        "license": "cc0",
+        "license_verbatim": "CC0 1.0",
+        "commercial": true,
+        "attribution_required": false,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution": null,
+        "provenance_url": "https://isorepublic.com/photo/mini-in-brooklyn/",
+        "basis": "as-declared by source; verify for critical use"
+      }
+    }
+  ]
+}

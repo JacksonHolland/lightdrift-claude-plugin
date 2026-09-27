@@ -1,0 +1,141 @@
+{
+  "schema": "similar-expand/1",
+  "generated_at": "2026-09-27T03:03:53.479878+00:00",
+  "mode": "merge",
+  "base_url": "https://api.lightdrift.ai",
+  "k": 10,
+  "price_usd_micros": 5000,
+  "price_usd": "0.005000",
+  "seeds": [
+    "isorepublic:17191",
+    "stocksnap:BAVURMUHRD"
+  ],
+  "seeds_available": 2,
+  "seeds_skipped": 0,
+  "planned_requests": 0,
+  "planned_cost_usd": "0.000000",
+  "budget_usd": null,
+  "blocked": false,
+  "aborted": null,
+  "requests": [
+    {
+      "seed": "isorepublic:17191",
+      "status": "ok",
+      "query_id": "q_synthetic_similar_a",
+      "result_count": 2
+    },
+    {
+      "seed": "stocksnap:BAVURMUHRD",
+      "status": "ok",
+      "query_id": "q_synthetic_similar_b",
+      "result_count": 3
+    }
+  ],
+  "shortlist_count": 4,
+  "shortlist": [
+    {
+      "asset_id": "stocksnap:BAVURMUHRD",
+      "found_by": [
+        "isorepublic:17191"
+      ],
+      "best_rank": 0,
+      "title": "car auto",
+      "source": "stocksnap",
+      "width": 5000,
+      "height": 4000,
+      "score": 0.74583352,
+      "file": "https://api.lightdrift.ai/v1/asset/q_a/stocksnap:BAVURMUHRD",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_a/stocksnap:BAVURMUHRD?v=thumb",
+      "rights": {
+        "license": "cc0",
+        "license_verbatim": "CC0 1.0",
+        "commercial": true,
+        "attribution_required": false,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution": null,
+        "provenance_url": "https://stocksnap.io/photo/car-auto-BAVURMUHRD",
+        "basis": "as-declared by source; verify for critical use"
+      }
+    },
+    {
+      "asset_id": "flickr:51141533761",
+      "found_by": [
+        "isorepublic:17191",
+        "stocksnap:BAVURMUHRD"
+      ],
+      "best_rank": 1,
+      "title": "Night in the city-2",
+      "source": "flickr",
+      "width": 1023,
+      "height": 968,
+      "score": 0.73,
+      "file": "https://api.lightdrift.ai/v1/asset/q_a/flickr:51141533761",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_a/flickr:51141533761?v=thumb",
+      "rights": {
+        "license": "cc-by-sa",
+        "license_verbatim": "CC BY-SA 2.0",
+        "commercial": true,
+        "attribution_required": true,
+        "derivatives": true,
+        "share_alike": true,
+        "attribution": "\"Night in the city-2\" by Tatiana El-Bakri, flickr, CC BY-SA",
+        "provenance_url": "https://www.flickr.com/photos/189281045@N03/51141533761",
+        "basis": "as-declared by source; verify for critical use"
+      }
+    },
+    {
+      "asset_id": "isorepublic:17191",
+      "found_by": [
+        "stocksnap:BAVURMUHRD"
+      ],
+      "best_rank": 0,
+      "title": "Mini in Brooklyn",
+      "source": "isorepublic",
+      "width": 4000,
+      "height": 2667,
+      "score": 0.71,
+      "file": "https://api.lightdrift.ai/v1/asset/q_b/isorepublic:17191",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_b/isorepublic:17191?v=thumb",
+      "rights": {
+        "license": "cc0",
+        "license_verbatim": "CC0 1.0",
+        "commercial": true,
+        "attribution_required": false,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution": null,
+        "provenance_url": "https://isorepublic.com/photo/mini-in-brooklyn/",
+        "basis": "as-declared by source; verify for critical use"
+      }
+    },
+    {
+      "asset_id": "yfcc:9715466326",
+      "found_by": [
+        "stocksnap:BAVURMUHRD"
+      ],
+      "best_rank": 1,
+      "title": "MINIPalooza 2013",
+      "source": "yfcc",
+      "width": 1024,
+      "height": 575,
+      "score": 0.68,
+      "file": "https://api.lightdrift.ai/v1/asset/q_b/yfcc:9715466326",
+      "thumb": "https://api.lightdrift.ai/v1/asset/q_b/yfcc:9715466326?v=thumb",
+      "rights": {
+        "license": "cc-by",
+        "license_verbatim": "by <>",
+        "commercial": true,
+        "attribution_required": true,
+        "derivatives": true,
+        "share_alike": false,
+        "attribution": "\"MINIPalooza 2013\" by unknown, yfcc, CC BY 4.0/3.0/2.0",
+        "provenance_url": "https://www.flickr.com/photos/101530550@N05/9715466326/",
+        "basis": "as-declared by source; verify for critical use"
+      }
+    }
+  ],
+  "notes": [
+    "Offline merge: no network, no search credit."
+  ]
+}

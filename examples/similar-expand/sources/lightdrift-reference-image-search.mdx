@@ -1,0 +1,98 @@
+---
+title: "Search stock images from a visual reference with Python"
+description: "Send an image and an optional text brief to Lightdrift's API, save the complete response, and review candidates with their source and attribution metadata."
+---
+
+Use reference-image search when you have a visual direction for a moodboard, presentation or page and want image candidates to review. Lightdrift accepts an image, a text description, or both. Image-plus-text search lets you supply the visual reference and describe what should matter in the new result.
+
+Similarity is not identity verification. A search can return a visually related scene without depicting the same place or object. This example retrieves candidates; it does not select, license or publish an image for you.
+
+## Prepare one reference
+
+Choose a JPEG, PNG or WebP image you are authorized to submit. The documented input limits are 5 MiB and 20 megapixels. Images are resized to a maximum 1024-pixel edge before embedding. Check pixel dimensions in your image editor; the script below only checks file size and extension.
+
+Set `LIGHTDRIFT_API_KEY` through your environment's secret controls. Save this as `reference_search.py`:
+
+```python
+"""Search once with an authorized local reference and preserve the response."""
+import base64
+import json
+import os
+from pathlib import Path
+import sys
+import urllib.error
+import urllib.request
+
+
+def main():
+    if len(sys.argv) != 2:
+        raise SystemExit("Usage: python3 reference_search.py reference.jpg")
+    key = os.environ.get("LIGHTDRIFT_API_KEY")
+    if not key:
+        raise SystemExit("Set LIGHTDRIFT_API_KEY in your environment first.")
+    path = Path(sys.argv[1])
+    if path.suffix.lower() not in {".jpg", ".jpeg", ".png", ".webp"}:
+        raise SystemExit("Use a JPEG, PNG or WebP reference.")
+    if not 0 < path.stat().st_size <= 5 * 1024 * 1024:
+        raise SystemExit("Reference must be nonempty and at most 5 MiB.")
+    payload = {
+        "image_base64": base64.b64encode(path.read_bytes()).decode("ascii"),
+        "query": "similar coastal scene with room on the left for a headline",
+        "k": 5,
+        "filters": {"commercial": True, "derivatives": True},
+    }
+    request = urllib.request.Request(
+        "https://api.lightdrift.ai/v1/search",
+        data=json.dumps(payload).encode(),
+        headers={"X-API-Key": key, "Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=45) as response:
+            result = json.load(response)
+        if not isinstance(result, dict) or not isinstance(result.get("results"), list):
+            raise ValueError("Unexpected search response")
+    except urllib.error.HTTPError as error:
+        raise SystemExit(f"HTTP {error.code}; inspect API/account status before retrying.") from None
+    except (urllib.error.URLError, TimeoutError):
+        raise SystemExit("Search outcome uncertain; check account usage before retrying.") from None
+    except (ValueError, TypeError):
+        raise SystemExit("Unexpected response; inspect API status before retrying.") from None
+    print(json.dumps(result, indent=2))
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Run one search:
+
+```sh
+python3 reference_search.py reference.jpg > reference-results.json
+```
+
+Replace the text with your actual brief. To search only from the reference, omit `query`. To use a public HTTPS image instead of a local file, send `image_url` instead of `image_base64`; do not send both image fields. See [Search](/guides/search) for the supported controls.
+
+A successful search currently costs $0.005 ($5 per 1,000), including a successful response with degraded ranking. Returning five candidates is one search. The script does not retry automatically. Confirm the [current price](https://api.lightdrift.ai/v1/pricing) before running it.
+
+## Read the response before using an image
+
+The saved JSON retains the whole response, including `query_id`, candidate metadata and any `relaxed` or `degraded` fields. Inspect the previews, actual dimensions and source pages. Keep the full `rights` object with a selected asset; saving only the file URL loses the information needed to carry credits into your workflow.
+
+Check source-declared permission flags and attribution. Unknown values remain unresolved. Lightdrift reports the source's rights declarations, rather than clearing every use of a person's likeness, a logo, a building or an artwork. See [Rights answers](/guides/rights).
+
+File URLs can redirect to signed downloads. Follow redirects when fetching a selected file and don't treat the final signed URL as a permanent asset address. Keep the asset ID and source metadata so your application can retrieve current details later.
+
+## Reference search or similar-image lookup?
+
+| Starting point | Use |
+| --- | --- |
+| A local JPEG, PNG or WebP | `POST /v1/search` with `image_base64` |
+| A public HTTPS reference image | `POST /v1/search` with `image_url` |
+| An asset already in the current Lightdrift index | MCP `find_similar_images` with its asset ID |
+
+Similar-image lookup excludes its seed and does not use text reranking. An asset outside the current index is not a valid similarity seed, even if its metadata remains retrievable. Use the reference workflow when your starting point is an external image.
+
+[Try Lightdrift with one visual brief](https://lightdrift.ai/?ld_ref_source=lightdrift_docs&ld_ref_medium=owned_content&ld_ref_campaign=lig27_reference_search_v1&ld_ref_content=guide_cta). Record whether a result fits the brief and can be used with its required credit, or what prevented that decision.
+
+Request fields and limits were checked against the live API schema and documentation on September 26, 2026. The script has not been run against an authenticated paid search; no retrieval-quality or latency result is claimed.

@@ -68,6 +68,8 @@ Catch a drifted or malformed saved response before a template consumes it with t
 
 Review candidates as images instead of JSON with the [offline review-gallery builder](examples/review-gallery). It renders a saved `/v1/search` response as one self-contained HTML page — a figure per result with declared credit, license and source link, plus a visible marker for any missing metadata — and it copies only declared values, inventing no caption, creator, license or source page.
 
+Turn one or two on-brief images into more like them with the [bounded similar-image expansion utility](examples/similar-expand). It reads seeds from a saved response, plans the request count and worst-case cost before spending, then merges the responses into one identity-deduplicated shortlist that keeps each result's source-declared rights; the default is a dry run.
+
 ## Image rights
 
 Licenses belong to the individual images, not this plugin. Preserve required attribution and source links. Lightdrift reports the source's rights declarations; they are not a blanket clearance for every intended use.

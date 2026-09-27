@@ -1,0 +1,175 @@
+---
+title: "Search"
+description: "Search with text, reference images, image-plus-text queries, filters, and similar-image lookup."
+---
+
+## Search with natural language
+
+Default photo search is live on Voyage: `voyage-multimodal-3.5` embeds each indexed image together with its caption into a 1,024-dimensional vector. At query time, semantic retrieval and caption keyword matching select candidates, then `rerank-3` ranks their text for the query. The launch index contains 1,852,370 captioned images, including stock photography and specialist sources.
+
+Describe what matters for your use: subject, recognizable names, visible text, era, aesthetic, mood, lighting, composition, or space for a headline. Captions improve retrieval but can contain mistakes; inspect the image and its source when exact identification matters.
+
+```bash
+curl https://api.lightdrift.ai/v1/search \
+  -H "X-API-Key: $LIGHTDRIFT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"query":"a red Mini Cooper parked on a city street","k":5}'
+```
+
+The response includes `query_id`, `results`, `backend`, `mode`, `ranking`, `reranked`, `pool_size`, `latency_ms`, and `timing_ms`. Each result includes an asset ID, file URLs, dimensions, source, license information, and attribution. A normal Voyage search reports `backend: "voyage"` and `ranking: "text"`. Use the [API reference](/api-reference/introduction) for field shapes. To turn those saved fields into Schema.org [`ImageObject`](https://schema.org/ImageObject) JSON-LD, Open Graph image tags and a credit line, see [Emit image structured data from a search response](/guides/image-structured-data). To republish the same saved results as a JSON Feed or RSS feed for an aggregator, newsletter or monitoring job, see [Turn a saved search response into a feed](/guides/search-to-feed). To check a stored response against the published OpenAPI response schema and documented field expectations before a template consumes it, see [Validate a saved search response against the published schema](/guides/search-response-validate). To render a saved response as a self-contained HTML page of thumbnails for a person to review, see [Turn a saved search response into an offline review gallery](/guides/review-gallery).
+
+Search latency excludes downloading and rendering result images. Provider and network conditions vary; there is no fixed latency guarantee.
+
+### Modes
+
+| Mode | Behavior |
+| --- | --- |
+| `auto` (default) | Text: caption reranking. Image-only: similarity. Image plus text: joint-embedding similarity blended with caption text reranking. |
+| `text` | Force caption text reranking. Requires query text; an image still influences candidate retrieval. |
+| `none` | Skip reranking on the selected retrieval path. Default photo requests still use Voyage query embeddings; this is not a promise of no model call. |
+
+All search modes use the same Voyage index. Old `mode:visual` requests are accepted as `auto`; `rerank_text` is retained for compatibility but no longer changes the backend. Graphics-related queries search the current captioned collection, without switching to the old index.
+
+### Request controls
+
+| Field | Type | Default | Purpose |
+| --- | --- | --- | --- |
+| `query` | string | optional with an image | Natural-language query, up to 1000 characters; `q` is an alias. |
+| `image_base64` | string | omitted | JPEG, PNG or WebP upload as raw base64 or a data URL. |
+| `image_url` | string | omitted | Public HTTPS image URL. Use this or image_base64, not both. |
+| `k` | integer 1–100 | 10 | Results to return; `top_k` is an alias. |
+| `ann_k` | integer 1–1000 | 100 | Semantic retrieval candidates. |
+| `bm25_k` | integer 0–1000 | 50 | Caption keyword candidates; zero disables this lane. |
+| `ann_ef` | integer 64–4096 | 2048 | Accepted for compatibility; ignored by the current retrieval store. |
+| `rerank_k` | integer 1–100, or null | 60 | Candidates to rerank. Null uses the standard maximum of 100; larger explicit values are rejected before billing. |
+| `rerank_text` | boolean | true | Deprecated compatibility field; does not change retrieval or reranking. |
+| `explain` | boolean | false | Include ranking details; also enabled for `mode:none`. |
+| `filters` | object | default filters below | Constrain retrieval before ranking. |
+| `client_session` | string | omitted | Link related calls from one agent session. |
+
+The playground exposes the same modes, but may choose a larger result/rerank count for its grid. `/v1/health` reports API defaults. Start with defaults; increase candidate counts only when useful for your queries.
+
+### Defaults you get without asking
+
+Three filters are applied whenever you leave them out, because most callers want them and forgetting them produced the worst results in our own evaluations:
+
+| Filter | Default | Why |
+| --- | --- | --- |
+| `ai_generated` | `false` | Exclude assets marked AI-generated. All records in the current captioned index are marked non-AI-generated; this does not imply all are photographs. |
+| `commercial` | `true` | Only licences that permit commercial use. Noncommercial licences are opt-in. |
+| `min_width` | `1000` | Files at least 1000 px wide. If that leaves a page short, the search is retried once without it and the response carries `"relaxed": ["min_width"]`. |
+
+To opt out of a default, send the key with `null`: `{"filters": {"ai_generated": null}}` removes the AI-generation restriction; it does not add assets outside the current index. Every result carries `ai_generated` so you can badge it.
+
+Results are also de-duplicated: when the same file is indexed under two sources (a Flickr photo also collected by a second Flickr crawl, or a CC0 stock image mirrored on two stock sites) only the highest-ranked copy is shown.
+
+### Filters
+
+Filters constrain retrieval before ranking. Omitted default filters still apply as described above.
+
+The playground lists the 17 sources present in the current captioned index. Its “Any size” selection explicitly removes the width minimum, and unchecking “Commercial use only” includes noncommercial licenses. The explicit-content control uses `nsfw_max:0.2`; turning it off sends `null`. Unknown scores remain eligible. Color treatment uses measured metadata; records without that metadata are excluded when a specific treatment is selected.
+
+Format matching accepts case and extension aliases such as `JPEG`, `jpeg`, and `jpg`. Image format refers to the indexed original, not necessarily the thumbnail format.
+
+| Filter | Type | Meaning |
+| --- | --- | --- |
+| `commercial` | boolean | Only assets whose declared license permits commercial use. **Defaults to `true`**; send `null` to include noncommercial licences. |
+| `attribution_required` | boolean | Only assets that do (`true`) or do not (`false`) require attribution. |
+| `derivatives` | boolean | Only assets whose license permits derivative works. |
+| `license_id` | string[] | Restrict to these licenses: `cc0`, `pdm`, `us-gov-pd`, `cc-by`, `cc-by-sa`, `cc-by-nd`, `cc-by-nc`, `cc-by-nc-sa`, `cc-by-nc-nd`, `mit`, `apache-2.0`, `isc`, `ofl`. |
+| `source` | string[] | Restrict to these sources: `inat`, `yfcc`, `flickr`, `wikimedia`, `wm_quality`, `smithsonian`, `nasa`, `govflickr`, … |
+| `min_width` / `min_height` | integer | Minimum pixel dimensions of the full-resolution file. `min_width` **defaults to 1000** (relaxed automatically if the page comes up short); send `null` to disable. |
+| `orientation` | `landscape` \| `portrait` \| `square` | Aspect class. |
+| `format` | string[] | e.g. `["jpeg", "png"]`. |
+| `year_min` / `year_max` | integer | Capture or creation year, where the source declares one. |
+| `monochrome` | boolean | Only (or never) monochrome images. |
+| `colors` | string[] | Dominant named colours: `black`, `white`, `gray`, `red`, `orange`, `yellow`, `green`, `teal`, `blue`, `navy`, `purple`, `pink`, `brown`, `beige`, `cream`. Available where palette metadata exists. |
+| `ai_generated` | boolean | Exclude (`false`, **the default**) or select (`true`) assets the source marks as AI-generated; `null` returns both. |
+| `nsfw_max` | number 0–1 | Maximum permitted NSFW score. Default `0.2`; assets without a score pass. |
+
+
+## Search with an image
+
+Use the same `/v1/search` endpoint for image-only or image-plus-text search. Supply at least text or one image. Uploaded/reference images are query inputs; they are not added to the searchable collection.
+
+Public image URL plus text:
+
+```json
+{
+  "image_url": "https://your-public-host.example/reference.jpg",
+  "query": "blue car",
+  "k": 5
+}
+```
+
+Omit `query` for image-only search. For local files, send `image_base64` as raw base64 or a data URL instead of `image_url`:
+
+```python
+import base64
+import os
+from pathlib import Path
+import requests
+
+response = requests.post(
+    "https://api.lightdrift.ai/v1/search",
+    headers={"X-API-Key": os.environ["LIGHTDRIFT_API_KEY"]},
+    json={
+        "image_base64": base64.b64encode(Path("reference.jpg").read_bytes()).decode(),
+        "query": "blue car",
+        "k": 5,
+    },
+    timeout=30,
+)
+response.raise_for_status()
+print(response.json())
+```
+
+JPEG, PNG and WebP still images are supported, up to **5 MiB decoded** and **20 megapixels**. Images are oriented, resized to a maximum 1024-pixel edge, stripped of metadata, and sent to Voyage. URLs must use public HTTPS on port 443, with no embedded credentials; private addresses are blocked and redirects are checked. Invalid inputs return 422; oversized request bodies return 413. Failed searches are not charged. Successful image searches have the same $0.005 price as text searches.
+
+The playground's image attachment button accepts local files, previews the reference, and allows optional text. Clear the text for image-only search. Images MCP accepts the same `image_base64` and `image_url` fields through `search_images`; reconnect clients to refresh tool schemas.
+
+Responses identify `query_type` as `text`, `image`, or `image_text`. In auto mode, image-only returns `ranking:image` without text reranking. Image-plus-text returns `ranking:multimodal`: reciprocal-rank fusion gives joint-embedding similarity 65% weight and caption text ranking 35%. These are rank scores, not probabilities. Added text steers retrieval; this does not edit or generate an image, or guarantee exact constraints. `mode:text` forces text ranking, and `mode:none` skips reranking. A reranker failure returns an explicitly degraded response.
+
+Raw query images and source URLs are not persisted in search logs. Search logs retain the query text, query type and a fingerprint of the normalized image; query embeddings may be cached for up to one hour.
+
+## Similar images
+
+Use `/v1/similar` for an existing indexed asset ID. Use `/v1/search` above for a new image upload:
+
+```bash
+curl https://api.lightdrift.ai/v1/similar \
+  -H "X-API-Key: $LIGHTDRIFT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"asset_id":"isorepublic:17191","k":5}'
+```
+
+For a Voyage-indexed seed, similarity uses its saved joint image-and-caption vector and excludes the seed from the results. Similar results are returned in retrieval order. Seeds outside the current index, removed assets and unavailable assets return 404; no legacy search fallback is used.
+
+## Files and rights
+
+`GET /v1/asset/{asset_id}` returns metadata and file URLs. Use the returned `thumb` or file URL to fetch an image; delivery is separate from the search request. URLs include the query ID so downloads can be attributed to their search. Existing legacy asset links remain supported.
+
+Licenses and permission flags come from source metadata. A caption is not proof of identity, permission, or a model/property release. See [Rights answers](/guides/rights).
+
+## Readiness and errors
+
+Default Voyage photo search does not start a Lightdrift GPU. `GET /v1/warm` reports the selected backend, configuration readiness, and recent provider successes; key presence is not proof that a fresh provider request will succeed. `GET /v1/health?deep=true` checks database/index connectivity. Actual searches are the end-to-end availability check.
+
+Search no longer uses the legacy GPU service. Temporary Voyage provider failures return an availability error; retry according to `Retry-After`.
+
+| Status | Meaning and action |
+| --- | --- |
+| `401` | Missing or invalid API key. |
+| `402` | Insufficient account credit. |
+| `404` | Asset or usable seed unavailable. |
+| `422` | Invalid fields or incompatible mode controls. |
+| `429` | Account/key rate or concurrency limit; honor `Retry-After`. |
+| `502` / `503` | Search, provider, or authentication dependency unavailable. Honor `Retry-After` and use bounded backoff. Failed searches are not charged. |
+
+A successful response can include `degraded: "reranker unavailable; lane-order results"`. It contains retrieval-order results, with null rerank scores, and is still a successful billed search. Inspect this field if reranked ordering is essential.
+
+Send a stable `Idempotency-Key` for retries of the same logical request to avoid duplicate search charges. Do not reuse it for different queries.
+
+## Billing and limits
+
+Each successful API or MCP search/similar call costs $0.005 in account credit. The signed-in playground has its separate daily free allowance. See [Plans and limits](/guides/plans-and-limits) for current tiers, request limits, and concurrency limits. Authentication, billing, and key management are unchanged by the Voyage migration.
