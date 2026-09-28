@@ -1,6 +1,20 @@
 # Lightdrift for Claude
 
-Real images for the things you build. Search Lightdrift by meaning and retrieve hosted image files with natural-language descriptions, content flags, source provenance, and license information.
+Lightdrift is an image search API and MCP server for AI agents. It searches 1.85 million openly licensed images (Creative Commons and public domain, from 17 sources including Wikimedia Commons, Flickr, iNaturalist, the Smithsonian and NASA) by text, a reference image, or both, and returns hosted file URLs with the source, license, and a ready-to-use attribution string for every result.
+
+- MCP endpoint: `https://lightdrift.ai/mcp` (remote, streamable HTTP; OAuth sign-in or `X-API-Key` header)
+- Official MCP registry: `ai.lightdrift/images`
+- Website: https://lightdrift.ai · Docs: https://docs.lightdrift.ai/guides/images-mcp · Pricing: https://lightdrift.ai/pricing
+
+This repository is the Claude plugin: the MCP connection plus a `find-images` skill.
+
+## Connect any MCP client
+
+```json
+{ "mcpServers": { "lightdrift": { "url": "https://lightdrift.ai/mcp" } } }
+```
+
+In Claude Code: `claude mcp add --transport http lightdrift https://lightdrift.ai/mcp`
 
 ## Local installation
 
@@ -28,7 +42,7 @@ In Claude, open Customize → Connectors → Add custom connector. Use `https://
 | find_similar_images | Find images similar to an indexed asset | 1 credit per 10 results, rounded up, minimum 1. Paid plans only |
 | get_image | Retrieve file URLs and image metadata | Free |
 
-A Lightdrift account is required. Plans come with monthly credits: the Free plan has 500 credits every month for text search with up to 10 results per search; paid plans add search by image, image plus text, find-similar, and up to 100 results per search. Failed searches are not charged. On Free, image and find-similar calls return 403 `paid_feature`; when monthly credits run out, calls return 402 `credits_exhausted`. Both errors include an `upgrade_url`. Plans and limits: https://lightdrift.ai/#pricing. This plugin does not include credits or an Anthropic subscription. The plugin runtime uses browser OAuth and contains no API keys, scripts, hooks, or executable dependencies. The optional API examples below are separate scripts; they are not run by the plugin.
+A Lightdrift account is required. Plans come with monthly credits: the Free plan has 500 credits every month for text search with up to 10 results per search; paid plans add search by image, image plus text, find-similar, and up to 100 results per search. Failed searches are not charged. On Free, image and find-similar calls return 403 `paid_feature`; when monthly credits run out, calls return 402 `credits_exhausted`. Both errors include an `upgrade_url`. Plans and limits: https://lightdrift.ai/pricing. This plugin does not include credits or an Anthropic subscription. The plugin runtime uses browser OAuth and contains no API keys, scripts, hooks, or executable dependencies. The optional API examples below are separate scripts; they are not run by the plugin.
 
 ## Runnable workflow examples
 
